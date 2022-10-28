@@ -100,7 +100,3 @@ Include the required links in the Moodle delivery window using [this template fo
 All final changes must be merged into the default branch `main` or `master`. Other branches will not be checked.
 
 Ensure that the `readme.md` file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.
-
-//new token after api purge:
-
-{name: 'Staale_Marius_Selnes', email: 'StaSel87060@stud.noroff.no', banner: '', avatar: '', accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwib…EzNn0.yD5hENTwOuphslT77XyBFYm4HQYJVYsNs3UpmSPD-r4'}accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlN0YWFsZV9NYXJpdXNfU2VsbmVzIiwiZW1haWwiOiJTdGFTZWw4NzA2MEBzdHVkLm5vcm9mZi5ubyIsImF2YXRhciI6IiIsImJhbm5lciI6IiIsImlhdCI6MTY2Njk1NjEzNn0.yD5hENTwOuphslT77XyBFYm4HQYJVYsNs3UpmSPD-r4"avatar: ""banner: ""email: "StaSel87060@stud.noroff.no"name: "Staale_Marius_Selnes"[[Prototype]]: Object
