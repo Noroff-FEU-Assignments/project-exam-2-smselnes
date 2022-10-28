@@ -86,19 +86,19 @@ export default function RegisterUserForm() {
             <ErrorMessage>{registerFormError}</ErrorMessage>
           )}
           <div>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Name *</label>
             <input id="name" {...register("name")} />
             {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
           </div>
           <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email *</label>
             <input id="email" {...register("email")} />
             {errors.email && (
               <ErrorMessage>{errors.email.message}</ErrorMessage>
             )}
           </div>
           <div>
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password *</label>
             <input id="password" {...register("password")} />
             {errors.password && (
               <ErrorMessage>{errors.password.message}</ErrorMessage>
