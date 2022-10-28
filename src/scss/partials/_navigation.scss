@@ -1,0 +1,31 @@
+.navbar {
+  background-color: $colour-header;
+
+  &__link {
+    color: $colour-light;
+    margin: 0 20px;
+    text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+      color: $colour-light;
+    }
+  }
+
+  &__logo {
+    width: 150px;
+  }
+}
+
+footer {
+  background-color: $colour-header;
+  padding: 1rem;
+  flex-shrink: 0;
+  display: grid;
+  justify-content: center;
+
+  a {
+    color: $colour-light;
+    margin: 0 1rem;
+  }
+}
