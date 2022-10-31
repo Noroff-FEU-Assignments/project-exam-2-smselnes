@@ -5,6 +5,8 @@ import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorMessage from "../common/ErrorMessage";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no|noroff.no)$/;
 
@@ -28,6 +30,8 @@ export default function Login() {
   const [loginError, setLoginError] = useState(null);
 
   const navigate = useNavigate();
+
+  const [auth, setAuth] = useContext(AuthContext);
 
   const {
     register,
@@ -54,7 +58,12 @@ export default function Login() {
     try {
       const response = await fetch(loginUrl, options);
       const json = await response.json();
-      console.log(json);
+      console.log(response);
+      console.log(response.data);
+      console.log(json.accessToken);
+      console.log(json.name);
+      setAuth(json.accessToken);
+
       navigate("/dashboard");
     } catch (error) {
       console.log("Error:", error);

@@ -20,8 +20,13 @@ function App() {
               <Route path="/register" element={<RegisterPage />}></Route>
               <Route path="/login" element={<LoginPage />}></Route>
               <Route path="/dashboard" element={<Dashboard />}></Route>
+              <Route path="/dashboard/posts" element={<ViewProfiles />}></Route>
               <Route
                 path="/dashboard/profiles"
+                element={<ViewProfiles />}
+              ></Route>
+              <Route
+                path="/dashboard/createpost"
                 element={<ViewProfiles />}
               ></Route>
             </Routes>
