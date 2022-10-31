@@ -12,6 +12,7 @@ const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no|noroff.no)$/;
 const schema = yup.object().shape({
   name: yup
     .string()
+    .min(8, "Minimum 8 characters.")
     .required("Please enter full name")
     .matches(usernameRegex, "No punctuation except underscore."),
   email: yup
@@ -45,7 +46,6 @@ export default function RegisterUserForm() {
   });
 
   const registerUrl = base_url + register_path;
-  console.log(registerUrl);
 
   async function registerFormSubmit(data) {
     setSubmitting(true);

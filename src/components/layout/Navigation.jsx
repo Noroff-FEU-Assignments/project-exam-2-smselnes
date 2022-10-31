@@ -4,17 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import AuthContext from "../../context/AuthContext";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  function logoutUser() {
-    setAuth(null);
-    navigate("/login");
-  }
 
   return (
     <Navbar className="navbar" expand="sm">
@@ -40,9 +32,6 @@ function Navigation() {
                 <Nav.Link href="/dashboard" className="navbar__link">
                   Dashboard
                 </Nav.Link>
-                <Button className="navbar__logout" onClick={logoutUser}>
-                  Log out
-                </Button>
               </>
             ) : (
               <Nav.Link href="/login" className="navbar__link">
