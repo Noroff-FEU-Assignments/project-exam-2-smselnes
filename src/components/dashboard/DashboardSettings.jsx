@@ -13,7 +13,7 @@ export default function DashboardSettings() {
   }
   return (
     <div className="dashboardSettings">
-      <Button>Settings</Button>
+      <Button href="/dashboard/settings">Settings</Button>
       <Button onClick={logoutUser}>Log out</Button>
     </div>
   );
