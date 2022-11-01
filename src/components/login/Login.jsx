@@ -58,7 +58,10 @@ export default function Login() {
     try {
       const response = await fetch(loginUrl, options);
       const json = await response.json();
-      setAuth(json.accessToken);
+      setAuth(json);
+      console.log(json);
+      console.log(auth);
+      //setAuth(json.accessToken);
 
       navigate("/dashboard");
     } catch (error) {
