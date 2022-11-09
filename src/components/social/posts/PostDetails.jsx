@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
-import { social_url } from "../../utils/Api";
-import AuthContext from "../../context/AuthContext";
+import { social_url } from "../../../utils/Api";
+import AuthContext from "../../../context/AuthContext";
 import { useState, useEffect, useContext } from "react";
 import { Spinner, Button } from "react-bootstrap";
+import CommentOnPost from "./CommentOnPost";
+import ReactOnPost from "./ReactOnPost";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
@@ -61,7 +63,15 @@ export default function PostDetails() {
         <h1>Title: {postDetails.title}</h1>
         <p>By:{postDetails.author.name}</p>
         <p>Description: {postDetails.body}</p>
+
+        <hr />
         <p>Number of comments: {postDetails._count.comments}</p>
+        <div>
+          <ReactOnPost />
+        </div>
+        <div>
+          <CommentOnPost />
+        </div>
         <div className="postComments">
           {postDetails.comments.map((comment) => {
             return (
@@ -71,7 +81,19 @@ export default function PostDetails() {
             );
           })}
         </div>
+
+        <p>Reactions:</p>
+        <div className="postReactions">
+          {postDetails.reactions.map((reaction) => {
+            return (
+              <div>
+                <span>{reaction.symbol}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
       <Button href="/dashboard/posts">back to posts</Button>
     </>
   );

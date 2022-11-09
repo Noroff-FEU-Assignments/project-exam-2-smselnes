@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import { social_url } from "../../utils/Api";
-import AuthContext from "../../context/AuthContext";
+import { social_url } from "../../../utils/Api";
+import AuthContext from "../../../context/AuthContext";
 import { Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,7 @@ export default function ViewProfiles() {
       try {
         const response = await fetch(profileUrl, options);
         const json = await response.json();
+        console.log(json);
         setProfiles(json);
       } catch (error) {
         console.log(error);
@@ -52,12 +53,16 @@ export default function ViewProfiles() {
     );
   }
 
-  return profiles.map((profile) => {
+  return profiles.map((profile, index) => {
     return (
-      <Card key={profile.name} className="m-3">
-        <Card.Title>{profile.name}</Card.Title>
-        <Link to={`/dashboard/profiles/${profile.name}`}>Details</Link>
-      </Card>
+      <div key={index} className="profiles">
+        <Card className="profiles__card m-3">
+          {/*  <Card.Img src={profile.avatar} className="profiles__card--img" /> */}
+          <Card.Title>{profile.name}</Card.Title>
+          <Card.Text>Posts:{profile._count.posts}</Card.Text>
+          <Link to={`/dashboard/profiles/${profile.name}`}>Details</Link>
+        </Card>
+      </div>
     );
   });
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import UpdateUserProfile from "./UpdateUserProfile";
 
 export default function SettingsPage() {
   return (
@@ -8,6 +9,7 @@ export default function SettingsPage() {
         On this page there will be a form used to update avatar and banner on
         own profile.
       </p>
+      <UpdateUserProfile />
     </div>
   );
 }

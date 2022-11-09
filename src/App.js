@@ -6,14 +6,14 @@ import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
 import Footer from "./components/layout/Footer";
 import DashboardPage from "./components/dashboard/DashboardPage";
-import ViewProfiles from "./components/social/ViewProfiles";
-import ViewPosts from "./components/social/ViewPosts";
+import ViewProfiles from "./components/social/profiles/ViewProfiles";
+import ViewPosts from "./components/social/posts/ViewPosts";
 import { AuthProvider } from "./context/AuthContext";
-import PostDetails from "./components/social/PostDetails";
+import PostDetails from "./components/social/posts/PostDetails";
 import SettingsPage from "./components/dashboard/SettingsPage";
 import CreateNewPost from "./components/dashboard/CreateNewPost";
-import ProfileDetails from "./components/social/ProfileDetails";
-import ProfilesPage from "./components/social/ProfilesPage";
+import ProfileDetails from "./components/social/profiles/ProfileDetails";
+import ProfilesPage from "./components/social/profiles/ProfilesPage";
 
 function App() {
   return (
@@ -44,6 +44,7 @@ function App() {
                 path="/dashboard/createpost"
                 element={<CreateNewPost />}
               ></Route>
+
               <Route
                 path="/dashboard/settings"
                 element={<SettingsPage />}

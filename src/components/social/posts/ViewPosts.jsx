@@ -1,14 +1,11 @@
-//this example is used to fetch other social data... JUST AN EXAMPLE FUNCTION
-//this example is used to fetch other social data... JUST AN EXAMPLE FUNCTION
-import { social_url } from "../../utils/Api";
-import { base_url } from "../../utils/Api";
-import { userToken } from "../../utils/Api";
+import { social_url } from "../../../utils/Api";
 import { useState, useEffect, useContext } from "react";
-import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 import { Card, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const postsUrl = social_url + "posts";
+const postsUrl =
+  social_url + "posts?_author=true&_comments=true&_reactions=true";
 
 export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);
@@ -65,7 +62,10 @@ export default function ListOfPosts() {
     return (
       <Card key={post.id} className="m-3">
         <Card.Title>{post.title}</Card.Title>
+        <Card.Text>By: {post.author.name}</Card.Text>
         <Card.Text>Updated: {formattedDate}</Card.Text>
+        <Card.Text>Comments: {post._count.comments}</Card.Text>
+        <Card.Text>Reactions: {post._count.reactions}</Card.Text>
         <Link to={`/dashboard/posts/${post.id}`}>View Post</Link>
       </Card>
     );
