@@ -19,7 +19,6 @@ export default function ListOfPosts() {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.accessToken}`,
-          //Authorization: `${userToken}`,
         },
       };
       try {

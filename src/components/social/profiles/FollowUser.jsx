@@ -8,6 +8,7 @@ export default function FollowUser() {
   async function submitUserFollow() {
     try {
       const response = await http.put(`profiles/${name}/follow`);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }

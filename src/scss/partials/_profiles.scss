@@ -1,0 +1,20 @@
+.profile {
+  &__avatar {
+    width: 100px;
+  }
+
+  &__banner {
+    width: 100%;
+  }
+}
+
+.profiles {
+  &__card {
+    display: flex;
+    flex-direction: column;
+
+    &--img {
+      width: 100px;
+    }
+  }
+}

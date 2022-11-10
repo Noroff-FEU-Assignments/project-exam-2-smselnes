@@ -4,7 +4,7 @@ import AuthContext from "../../../context/AuthContext";
 import { Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const profileUrl = social_url + "profiles";
+const profileUrl = social_url + "profiles?sortOrder=asc&limit=10";
 
 export default function ViewProfiles() {
   const [loading, setLoading] = useState(true);

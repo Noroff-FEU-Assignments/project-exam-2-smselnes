@@ -22,8 +22,8 @@ export default function Home() {
           </p>
           {auth ? (
             <>
-              <h5>Hello User!</h5>
-              <Button href="/Dashboard">Dashboard</Button>
+              <h5>Hello {auth.name}!</h5>
+              <Button href={`/dashboard/${auth.name}`}>Dashboard</Button>
             </>
           ) : (
             <Button href="/login">Login</Button>
