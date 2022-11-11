@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import useAxios from "../../../hooks/useAxios";
 import { useParams } from "react-router-dom";
 import { Spinner, Button } from "react-bootstrap";
 import FollowUser from "./FollowUser";
 import UnFollowUser from "./UnfollowUser";
+import useAxios from "../../../hooks/useAxios";
 
 export default function ProfileDetails() {
   const [error, setError] = useState(null);

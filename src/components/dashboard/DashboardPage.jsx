@@ -1,10 +1,11 @@
 import useAxios from "../../hooks/useAxios";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Spinner, Button } from "react-bootstrap";
-import AuthContext from "../../context/AuthContext";
+import { Spinner, Button, Modal } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
+import UpdateFormModal from "../../utils/UpdatePostModal";
+import DeletePost from "./DeletePost";
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
@@ -78,8 +79,13 @@ export default function DashboardPage() {
             <div key={index} className="ownPost">
               <h3>{ownPost.title}</h3>
               <p>Last edit: {ownPost.updated}</p>
-              <Button className="m-3 bg-secondary">Edit</Button>
-              <Button className="m-3 bg-danger">Delete</Button>
+              <UpdateFormModal
+                id={ownPost.id}
+                title={ownPost.title}
+                body={ownPost.body}
+              />
+              <DeletePost id={ownPost.id} />
+              {/* <Button className="m-3 bg-danger">Delete</Button> */}
             </div>
           );
         })}
