@@ -1,4 +1,10 @@
 .ownPost {
   border-top: 3px solid black;
   padding-top: 1rem;
+
+  &__delete__alert {
+    background-color: red;
+    width: 100%;
+    position: absolute;
+  }
 }

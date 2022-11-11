@@ -82,6 +82,12 @@ footer a {
   padding-top: 1rem;
 }
 
+.ownPost__delete__alert {
+  background-color: red;
+  width: 100%;
+  position: absolute;
+}
+
 .profile__avatar {
   width: 100px;
 }
