@@ -98,7 +98,6 @@ export default function UpdatePostModal({ id, title, body }) {
                 )}
               </div>
             </fieldset>
-
             <button
               className="btn btn-success m-3"
               type="submit"

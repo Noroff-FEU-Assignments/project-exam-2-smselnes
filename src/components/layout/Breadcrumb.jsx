@@ -10,12 +10,19 @@ function BreadcrumbNavigation() {
       <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
       {auth ? (
         <>
-          <Breadcrumb.Item href={`/dashboard/${auth.name}`}>
-            Dashboard
-          </Breadcrumb.Item>
+          <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
         </>
       ) : (
         <Breadcrumb.Item href="/login">Login</Breadcrumb.Item>
+      )}
+      {auth ? (
+        <>
+          <Breadcrumb.Item href={`/dashboard/${auth.name}`}>
+            Profile
+          </Breadcrumb.Item>
+        </>
+      ) : (
+        ""
       )}
     </Breadcrumb>
   );

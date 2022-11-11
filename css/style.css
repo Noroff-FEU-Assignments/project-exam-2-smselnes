@@ -17,6 +17,15 @@
   width: 150px;
 }
 
+.breadcrumb {
+  background-color: black;
+  padding: 10px;
+}
+
+.breadcrumb a {
+  color: white;
+}
+
 footer {
   background-color: #c06900;
   padding: 1rem;

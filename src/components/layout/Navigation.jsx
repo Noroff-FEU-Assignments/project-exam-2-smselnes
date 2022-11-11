@@ -31,10 +31,7 @@ function Navigation() {
               </Nav.Link>
               {auth ? (
                 <>
-                  <Nav.Link
-                    href={`/dashboard/${auth.name}`}
-                    className="navbar__link"
-                  >
+                  <Nav.Link href="/dashboard" className="navbar__link">
                     Dashboard
                   </Nav.Link>
                 </>
@@ -48,7 +45,7 @@ function Navigation() {
         </Container>
       </Navbar>
 
-      <BreadcrumbNavigation />
+      {/*   <BreadcrumbNavigation /> */}
     </>
   );
 }

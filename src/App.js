@@ -12,6 +12,8 @@ import PostDetails from "./components/social/posts/PostDetails";
 import CreateNewPost from "./components/dashboard/CreateNewPost";
 import ProfileDetails from "./components/social/profiles/ProfileDetails";
 import ProfilesPage from "./components/social/profiles/ProfilesPage";
+import OwnProfilePage from "./components/dashboard/OwnProfilePage";
+import BreadcrumbNavigation from "./components/layout/Breadcrumb";
 
 function App() {
   return (
@@ -19,14 +21,16 @@ function App() {
       <div className="wrapper">
         <Router>
           <Navigation />
+          <BreadcrumbNavigation />
           <div className="App">
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/register" element={<RegisterPage />}></Route>
               <Route path="/login" element={<LoginPage />}></Route>
+              <Route path="/dashboard/" element={<DashboardPage />}></Route>
               <Route
                 path="/dashboard/:name"
-                element={<DashboardPage />}
+                element={<OwnProfilePage />}
               ></Route>
               <Route path="/dashboard/posts" element={<ViewPosts />}></Route>
               <Route

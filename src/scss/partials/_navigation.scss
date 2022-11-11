@@ -17,6 +17,15 @@
   }
 }
 
+.breadcrumb {
+  background-color: black;
+  padding: 10px;
+
+  & a {
+    color: white;
+  }
+}
+
 footer {
   background-color: $colour-header;
   padding: 1rem;

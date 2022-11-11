@@ -3,6 +3,7 @@ import banner from "../../assets/banner_vertical.jpg";
 import { Button } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
+import Heading from "../layout/Heading";
 
 export default function Home() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -15,7 +16,7 @@ export default function Home() {
           className="home__introduction--image"
         />
         <div className="home__introductionInner">
-          <h1>Share - Interact - Socialize - Inspire</h1>
+          <Heading heading="Share, Interact, Socialize, Inspire!" />
           <p>
             Medi@holic is a trending social media platform where you post,
             interact and share with likeminded!
@@ -23,7 +24,7 @@ export default function Home() {
           {auth ? (
             <>
               <h5>Hello {auth.name}!</h5>
-              <Button href={`/dashboard/${auth.name}`}>Dashboard</Button>
+              <Button href="/dashboard">Dashboard</Button>
             </>
           ) : (
             <Button href="/login">Login</Button>
