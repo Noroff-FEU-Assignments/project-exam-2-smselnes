@@ -4,7 +4,7 @@ import AuthContext from "../../../context/AuthContext";
 import { Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const profileUrl = social_url + "profiles?sortOrder=desc&offset=50";
+const profileUrl = social_url + "profiles?sortOrder=asc&offset=50&limit=20";
 
 export default function ViewProfiles() {
   const [loading, setLoading] = useState(true);
@@ -55,14 +55,23 @@ export default function ViewProfiles() {
 
   return profiles.map((profile, index) => {
     return (
-      <div key={index} className="profiles">
-        <Card className="profiles__card m-3">
-          {/*  <Card.Img src={profile.avatar} className="profiles__card--img" /> */}
-          <Card.Title>{profile.name}</Card.Title>
-          <Card.Text>Posts:{profile._count.posts}</Card.Text>
-          <Link to={`/dashboard/profiles/${profile.name}`}>Details</Link>
-        </Card>
-      </div>
+      <>
+        <div key={index} className="profiles">
+          <Card className="profiles__card m-3">
+            <Card.Img src={profile.banner} className="profiles__card--banner" />
+            <div className="d-flex">
+              <Card.Img
+                src={profile.avatar}
+                className="profiles__card--avatar"
+              />
+              <Card.Title>{profile.name}</Card.Title>
+            </div>
+
+            <Card.Text>Posts:{profile._count.posts}</Card.Text>
+            <Link to={`/dashboard/profiles/${profile.name}`}>Visit</Link>
+          </Card>
+        </div>
+      </>
     );
   });
 }

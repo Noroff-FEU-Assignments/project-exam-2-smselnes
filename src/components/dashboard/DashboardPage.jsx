@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Spinner, Button, Modal } from "react-bootstrap";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { Spinner, Button } from "react-bootstrap";
 
 import AuthContext from "../../context/AuthContext";
 import Heading from "../layout/Heading";
 import SubHeading from "../layout/SubHeading";
+import Latestposts from "./LatestPosts";
 
 export default function DashboardPage() {
   let { name } = useParams();
@@ -27,6 +28,13 @@ export default function DashboardPage() {
         </li>
       </ul>
       <Button href={`/dashboard/${auth.name}`}>My profile</Button>
+      <SubHeading subHeading="Latest posts" />
+      <div fluid className="gallery">
+        <Latestposts />
+        <Link to="/dashboard/posts" className="w-50 mx-auto mb-3">
+          All posts
+        </Link>
+      </div>
     </>
   );
 }

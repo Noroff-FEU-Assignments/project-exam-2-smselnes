@@ -60,8 +60,14 @@ export default function PostDetails() {
   return (
     <>
       <div>
-        <h1>Title: {postDetails.title}</h1>
-        <p>By:{postDetails.author.name}</p>
+        <h1>{postDetails.title}</h1>
+        <span>
+          Author:
+          <a href={`/dashboard/profiles/${postDetails.author.name}`}>
+            {postDetails.author.name}
+          </a>
+        </span>
+        <img src={postDetails.media} width="200px" />
         <p>Description: {postDetails.body}</p>
 
         <hr />

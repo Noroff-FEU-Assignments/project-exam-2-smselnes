@@ -2,7 +2,6 @@ import { useContext } from "react";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import { social_url } from "../utils/Api";
-//import { base_url } from "../utils/Api";
 
 export default function useAxios() {
   const [auth] = useContext(AuthContext);

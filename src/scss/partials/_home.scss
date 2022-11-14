@@ -1,6 +1,10 @@
 .home__introduction {
   position: relative;
   text-align: center;
+  width: 100%;
+  display: grid;
+  top: 0;
+  justify-items: center;
 
   & h1 {
     margin-top: 1rem;
@@ -10,11 +14,7 @@
     width: 100%;
   }
 
-  &Inner {
-    position: absolute;
-    width: 100%;
-    display: grid;
-    top: 0;
-    justify-items: center;
+  & btn {
+    margin: 10px;
   }
 }

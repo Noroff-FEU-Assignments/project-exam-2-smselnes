@@ -1,6 +1,12 @@
 import React from "react";
+import SearchProfiles from "./SearchProfiles";
 import ViewProfiles from "./ViewProfiles";
 
 export default function ProfilesPage() {
-  return <ViewProfiles />;
+  return (
+    <>
+      <SearchProfiles />
+      <ViewProfiles />
+    </>
+  );
 }

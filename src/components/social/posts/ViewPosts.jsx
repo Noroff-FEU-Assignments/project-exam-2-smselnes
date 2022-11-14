@@ -23,7 +23,6 @@ export default function ListOfPosts() {
       };
       try {
         const response = await fetch(postsUrl, options);
-
         const json = await response.json();
         console.log(json);
         console.log(response);

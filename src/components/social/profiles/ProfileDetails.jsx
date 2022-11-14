@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Spinner, Button } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
+import { Spinner, Button, Tabs, Tab } from "react-bootstrap";
 import FollowUser from "./FollowUser";
 import UnFollowUser from "./UnfollowUser";
 import useAxios from "../../../hooks/useAxios";
@@ -17,9 +17,10 @@ export default function ProfileDetails() {
     async function getUsersProfile() {
       try {
         const response = await http.get(
-          `profiles/${name}?_posts&_followers&_following`
+          `profiles/${name}?_followers=true&_following=true&_posts=true`
         );
         console.log(response.data);
+        console.log(response.data._count.posts);
         setUserProfile(response.data);
       } catch (error) {
         console.log(error);
@@ -48,17 +49,29 @@ export default function ProfileDetails() {
 
   return (
     <>
-      <div>
-        <img src={userProfile.banner} className="profile__banner" />
-        <h3>Name: {userProfile.name}</h3>
-        <img src={userProfile.avatar} className="profile__avatar" />
-        <p>Email: {userProfile.email}</p>
-        <p>Followers: {userProfile._count.followers}</p>
-        <p>Following: {userProfile._count.following}</p>
-      </div>
+      <img src={userProfile.banner} className="profile__banner" />
+      <h3>{userProfile.name}</h3>
+      <Tabs
+        defaultActiveKey="profile"
+        id="uncontrolled-tab-example"
+        className="mb-3"
+      >
+        <Tab eventKey="profile" title="Profile">
+          <img src={userProfile.avatar} className="profile__avatar" />
+          <p>Email: {userProfile.email}</p>
+        </Tab>
+        <Tab eventKey="stats" title="Stats">
+          <p>Posts: {userProfile._count.posts}</p>
+          <p>Followers: {userProfile._count.followers}</p>
+          <p>Following: {userProfile._count.following}</p>
+        </Tab>
+      </Tabs>
+
       <FollowUser />
-      <UnFollowUser />
-      <Button href="/dashboard/profiles">back to profile list</Button>
+      {/* <UnFollowUser /> */}
+      <Button href="/dashboard/profiles" className="m-3">
+        back to profile list
+      </Button>
     </>
   );
 }
