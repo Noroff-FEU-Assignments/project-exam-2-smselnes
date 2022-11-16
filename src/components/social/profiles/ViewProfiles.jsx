@@ -5,7 +5,8 @@ import { Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const defaultAvatarImage =
-  "https://via.placeholder.com/100x100.png?text=Missing_avatar";
+  "https://via.placeholder.com/150/494031/f2f2f2/?text=no image";
+
 const profileUrl = social_url + "profiles?sortOrder=asc&offset=300&limit=100";
 
 export default function ViewProfiles() {

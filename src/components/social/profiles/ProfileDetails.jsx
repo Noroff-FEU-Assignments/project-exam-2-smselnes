@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Spinner, Button, Tabs, Tab } from "react-bootstrap";
+import { Spinner, Button, Tabs, Tab, Col } from "react-bootstrap";
 import FollowUser from "./FollowUser";
-import UnFollowUser from "./UnfollowUser";
 import useAxios from "../../../hooks/useAxios";
 
 export default function ProfileDetails() {
@@ -50,40 +49,47 @@ export default function ProfileDetails() {
 
   return (
     <>
-      <img src={userProfile.banner} className="profile__banner" />
-      <h3>{userProfile.name}</h3>
-      <Tabs
-        defaultActiveKey="profile"
-        id="uncontrolled-tab-example"
-        className="mb-3"
-      >
-        <Tab eventKey="profile" title="Profile">
-          <img src={userProfile.avatar} className="profile__avatar" />
-          <p>Email: {userProfile.email}</p>
-        </Tab>
-        <Tab eventKey="stats" title="Stats">
-          <p>{userProfile._count.posts} Posts</p>
-          <p> {userProfile._count.followers} Followers</p>
-          <p> {userProfile._count.following} Following</p>
-        </Tab>
-        <Tab eventKey="posts" title="Posts">
-          {userProfile.posts.map((userPosts, index) => {
-            return (
-              <div key={index} className="m-3 profileDetails__posts">
-                <Link to={`/dashboard/posts/${userPosts.id}`}>
-                  {userPosts.title}
-                </Link>
-              </div>
-            );
-          })}
-        </Tab>
-      </Tabs>
-
-      <FollowUser />
-      {/* <UnFollowUser /> */}
-      <Button href="/dashboard/profiles" className="m-3">
-        back to profile list
-      </Button>
+      <div className="text-center">
+        <img src={userProfile.banner} className="profile__banner mt-3" />
+        <h3 className="m-3">{userProfile.name}</h3>
+        <Tabs
+          defaultActiveKey="profile"
+          id="uncontrolled-tab-example"
+          className="mb-3 justify-content-center"
+        >
+          <Tab eventKey="profile" title="Profile" className="text-center">
+            <img src={userProfile.avatar} className="profile__avatar" />
+            <p>{userProfile.email}</p>
+          </Tab>
+          <Tab eventKey="stats" title="Stats" className="text-center">
+            <p>{userProfile._count.posts} Posts</p>
+            <p> {userProfile._count.followers} Followers</p>
+            <p> {userProfile._count.following} Following</p>
+          </Tab>
+          <Tab eventKey="posts" title="Posts" className="">
+            {userProfile.posts.map((userPosts, index) => {
+              return (
+                <div key={index} className="m-3 profileDetails__posts">
+                  {/* <img src={userPosts.media} /> */}
+                  <p>{userPosts.updated}</p>
+                  <Link to={`/dashboard/posts/${userPosts.id}`}>
+                    {userPosts.title}
+                  </Link>
+                </div>
+              );
+            })}
+          </Tab>
+        </Tabs>
+        <FollowUser />
+        <Col className="m-3">
+          <a
+            href="/dashboard/profiles"
+            className="profileDetails__navigateBack--btn"
+          >
+            back to profile list
+          </a>
+        </Col>
+      </div>
     </>
   );
 }

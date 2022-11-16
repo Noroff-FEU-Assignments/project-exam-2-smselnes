@@ -39,28 +39,22 @@ export default function FollowUser() {
 
   return (
     <>
-      {" "}
-      <Container>
-        <Row>
-          <Col>
-            <button
-              /* disabled={followed} */
-              className="btn btn-primary"
-              onClick={submitUserFollow}
-            >
-              Follow
-            </button>
-          </Col>
-          <Col>
-            <button
-              /* disabled={!followed} */
-              className="btn btn-danger"
-              onClick={submitUserUnFollow}
-            >
-              Unfollow
-            </button>
-          </Col>
-        </Row>
+      <Container className="d-flex justify-content-center ">
+        <button
+          /* disabled={followed} */
+          className="btn follow__button m-3"
+          onClick={submitUserFollow}
+        >
+          Follow
+        </button>
+
+        <button
+          /* disabled={!followed} */
+          className="btn unfollow__button m-3"
+          onClick={submitUserUnFollow}
+        >
+          Unfollow
+        </button>
       </Container>
     </>
   );

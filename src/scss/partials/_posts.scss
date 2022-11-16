@@ -6,6 +6,10 @@
   &__card {
     width: 100%;
 
+    @media (min-width: $largescreen) {
+      width: 450px;
+    }
+
     @media (min-width: $smallScreen) {
       /* width: 500px; */
       display: flex;
@@ -21,7 +25,7 @@
     &--header {
       @media (min-width: $smallScreen) {
         white-space: nowrap;
-        width: 310px;
+        width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
       }

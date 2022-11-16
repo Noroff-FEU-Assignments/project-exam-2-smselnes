@@ -4,7 +4,11 @@
   }
 
   &__banner {
-    width: 100%;
+    width: 50%;
+
+    @media (min-width: $largescreen) {
+      max-width: 500px;
+    }
   }
 
   &Page__wrapper {
@@ -13,25 +17,37 @@
     justify-content: center;
   }
 }
-.profileDetails__posts {
-  & a {
-    color: $colour-dark;
-    box-shadow: 1px 1px 2px 0px $colour-dark;
-    padding: 5px;
 
+.profileDetails {
+  &__posts {
+    display: grid;
+    justify-content: center;
+    box-shadow: 1px 1px 2px 0px $colour-dark;
+
+    & img {
+      max-width: 150px;
+    }
     &:hover {
       box-shadow: 1px 1px 4px 0px $colour-dark;
     }
   }
+
+  &__navigateBack--btn {
+    padding: 10px;
+    box-shadow: 1px 1px 2px 0px $colour-dark;
+    background-color: $colour-dark;
+    color: $colour-light;
+  }
 }
+
 .profiles {
   &__card {
     width: 230px;
     align-items: center;
     background-color: $colour-light;
 
-    &--banner {
-      width: 100%;
+    &--avatar {
+      width: 150px;
     }
 
     &--link {
@@ -57,4 +73,13 @@
     font-size: 0.8rem;
     font-style: italic;
   }
+}
+
+.unfollow__button,
+.follow__button {
+  padding: 5px;
+  margin-bottom: 5px;
+  box-shadow: 1px 1px 2px 0px $colour-dark;
+  background-color: $colour-header;
+  color: $colour-light;
 }
