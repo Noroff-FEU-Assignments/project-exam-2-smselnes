@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import ErrorMessage from "../../common/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+import { Button, Form } from "react-bootstrap";
 
 const schema = yup.object().shape({
   body: yup
@@ -67,25 +68,25 @@ export default function CommentOnPost() {
   }
   //need to decide whether to use textarea or input:text in comments section.
   return (
-    <form onSubmit={handleSubmit(submitComment)}>
+    <Form onSubmit={handleSubmit(submitComment)} className="commentOnPostsForm">
       {error && <ErrorMessage>{errors}</ErrorMessage>}
       <fieldset disabled={submitting}>
-        <div>
-          <label htmlFor="comment">Comment</label>
-          <textarea
-            name=""
-            id="comment"
-            cols="30"
-            rows="2"
-            {...register("body")}
-          ></textarea>
-          {/*  <input type="text" id="comment" {...register("body")} /> */}
-          {errors.message && (
-            <ErrorMessage>{errors.comment.message}</ErrorMessage>
-          )}
-        </div>
-        <button>Place comment</button>
+        <Form.Label htmlFor="comment">Place a comment</Form.Label>
+        <Form.Control
+          as="textarea"
+          name=""
+          id="comment"
+          rows="2"
+          {...register("body")}
+        ></Form.Control>
+
+        {errors.message && (
+          <ErrorMessage>{errors.comment.message}</ErrorMessage>
+        )}
       </fieldset>
-    </form>
+      <Button type="submit" className="commentOnPostsForm__submit mx-auto my-3">
+        Place comment
+      </Button>
+    </Form>
   );
 }

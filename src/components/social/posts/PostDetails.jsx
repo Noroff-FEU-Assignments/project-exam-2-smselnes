@@ -52,47 +52,50 @@ export default function PostDetails() {
     return (
       <div className="errorMessage">
         <p>Error: There was an unexpected error.</p>
-        <p>Advanced: {error}</p>
       </div>
     );
   }
 
   return (
     <>
-      <div>
-        <h1>{postDetails.title}</h1>
+      <div className="postDetails">
+        <h1 className="postDetails__title">{postDetails.title}</h1>
         <span>
           Author:
           <a href={`/dashboard/profiles/${postDetails.author.name}`}>
             {postDetails.author.name}
           </a>
         </span>
-        <img src={postDetails.media} width="200px" />
-        <p>Description: {postDetails.body}</p>
+        <img
+          className="postDetails__image"
+          src={postDetails.media}
+          width="200px"
+        />
+        <p className="postDetails__bodytext">Description: {postDetails.body}</p>
 
         <hr />
-        <p>Number of comments: {postDetails._count.comments}</p>
-        <div>
-          <ReactOnPost />
-        </div>
         <div>
           <CommentOnPost />
         </div>
-        <div className="postComments">
-          {postDetails.comments.map((comment) => {
+        <div>
+          <ReactOnPost />
+        </div>
+        <p>Number of comments: {postDetails._count.comments}</p>
+        <div className="postComments mt-3">
+          {postDetails.comments.map((comment, index) => {
             return (
-              <div key={comment.id}>
-                <p>By:{comment.owner}</p> <p>{comment.body}</p>{" "}
+              <div key={index} className="postComments__item">
+                <p>By:{comment.owner}</p> <p>{comment.body}</p>
               </div>
             );
           })}
         </div>
 
-        <p>Reactions:</p>
         <div className="postReactions">
-          {postDetails.reactions.map((reaction) => {
+          <p>Reactions:</p>
+          {postDetails.reactions.map((reaction, index) => {
             return (
-              <div>
+              <div key={index} className="postReactions__item">
                 <span>{reaction.symbol}</span>
               </div>
             );

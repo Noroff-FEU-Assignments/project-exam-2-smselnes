@@ -13,6 +13,7 @@ const schema = yup.object().shape({
     .string()
     .required("Must have a description.")
     .min(5, "Minimum 5 characters."),
+  image: yup.string().url("Must be a valid url"),
 });
 
 export default function CreateNewPost() {
@@ -39,10 +40,12 @@ export default function CreateNewPost() {
 
     const title = data.title;
     const body = data.body;
+    const image = data.image;
 
     const formData = {
       title: title,
       body: body,
+      media: image,
     };
 
     try {
@@ -72,6 +75,11 @@ export default function CreateNewPost() {
           <label htmlFor="body">Description</label>
           <input type="text" id="body" {...register("body")}></input>
           {errors.message && <ErrorMessage>{errors.body.message}</ErrorMessage>}
+        </div>
+        <div>
+          <label htmlFor="media">Image Url:</label>
+          <input id="media" {...register("image")} />
+          {errors.image && <ErrorMessage>{errors.image.message}</ErrorMessage>}
         </div>
         <button>{submitting ? "Adding post..." : "Add"}</button>
       </fieldset>

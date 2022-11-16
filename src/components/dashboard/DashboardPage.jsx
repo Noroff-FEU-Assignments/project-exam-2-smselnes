@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { Spinner, Button } from "react-bootstrap";
-
+import { Button } from "react-bootstrap";
+import postsImage from "../../assets/posts-background.jpg";
+import profilesImage from "../../assets/profiles-background.jpg";
+import settingsImage from "../../assets/profile-background.jpg";
 import AuthContext from "../../context/AuthContext";
 import Heading from "../layout/Heading";
 import SubHeading from "../layout/SubHeading";
 import Latestposts from "./LatestPosts";
+import BreadcrumbNavigation from "../layout/Breadcrumb";
 
 export default function DashboardPage() {
   let { name } = useParams();
@@ -13,28 +16,38 @@ export default function DashboardPage() {
 
   return (
     <>
-      <Heading heading="Good day" />
-      <SubHeading subHeading={auth.name} />
-      <ul className="dashboard__menu">
-        <li className="dashboard__menu--link">
-          <a href="/dashboard/posts">View posts</a>
-        </li>
-        <li className="dashboard__menu--link">
-          {" "}
-          <a href="/dashboard/profiles">View profiles</a>
-        </li>
-        <li className="dashboard__menu--link">
-          <a href="/dashboard/createpost">Create post</a>
-        </li>
-      </ul>
-      <Button href={`/dashboard/${auth.name}`}>My profile</Button>
-      <SubHeading subHeading="Latest posts" />
-      <div fluid className="gallery">
-        <Latestposts />
-        <Link to="/dashboard/posts" className="w-50 mx-auto mb-3">
-          All posts
-        </Link>
+      <div className="dashboard__welcome text-center mt-3">
+        <Heading heading="Good day" />
+        <SubHeading subHeading={auth.name} />
+        <SubHeading subHeading="What mood are you in today?" />
       </div>
+
+      <div className="dashboardNavigation mt-3">
+        <div className="dashboardNavigation__posts mb-3">
+          <Link to="/dashboard/posts" className="dashboardNavigation--link">
+            View posts
+          </Link>
+          <img src={postsImage} className="dashboardNavigation--image" />
+        </div>
+        <div className="dashboardNavigation__profiles mb-3">
+          <Link to="/dashboard/profiles" className="dashboardNavigation--link">
+            View community
+          </Link>
+          <img src={profilesImage} className="dashboardNavigation--image" />
+        </div>
+        <div className="dashboardNavigation__profile mb-3">
+          <Link
+            to={`/dashboard/${auth.name}`}
+            className="dashboardNavigation--link"
+          >
+            My Profile
+          </Link>
+          <img src={settingsImage} className="dashboardNavigation--image" />
+        </div>
+      </div>
+      {/* <div className="gallery">
+        <Latestposts />
+      </div> */}
     </>
   );
 }

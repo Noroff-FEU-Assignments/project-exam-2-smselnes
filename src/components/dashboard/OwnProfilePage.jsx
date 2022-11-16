@@ -7,6 +7,7 @@ import UpdateProfileAvatar from "./UpdateProfileAvatar";
 import UpdateFormModal from "../../utils/UpdatePostModal";
 import DeletePost from "./DeletePost";
 import AuthContext from "../../context/AuthContext";
+import CreateNewPost from "../../utils/CreateNewPostModal";
 
 export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -59,12 +60,13 @@ export default function OwnProfilePage() {
   }
   return (
     <>
-      <img src={ownProfile.banner} width="150" />
+      <img src={ownProfile.banner} width="100%" />
       <img src={ownProfile.avatar} width="150" />
       <Button onClick={logoutUser}>Log out</Button>
       <h1>{ownProfile.name}</h1>
       <p>Followers: {ownProfile._count.followers}</p>
       <p>Following: {ownProfile._count.following}</p>
+      <CreateNewPost />
       <UpdateProfileBanner />
       <UpdateProfileAvatar />
       <div className="ownPostsContainer">

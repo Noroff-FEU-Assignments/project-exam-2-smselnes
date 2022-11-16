@@ -21,7 +21,7 @@ function App() {
       <div className="wrapper">
         <Router>
           <Navigation />
-          <BreadcrumbNavigation />
+          {/* <BreadcrumbNavigation /> */}
           <div className="App">
             <Routes>
               <Route path="/" element={<Home />}></Route>

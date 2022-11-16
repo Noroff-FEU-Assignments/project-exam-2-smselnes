@@ -1,6 +1,6 @@
 import React from "react";
-import banner from "../../assets/banner_vertical.jpg";
-import { Button, Container } from "react-bootstrap";
+import banner from "../../assets/homepage-image.png";
+import { Button } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import Heading from "../layout/Heading";
@@ -31,7 +31,7 @@ export default function Home() {
         <img
           src={banner}
           alt="big smiley with hearty eyes looking to left"
-          className="home__introduction--image"
+          className="home__introduction--image mb-3"
         />
       </div>
     </>

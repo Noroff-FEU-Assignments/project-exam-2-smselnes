@@ -11,7 +11,7 @@ function Navigation() {
 
   return (
     <>
-      <Navbar className="navbar" expand="sm">
+      <Navbar className="navbar" expand="md">
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -20,15 +20,31 @@ function Navigation() {
               alt="the brand logo, mediaholic styled with white fonts and sans-serif type"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            className="navbar-dark"
+          />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="">
+            <Nav className="mx-auto">
               <Nav.Link href="/" className="navbar__link">
-                Home
+                Homepage
               </Nav.Link>
-              <Nav.Link href="/register" className="navbar__link">
-                Register
-              </Nav.Link>
+
+              {auth ? (
+                <>
+                  <Nav.Link
+                    href={`/dashboard/${auth.name}`}
+                    className="navbar__link"
+                  >
+                    Profile
+                  </Nav.Link>
+                </>
+              ) : (
+                <Nav.Link href="/register" className="navbar__link">
+                  Register
+                </Nav.Link>
+              )}
+
               {auth ? (
                 <>
                   <Nav.Link href="/dashboard" className="navbar__link">

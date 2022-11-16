@@ -21,6 +21,7 @@ export default function ProfileDetails() {
         );
         console.log(response.data);
         console.log(response.data._count.posts);
+        console.log(response.data.posts);
         setUserProfile(response.data);
       } catch (error) {
         console.log(error);
@@ -61,9 +62,20 @@ export default function ProfileDetails() {
           <p>Email: {userProfile.email}</p>
         </Tab>
         <Tab eventKey="stats" title="Stats">
-          <p>Posts: {userProfile._count.posts}</p>
-          <p>Followers: {userProfile._count.followers}</p>
-          <p>Following: {userProfile._count.following}</p>
+          <p>{userProfile._count.posts} Posts</p>
+          <p> {userProfile._count.followers} Followers</p>
+          <p> {userProfile._count.following} Following</p>
+        </Tab>
+        <Tab eventKey="posts" title="Posts">
+          {userProfile.posts.map((userPosts, index) => {
+            return (
+              <div key={index} className="m-3 profileDetails__posts">
+                <Link to={`/dashboard/posts/${userPosts.id}`}>
+                  {userPosts.title}
+                </Link>
+              </div>
+            );
+          })}
         </Tab>
       </Tabs>
 

@@ -6,7 +6,10 @@ export default function ProfilesPage() {
   return (
     <>
       <SearchProfiles />
-      <ViewProfiles />
+
+      <div className="profilePage__wrapper">
+        <ViewProfiles />
+      </div>
     </>
   );
 }

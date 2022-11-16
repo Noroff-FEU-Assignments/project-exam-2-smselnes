@@ -55,17 +55,43 @@ export default function ListOfPosts() {
     );
   }
 
-  return posts.map((post) => {
-    const formattedDate = post.updated.slice(2, -14);
-    return (
-      <Card key={post.id} className="m-3">
-        <Card.Title>{post.title}</Card.Title>
-        <Card.Text>By: {post.author.name}</Card.Text>
-        <Card.Text>Updated: {formattedDate}</Card.Text>
-        <Card.Text>Comments: {post._count.comments}</Card.Text>
-        <Card.Text>Reactions: {post._count.reactions}</Card.Text>
-        <Link to={`/dashboard/posts/${post.id}`}>View Post</Link>
-      </Card>
-    );
-  });
+  const defaultPostImage =
+    "https://via.placeholder.com/150/494031/f2f2f2/?text=no image";
+
+  return (
+    <div className="postList">
+      {posts.map((post) => {
+        const formattedDate = post.updated.slice(2, -14);
+        return (
+          <Card key={post.id} className="postList__card m-3">
+            <Card.Img
+              variant="top"
+              className="postList__card--image"
+              src={post.media ? post.media : defaultPostImage}
+            />
+            <Card.Body>
+              <Card.Title className="postList__card--header">
+                {post.title}
+              </Card.Title>
+              <Card.Link
+                href={`/dashboard/profiles/${post.author.name}`}
+                className="text-decoration-underline"
+              >
+                {post.author.name}
+              </Card.Link>
+              <Card.Text>Updated: {formattedDate}</Card.Text>
+              <Card.Text>{post._count.comments} Comments</Card.Text>
+              <Card.Text>{post._count.reactions} Reactions </Card.Text>
+              <Link
+                to={`/dashboard/posts/${post.id}`}
+                className="btn btn-primary"
+              >
+                Go to
+              </Link>
+            </Card.Body>
+          </Card>
+        );
+      })}
+    </div>
+  );
 }

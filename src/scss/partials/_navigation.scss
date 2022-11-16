@@ -1,5 +1,6 @@
 .navbar {
-  background-color: $colour-header;
+  background-color: $colour-dark;
+  font-size: 1rem;
 
   &__link {
     color: $colour-light;
@@ -27,7 +28,7 @@
 }
 
 footer {
-  background-color: $colour-header;
+  background-color: $colour-dark;
   padding: 1rem;
   flex-shrink: 0;
   display: grid;

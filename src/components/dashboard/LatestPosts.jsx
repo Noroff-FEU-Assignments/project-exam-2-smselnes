@@ -2,6 +2,7 @@ import { social_url } from "../../utils/Api";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import { Spinner, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const carouselApi = social_url + "posts?limit=6&_author=true";
 
@@ -53,11 +54,12 @@ export default function Latestposts() {
 
   return posts.map((post, index) => {
     return (
-      <Col key={index} className="carousel__post m-3 bg-light">
+      <div key={index} className="gallery__item">
         {/* <h3>{post.title}</h3> */}
         <h5>{post.author.name}</h5>
-        <img src={post.media} className="w-50" />
-      </Col>
+        <img src={post.media} />
+        <Link to={`/dashboard/posts/${post.id}`}>Read</Link>
+      </div>
     );
   });
 }

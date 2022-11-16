@@ -1,3 +1,66 @@
+.postList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__card {
+    width: 100%;
+
+    @media (min-width: $smallScreen) {
+      /* width: 500px; */
+      display: flex;
+      flex-direction: row;
+    }
+
+    &--image {
+      @media (min-width: $smallScreen) {
+        width: 250px;
+      }
+    }
+
+    &--header {
+      @media (min-width: $smallScreen) {
+        white-space: nowrap;
+        width: 310px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.postDetails {
+  & img {
+    margin: 1rem;
+  }
+  &__bodytext {
+    background-color: $colour-dark;
+    color: $colour-light;
+    padding: 1rem;
+  }
+}
+
 .postComments {
-  background-color: lightgray;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+
+  & div {
+    &:nth-child(odd) {
+      background-color: lightgray;
+    }
+  }
+}
+
+.postReactions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reactOnPostForm,
+.commentOnPostsForm {
+  display: grid;
+
+  &__submit {
+    width: 150px;
+  }
 }

@@ -6,19 +6,55 @@
   &__banner {
     width: 100%;
   }
-}
 
+  &Page__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.profileDetails__posts {
+  & a {
+    color: $colour-dark;
+    box-shadow: 1px 1px 2px 0px $colour-dark;
+    padding: 5px;
+
+    &:hover {
+      box-shadow: 1px 1px 4px 0px $colour-dark;
+    }
+  }
+}
 .profiles {
   &__card {
-    display: flex;
-    flex-direction: column;
+    width: 230px;
+    align-items: center;
+    background-color: $colour-light;
 
     &--banner {
       width: 100%;
     }
 
-    &--avatar {
-      width: 100px;
+    &--link {
+      padding: 5px;
+      margin-bottom: 5px;
+      box-shadow: 1px 1px 2px 0px $colour-dark;
+      background-color: $colour-header;
+      color: $colour-light;
+
+      &:hover {
+        background-color: $colour-dark;
+        color: $colour-light;
+        transition: 0.5s ease;
+      }
     }
+
+    @media (min-width: 768px) {
+      width: 300px;
+    }
+  }
+
+  &__search--message {
+    font-size: 0.8rem;
+    font-style: italic;
   }
 }

@@ -4,7 +4,9 @@ import AuthContext from "../../../context/AuthContext";
 import { Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const profileUrl = social_url + "profiles?sortOrder=asc&offset=50&limit=20";
+const defaultAvatarImage =
+  "https://via.placeholder.com/100x100.png?text=Missing_avatar";
+const profileUrl = social_url + "profiles?sortOrder=asc&offset=300&limit=100";
 
 export default function ViewProfiles() {
   const [loading, setLoading] = useState(true);
@@ -56,19 +58,27 @@ export default function ViewProfiles() {
   return profiles.map((profile, index) => {
     return (
       <>
-        <div key={index} className="profiles">
-          <Card className="profiles__card m-3">
-            <Card.Img src={profile.banner} className="profiles__card--banner" />
-            <div className="d-flex">
-              <Card.Img
-                src={profile.avatar}
-                className="profiles__card--avatar"
-              />
-              <Card.Title>{profile.name}</Card.Title>
-            </div>
+        <div className="profiles">
+          <Card key={index} className="profiles__card m-3">
+            {/* <Card.Img
+              src={profile.banner ? profile.banner : defaultBannerImage}
+              className="profiles__card--banner"
+            /> */}
+
+            <Card.Img
+              src={profile.avatar ? profile.avatar : defaultAvatarImage}
+              className="profiles__card--avatar"
+            />
+            <Card.Title>{profile.name}</Card.Title>
 
             <Card.Text>Posts:{profile._count.posts}</Card.Text>
-            <Link to={`/dashboard/profiles/${profile.name}`}>Visit</Link>
+
+            <Link
+              to={`/dashboard/profiles/${profile.name}`}
+              className="profiles__card--link"
+            >
+              Visit profile
+            </Link>
           </Card>
         </div>
       </>
