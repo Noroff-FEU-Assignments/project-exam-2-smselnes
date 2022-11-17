@@ -41,6 +41,14 @@
     }
   }
 }
+//own profile page styling
+
+.changeBanner {
+  &__button {
+    font-size: 0.8rem;
+    justify-self: right;
+  }
+}
 
 .ownPost {
   border-top: 3px solid black;

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAxios from "../../hooks/useAxios";
-//import { useParams } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorMessage from "../common/ErrorMessage";
@@ -20,7 +19,6 @@ export default function CreateNewPost() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
-  //let { id } = useParams();
   const navigate = useNavigate();
 
   const {

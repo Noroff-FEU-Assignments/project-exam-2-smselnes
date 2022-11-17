@@ -49,7 +49,6 @@ export default function UpdatePostModal({ id, title, body }) {
 
     try {
       const response = await http.put(`posts/${id}`, data);
-
       console.log(response.data);
       console.log(response);
     } catch (error) {

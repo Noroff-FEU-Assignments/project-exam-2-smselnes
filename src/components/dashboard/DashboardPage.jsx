@@ -1,14 +1,12 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+
 import postsImage from "../../assets/posts-background.jpg";
 import profilesImage from "../../assets/profiles-background.jpg";
 import settingsImage from "../../assets/profile-background.jpg";
 import AuthContext from "../../context/AuthContext";
 import Heading from "../layout/Heading";
 import SubHeading from "../layout/SubHeading";
-import Latestposts from "./LatestPosts";
-import BreadcrumbNavigation from "../layout/Breadcrumb";
 
 export default function DashboardPage() {
   let { name } = useParams();

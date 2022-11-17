@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/useAxios";
 import { Button, Form } from "react-bootstrap";
+import ErrorMessage from "../../common/ErrorMessage";
 
 const schema = yup.object().shape({
   symbol: yup.string().required("Please select a symbol"),
@@ -12,6 +13,7 @@ const schema = yup.object().shape({
 
 export default function ReactOnPost() {
   const [emoji, setEmoji] = useState();
+  const [reactOnPostError, setReactOnPostError] = useState(null);
 
   const {
     register,
@@ -31,12 +33,15 @@ export default function ReactOnPost() {
       console.log(response);
     } catch (error) {
       console.log(error);
+      setReactOnPostError(error.toString());
     }
   }
 
   return (
     <Form onSubmit={handleSubmit(submitReact)} className="reactOnPostForm">
+      {reactOnPostError && <ErrorMessage>{reactOnPostError}</ErrorMessage>}
       <Form.Select
+        id="symbol"
         value={emoji}
         {...register("symbol")}
         onChange={(e) => setEmoji(e.target.value)}
@@ -50,6 +55,7 @@ export default function ReactOnPost() {
         <option>&#128514;</option>
         <option>&#128558;</option>
       </Form.Select>
+      {errors.symbol && <ErrorMessage>{errors.symbol.message}</ErrorMessage>}
       <Button type="submit" className="reactOnPostForm__submit mx-auto my-3">
         Send
       </Button>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Spinner, Button, Tabs, Tab, Col } from "react-bootstrap";
+import { Spinner, Tabs, Tab, Col } from "react-bootstrap";
 import FollowUser from "./FollowUser";
 import useAxios from "../../../hooks/useAxios";
 
@@ -24,6 +24,7 @@ export default function ProfileDetails() {
         setUserProfile(response.data);
       } catch (error) {
         console.log(error);
+        setError(error.toString());
       } finally {
         setLoading(false);
       }
@@ -50,7 +51,11 @@ export default function ProfileDetails() {
   return (
     <>
       <div className="text-center">
-        <img src={userProfile.banner} className="profile__banner mt-3" />
+        <img
+          src={userProfile.banner}
+          className="profile__banner mt-3"
+          alt="the user's profile banner"
+        />
         <h3 className="m-3">{userProfile.name}</h3>
         <Tabs
           defaultActiveKey="profile"
@@ -58,7 +63,11 @@ export default function ProfileDetails() {
           className="mb-3 justify-content-center"
         >
           <Tab eventKey="profile" title="Profile" className="text-center">
-            <img src={userProfile.avatar} className="profile__avatar" />
+            <img
+              src={userProfile.avatar}
+              className="profile__avatar"
+              alt="profile avatar"
+            />
             <p>{userProfile.email}</p>
           </Tab>
           <Tab eventKey="stats" title="Stats" className="text-center">

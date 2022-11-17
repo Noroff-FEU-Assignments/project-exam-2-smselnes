@@ -1,17 +1,10 @@
 import useAxios from "../../hooks/useAxios";
 import { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
 export default function DeletePost({ id }) {
   const http = useAxios();
   const [show, setShow] = useState(false);
-
-  /* function successfullyDeleted() {
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 5000);
-  } */
 
   async function deleteOwnPost() {
     try {

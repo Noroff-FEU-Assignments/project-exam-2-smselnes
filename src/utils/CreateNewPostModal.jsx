@@ -66,7 +66,7 @@ export default function CreateNewPost() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className="button m-3" onClick={handleShow}>
         Create new post
       </Button>
 

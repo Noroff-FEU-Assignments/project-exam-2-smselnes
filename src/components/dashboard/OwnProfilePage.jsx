@@ -1,28 +1,23 @@
 import useAxios from "../../hooks/useAxios";
-import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Spinner, Button, Modal } from "react-bootstrap";
+import { useState, useEffect /* useContext */ } from "react";
+import { useParams } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
 import UpdateFormModal from "../../utils/UpdatePostModal";
 import DeletePost from "./DeletePost";
-import AuthContext from "../../context/AuthContext";
+//import AuthContext from "../../context/AuthContext";
 import CreateNewPost from "../../utils/CreateNewPostModal";
+import LogoutButton from "../common/LogoutButton";
 
 export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [ownProfile, setOwnProfile] = useState([]);
-  const [auth, setAuth] = useContext(AuthContext);
+  /* const [auth, setAuth] = useContext(AuthContext); */
 
   let { name } = useParams();
-  const navigate = useNavigate();
   const http = useAxios();
-
-  function logoutUser() {
-    setAuth(null);
-    navigate("/login");
-  }
 
   useEffect(() => {
     async function getOwnUserProfile() {
@@ -60,17 +55,28 @@ export default function OwnProfilePage() {
   }
   return (
     <>
-      <img src={ownProfile.banner} width="100%" />
-      <img src={ownProfile.avatar} width="150" />
-      <Button onClick={logoutUser}>Log out</Button>
-      <h1>{ownProfile.name}</h1>
-      <p>Followers: {ownProfile._count.followers}</p>
-      <p>Following: {ownProfile._count.following}</p>
-      <CreateNewPost />
-      <UpdateProfileBanner />
-      <UpdateProfileAvatar />
-      <div className="ownPostsContainer">
+      <div className="d-grid text-center">
+        <p>{ownProfile.name}</p>
+        <img src={ownProfile.banner} width="100%" />
+      </div>
+      <div className="d-flex justify-content-center">
+        <UpdateProfileBanner />
+        <UpdateProfileAvatar />
+        <LogoutButton />
+      </div>
+
+      <div className="d-grid justify-content-center">
+        <img src={ownProfile.avatar} width="150" />
+      </div>
+
+      <div className="d-flex justify-content-evenly bg-warning">
+        <p>Followers: {ownProfile._count.followers}</p>
+        <p>Following: {ownProfile._count.following}</p>
+      </div>
+
+      <div className="ownPostsContainer text-center mb-3">
         <h1>My posts</h1>
+        <CreateNewPost />
         {ownProfile.posts.map((ownPost, index) => {
           return (
             <div key={index} className="ownPost">

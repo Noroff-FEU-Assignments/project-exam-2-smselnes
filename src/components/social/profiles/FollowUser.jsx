@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export default function FollowUser() {
   let { name } = useParams();
