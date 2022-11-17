@@ -51,13 +51,26 @@
 }
 
 .ownPost {
-  border-top: 3px solid black;
+  background-color: $colour-light;
   padding-top: 1rem;
+  margin: 10px;
 
-  &__delete__alert {
-    background-color: red;
+  &__arrow {
+    color: $colour-dark;
+    font-size: 2rem;
+    position: absolute;
+    right: 20px;
+  }
+
+  &__delete--alert {
+    background-color: $colour-dark;
+    color: $colour-light;
     width: 100%;
     position: absolute;
+  }
+
+  &__delete--confirm {
+    background-color: red;
   }
 }
 

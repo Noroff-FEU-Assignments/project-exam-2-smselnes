@@ -19,19 +19,25 @@ export default function DeletePost({ id }) {
 
   return (
     <>
-      <Alert className="ownPost__delete__alert" show={show}>
+      <Alert className="ownPost__delete--alert" show={show}>
         <Alert.Heading>Confirm delete post?</Alert.Heading>
-        <Button onClick={deleteOwnPost}>Yes</Button>
-        <Button
+        <button
+          onClick={deleteOwnPost}
+          className="button ownPost__delete--confirm m-3"
+        >
+          Yes
+        </button>
+        <button
           onClick={() => {
             setShow(false);
           }}
+          className="button ownPost__delete--cancel m-3"
         >
           No
-        </Button>
+        </button>
       </Alert>
       <button
-        className="btn btn-danger "
+        className="button m-3"
         onClick={() => {
           setShow(true);
         }}

@@ -3,11 +3,18 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  @media (min-width: $largescreen) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   &__card {
-    width: 100%;
+    width: 80%;
+    position: relative;
+    background-color: $colour-light;
 
     @media (min-width: $largescreen) {
-      width: 450px;
+      width: 90%;
     }
 
     @media (min-width: $smallScreen) {
@@ -16,18 +23,34 @@
       flex-direction: row;
     }
 
+    &--author {
+      color: $colour-dark;
+      font-size: 1.1rem;
+    }
+
+    &--arrow {
+      color: $colour-dark;
+      font-size: 2rem;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
     &--image {
       @media (min-width: $smallScreen) {
-        width: 250px;
+        width: 200px;
       }
     }
 
     &--header {
       @media (min-width: $smallScreen) {
-        white-space: nowrap;
-        width: 200px;
+        width: 260px;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @media (min-width: $largescreen) {
+          width: 200px;
+        }
       }
     }
   }

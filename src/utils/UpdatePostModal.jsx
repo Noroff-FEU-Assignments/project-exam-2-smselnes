@@ -58,9 +58,9 @@ export default function UpdatePostModal({ id, title, body }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <button className="button" onClick={handleShow}>
         Edit
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

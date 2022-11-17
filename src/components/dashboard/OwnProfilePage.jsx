@@ -1,6 +1,6 @@
 import useAxios from "../../hooks/useAxios";
 import { useState, useEffect /* useContext */ } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
@@ -9,6 +9,8 @@ import DeletePost from "./DeletePost";
 //import AuthContext from "../../context/AuthContext";
 import CreateNewPost from "../../utils/CreateNewPostModal";
 import LogoutButton from "../common/LogoutButton";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import moment from "moment/moment";
 
 export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -53,6 +55,7 @@ export default function OwnProfilePage() {
       </div>
     );
   }
+
   return (
     <>
       <div className="d-grid text-center">
@@ -81,7 +84,11 @@ export default function OwnProfilePage() {
           return (
             <div key={index} className="ownPost">
               <h3>{ownPost.title}</h3>
-              <p>Last edit: {ownPost.updated}</p>
+              <p>Last edit:{ownPost.updated}</p>
+              <a href={`/dashboard/posts/${ownPost.id}`}>
+                <BsFillArrowRightCircleFill className="ownPost__arrow" />
+              </a>
+
               <UpdateFormModal
                 id={ownPost.id}
                 title={ownPost.title}

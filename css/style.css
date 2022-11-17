@@ -107,6 +107,15 @@ footer a {
   margin: 0 1rem;
 }
 
+@media (min-width: 768px) {
+  footer {
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    font-size: 1.3rem;
+  }
+}
+
 .home__introduction {
   position: relative;
   text-align: center;
@@ -161,13 +170,24 @@ footer a {
           justify-content: center;
 }
 
+@media (min-width: 991px) {
+  .postList {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
 .postList__card {
-  width: 100%;
+  width: 80%;
+  position: relative;
+  background-color: #eff0ea;
 }
 
 @media (min-width: 991px) {
   .postList__card {
-    width: 450px;
+    width: 90%;
   }
 }
 
@@ -184,18 +204,36 @@ footer a {
   }
 }
 
+.postList__card--author {
+  color: #494031;
+  font-size: 1.1rem;
+}
+
+.postList__card--arrow {
+  color: #494031;
+  font-size: 2rem;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 @media (min-width: 575px) {
   .postList__card--image {
-    width: 250px;
+    width: 200px;
   }
 }
 
 @media (min-width: 575px) {
   .postList__card--header {
-    white-space: nowrap;
-    width: 200px;
+    width: 260px;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+@media (min-width: 575px) and (min-width: 991px) {
+  .postList__card--header {
+    width: 200px;
   }
 }
 
@@ -309,15 +347,34 @@ footer a {
   transition: 0.5s ease;
 }
 
-.ownPost {
-  border-top: 3px solid black;
-  padding-top: 1rem;
+.changeBanner__button {
+  font-size: 0.8rem;
+  -ms-grid-column-align: right;
+      justify-self: right;
 }
 
-.ownPost__delete__alert {
-  background-color: red;
+.ownPost {
+  background-color: #eff0ea;
+  padding-top: 1rem;
+  margin: 10px;
+}
+
+.ownPost__arrow {
+  color: #494031;
+  font-size: 2rem;
+  position: absolute;
+  right: 20px;
+}
+
+.ownPost__delete--alert {
+  background-color: #494031;
+  color: #eff0ea;
   width: 100%;
   position: absolute;
+}
+
+.ownPost__delete--confirm {
+  background-color: red;
 }
 
 .dashboard__menu--link a {

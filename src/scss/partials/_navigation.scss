@@ -38,4 +38,10 @@ footer {
     color: $colour-light;
     margin: 0 1rem;
   }
+
+  @media (min-width: $mediumScreen) {
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    font-size: 1.3rem;
+  }
 }
