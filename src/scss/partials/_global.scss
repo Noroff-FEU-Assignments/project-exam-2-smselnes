@@ -27,6 +27,20 @@ a {
   font-family: $font-navigation;
 }
 
+.button {
+  padding: 5px;
+  box-shadow: $button-shadow;
+  background-color: $colour-dark;
+  color: $colour-light;
+
+  &:hover {
+    box-shadow: $button-shadow-hover;
+    background-color: $colour-light;
+    color: $colour-dark;
+    transition: 0.5s ease;
+  }
+}
+
 h1,
 h2,
 h3,

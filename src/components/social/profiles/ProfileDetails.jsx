@@ -84,7 +84,7 @@ export default function ProfileDetails() {
         <Col className="m-3">
           <a
             href="/dashboard/profiles"
-            className="profileDetails__navigateBack--btn"
+            className="button profileDetails__navigateBack--btn"
           >
             back to profile list
           </a>

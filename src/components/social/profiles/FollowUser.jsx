@@ -42,7 +42,7 @@ export default function FollowUser() {
       <Container className="d-flex justify-content-center ">
         <button
           /* disabled={followed} */
-          className="btn follow__button m-3"
+          className="button follow__button m-3"
           onClick={submitUserFollow}
         >
           Follow
@@ -50,7 +50,7 @@ export default function FollowUser() {
 
         <button
           /* disabled={!followed} */
-          className="btn unfollow__button m-3"
+          className="unfollow__button button  m-3"
           onClick={submitUserUnFollow}
         >
           Unfollow
