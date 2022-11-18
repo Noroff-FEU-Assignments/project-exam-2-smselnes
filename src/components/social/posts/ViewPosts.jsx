@@ -37,6 +37,7 @@ export default function ListOfPosts() {
       }
     }
     getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

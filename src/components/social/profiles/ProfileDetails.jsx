@@ -30,6 +30,7 @@ export default function ProfileDetails() {
       }
     }
     getUsersProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

@@ -13,7 +13,7 @@ export default function ViewProfiles() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [profiles, setProfiles] = useState([]);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth /* setAuth */] = useContext(AuthContext);
 
   useEffect(() => {
     async function getProfiles() {
@@ -37,6 +37,7 @@ export default function ViewProfiles() {
       }
     }
     getProfiles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

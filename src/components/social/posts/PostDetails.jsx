@@ -38,6 +38,7 @@ export default function PostDetails() {
       }
     }
     getPostsDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postDetailUrl]);
 
   if (loading) {
@@ -70,6 +71,7 @@ export default function PostDetails() {
           className="postDetails__image"
           src={postDetails.media}
           width="200px"
+          alt="the media selected for the specified post"
         />
         <p className="postDetails__bodytext">Description: {postDetails.body}</p>
 

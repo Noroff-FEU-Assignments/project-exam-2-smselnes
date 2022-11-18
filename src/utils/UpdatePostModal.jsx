@@ -1,9 +1,3 @@
-/* In this form we need to fetch the datas from the post into a form.
-We must use the delete method together with the correct url by using axios.
-It also needs a yup schema for validating the input fields so it follows the same syntax from when creating a post.
-We also need prop-types and error messages. */
-
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import useAxios from "../hooks/useAxios";
 import { useForm } from "react-hook-form";
@@ -11,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import ErrorMessage from "../components/common/ErrorMessage";
+import refreshAfterSubmit from "../components/common/RefreshAfterSubmit";
 
 const schema = yup.object().shape({
   title: yup.string().required("Required field."),
@@ -26,14 +21,6 @@ export default function UpdatePostModal({ id, title, body }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  //test code below
-  function refreshAfterSubmit() {
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 1000);
-  }
-  //test code above
 
   const {
     register,
@@ -51,6 +38,7 @@ export default function UpdatePostModal({ id, title, body }) {
       const response = await http.put(`posts/${id}`, data);
       console.log(response.data);
       console.log(response);
+      refreshAfterSubmit();
     } catch (error) {
       console.log(error);
     }
