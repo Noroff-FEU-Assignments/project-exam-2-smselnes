@@ -5,9 +5,9 @@ import { Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const defaultAvatarImage =
-  "https://via.placeholder.com/150/494031/f2f2f2/?text=no image";
+  "https://via.placeholder.com/150/eff0ea/494031/?text=no image";
 
-const profileUrl = social_url + "profiles?sortOrder=asc&offset=300&limit=100";
+const profileUrl = social_url + "profiles?sortOrder=asc&offset=150&limit=100";
 
 export default function ViewProfiles() {
   const [loading, setLoading] = useState(true);
@@ -57,33 +57,28 @@ export default function ViewProfiles() {
     );
   }
 
-  return profiles.map((profile, index) => {
-    return (
-      <>
-        <div className="profiles">
-          <Card key={index} className="profiles__card m-3">
-            {/* <Card.Img
-              src={profile.banner ? profile.banner : defaultBannerImage}
-              className="profiles__card--banner"
-            /> */}
-
-            <Card.Img
-              src={profile.avatar ? profile.avatar : defaultAvatarImage}
-              className="profiles__card--avatar"
-            />
-            <Card.Title>{profile.name}</Card.Title>
-
-            <Card.Text>Posts:{profile._count.posts}</Card.Text>
-
-            <Link
-              to={`/dashboard/profiles/${profile.name}`}
-              className="profiles__card--link"
-            >
-              Visit profile
-            </Link>
-          </Card>
-        </div>
-      </>
-    );
-  });
+  return (
+    <>
+      <div className="profiles">
+        {profiles.map((profile, index) => {
+          return (
+            <Card key={index} className="profiles__card m-3">
+              <Card.Img
+                src={profile.avatar ? profile.avatar : defaultAvatarImage}
+                className="profiles__card--avatar"
+              />
+              <Card.Title className="mt-2">{profile.name}</Card.Title>
+              <Card.Text>Posts:{profile._count.posts}</Card.Text>
+              <Link
+                to={`/dashboard/profiles/${profile.name}`}
+                className="button profiles__card--link mt-auto mb-3"
+              >
+                Visit profile
+              </Link>
+            </Card>
+          );
+        })}
+      </div>
+    </>
+  );
 }

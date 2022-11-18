@@ -7,11 +7,10 @@ export default function ProfilesPage() {
   return (
     <>
       <SearchProfiles />
-
       <div className="profilePage__wrapper">
         <ViewProfiles />
-        <ScrollToTop />
       </div>
+      <ScrollToTop />
     </>
   );
 }

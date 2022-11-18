@@ -1,6 +1,6 @@
 import useAxios from "../../hooks/useAxios";
 import { useState, useEffect /* useContext */ } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
@@ -37,6 +37,7 @@ export default function OwnProfilePage() {
       }
     }
     getOwnUserProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -51,7 +52,6 @@ export default function OwnProfilePage() {
     return (
       <div className="errorMessage">
         <p>Error: There was an unexpected error.</p>
-        <p>Advanced: {error}</p>
       </div>
     );
   }
@@ -84,7 +84,7 @@ export default function OwnProfilePage() {
           return (
             <div key={index} className="ownPost">
               <h3>{ownPost.title}</h3>
-              <p>Last edit:{ownPost.updated}</p>
+              <p>Last edit: {moment(ownPost.updated).format("DD MMM YY")}</p>
               <a href={`/dashboard/posts/${ownPost.id}`}>
                 <BsFillArrowRightCircleFill className="ownPost__arrow" />
               </a>

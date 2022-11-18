@@ -1,6 +1,6 @@
 import useAxios from "../../hooks/useAxios";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 export default function DeletePost({ id }) {
   const http = useAxios();

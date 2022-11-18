@@ -4,7 +4,6 @@ import Navbar from "react-bootstrap/Navbar";
 import AuthContext from "../../context/AuthContext";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
-import BreadcrumbNavigation from "./Breadcrumb";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -60,8 +59,6 @@ function Navigation() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      {/*   <BreadcrumbNavigation /> */}
     </>
   );
 }

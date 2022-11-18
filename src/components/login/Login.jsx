@@ -7,22 +7,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorMessage from "../common/ErrorMessage";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import { Form } from "react-bootstrap";
 
 const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no|noroff.no)$/;
 
 const schema = yup.object().shape({
   email: yup
     .string()
-    .required("Please enter your email")
+    .required("Email must be a valid stud.noroff.no or noroff.no mail address.")
     .email()
     .matches(
       emailRegex,
       "Email must be a valid stud.noroff.no or noroff.no mail address."
     ),
-  password: yup
-    .string()
-    .required("Please enter a password")
-    .min(8, "Minimum 8 characters."),
+  password: yup.string().required("Invalid login credentials"),
 });
 
 export default function Login() {
@@ -31,7 +29,7 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const [auth, setAuth] = useContext(AuthContext);
+  const [, /* auth */ setAuth] = useContext(AuthContext);
 
   const {
     register,
@@ -69,23 +67,44 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit(loginSubmit)}>
-      <fieldset disabled={login}>
+    <>
+      <h1 className="loginForm__heading m-3">Log in to the community</h1>
+
+      <Form onSubmit={handleSubmit(loginSubmit)} className="loginForm">
         {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input id="email" {...register("email")} />
-          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input id="password" {...register("password")} />
-          {errors.password && (
-            <ErrorMessage>{errors.password.message}</ErrorMessage>
-          )}
-        </div>
-      </fieldset>
-      <button type="submit">{login ? "Logging in..." : "Login"}</button>
-    </form>
+        <fieldset disabled={login}>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              {...register("email")}
+            />
+            {errors.email && (
+              <ErrorMessage>{errors.email.message}</ErrorMessage>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              {...register("password")}
+            />
+            {errors.password && (
+              <ErrorMessage>{errors.password.message}</ErrorMessage>
+            )}
+          </Form.Group>
+        </fieldset>
+        <button
+          variant="primary"
+          type="submit"
+          className="button loginForm__button"
+        >
+          {login ? "Logging in..." : "Login"}
+        </button>
+      </Form>
+    </>
   );
 }

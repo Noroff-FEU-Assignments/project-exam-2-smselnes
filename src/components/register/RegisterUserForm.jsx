@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { base_url, register_path } from "../../utils/Api";
 import ErrorMessage from "../common/ErrorMessage";
+import { Form } from "react-bootstrap";
 
 const usernameRegex = /^[a-zA-Z0-9_]+$/;
 const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no|noroff.no)$/;
@@ -23,10 +24,8 @@ const schema = yup.object().shape({
       emailRegex,
       "Email must be a valid stud.noroff.no or noroff.no mail address."
     ),
-  password: yup
-    .string()
-    .required("Please enter a password")
-    .min(8, "Minimum 8 characters."),
+  password: yup.string().required("Please enter a password"),
+
   avatar: yup.string(),
   banner: yup.string(),
 });
@@ -80,49 +79,70 @@ export default function RegisterUserForm() {
     <>
       <h1 className="text-center m-3">Register user</h1>
 
-      <form onSubmit={handleSubmit(registerFormSubmit)}>
+      <Form onSubmit={handleSubmit(registerFormSubmit)}>
         <fieldset disabled={submitting}>
           {registerFormError && (
             <ErrorMessage>{registerFormError}</ErrorMessage>
           )}
-          <div>
-            <label htmlFor="name">Name *</label>
-            <input id="name" {...register("name")} />
+          <Form.Group controlId="name" className="mb-3">
+            <Form.Label>* Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="name"
+              {...register("name")}
+            />
             {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
-          </div>
-          <div>
-            <label htmlFor="email">Email *</label>
-            <input id="email" {...register("email")} />
+          </Form.Group>
+          <Form.Group controlId="email" className="mb-3">
+            <Form.Label>* Email</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="email"
+              {...register("email")}
+            />
             {errors.email && (
               <ErrorMessage>{errors.email.message}</ErrorMessage>
             )}
-          </div>
-          <div>
-            <label htmlFor="password">Password *</label>
-            <input id="password" {...register("password")} />
+          </Form.Group>
+          <Form.Group controlId="password" className="mb-3">
+            <Form.Label>* Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="choose a password"
+              {...register("password")}
+            />
             {errors.password && (
               <ErrorMessage>{errors.password.message}</ErrorMessage>
             )}
-          </div>
-          <div>
-            <label htmlFor="avatar">Avatar:</label>
-            <input id="avatar" {...register("avatar")} />
+          </Form.Group>
+
+          <Form.Group controlId="avatar" className="mb-3">
+            <Form.Label>Avatar</Form.Label>
+            <Form.Control
+              type="url"
+              placeholder="avatar url"
+              {...register("avatar")}
+            />
             {errors.avatar && (
               <ErrorMessage>{errors.avatar.message}</ErrorMessage>
             )}
-          </div>
-          <div>
-            <label htmlFor="banner">Banner:</label>
-            <input id="banner" {...register("banner")} />
+          </Form.Group>
+          <Form.Group controlId="banner" className="mb-3">
+            <Form.Label>Banner</Form.Label>
+            <Form.Control
+              type="url"
+              placeholder="banner url"
+              {...register("banner")}
+            />
             {errors.banner && (
               <ErrorMessage>{errors.banner.message}</ErrorMessage>
             )}
-          </div>
-          <button type="submit">
-            {submitting ? "Registering" : "Register"}{" "}
-          </button>
+          </Form.Group>
         </fieldset>
-      </form>
+        <button type="submit" className="button">
+          {submitting ? "Registering" : "Register"}
+        </button>
+      </Form>
     </>
   );
 }

@@ -41,31 +41,27 @@
 }
 
 .profiles {
+  display: grid;
+  justify-items: center;
+
+  @media (min-width: $smallScreen) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $mediumScreen) {
+    grid-template-columns: 1fr 1fr;
+  }
   &__card {
     width: 230px;
     align-items: center;
     background-color: $colour-light;
 
+    @media (min-width: $mediumScreen) {
+      width: 70%;
+    }
+
     &--avatar {
-      width: 150px;
-    }
-
-    &--link {
-      padding: 5px;
-      margin-bottom: 5px;
-      box-shadow: 1px 1px 2px 0px $colour-dark;
-      background-color: $colour-header;
-      color: $colour-light;
-
-      &:hover {
-        background-color: $colour-dark;
-        color: $colour-light;
-        transition: 0.5s ease;
-      }
-    }
-
-    @media (min-width: 768px) {
-      width: 300px;
+      width: 100%;
     }
   }
 

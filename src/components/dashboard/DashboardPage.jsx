@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { useParams, Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import postsImage from "../../assets/posts-background.jpg";
 import profilesImage from "../../assets/profiles-background.jpg";
 import settingsImage from "../../assets/profile-background.jpg";
@@ -9,7 +8,6 @@ import Heading from "../layout/Heading";
 import SubHeading from "../layout/SubHeading";
 
 export default function DashboardPage() {
-  let { name } = useParams();
   const [auth, setAuth] = useContext(AuthContext);
 
   return (
@@ -43,9 +41,6 @@ export default function DashboardPage() {
           <img src={settingsImage} className="dashboardNavigation--image" />
         </div>
       </div>
-      {/* <div className="gallery">
-        <Latestposts />
-      </div> */}
     </>
   );
 }

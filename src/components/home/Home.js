@@ -4,9 +4,11 @@ import { Button } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import Heading from "../layout/Heading";
+import { PageTitle } from "../common/PageTitle";
 
 export default function Home() {
   const [auth, setAuth] = useContext(AuthContext);
+  PageTitle("Medi@holic | Home");
   return (
     <>
       <div className="home__introduction">
@@ -26,7 +28,7 @@ export default function Home() {
         )}
 
         <Button href="/register" className="m-3">
-          New user?
+          New user? <br /> Register here
         </Button>
         <img
           src={banner}

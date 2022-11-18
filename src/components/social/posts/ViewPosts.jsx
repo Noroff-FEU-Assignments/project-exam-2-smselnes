@@ -2,8 +2,8 @@ import { social_url } from "../../../utils/Api";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 import { Card, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import moment from "moment";
 
 const postsUrl =
   social_url + "posts?_author=true&_comments=true&_reactions=true";
@@ -63,7 +63,6 @@ export default function ListOfPosts() {
   return (
     <div className="postList">
       {posts.map((post) => {
-        const formattedDate = post.updated.slice(2, -14);
         return (
           <Card key={post.id} className="postList__card m-3">
             <Card.Img
@@ -81,18 +80,14 @@ export default function ListOfPosts() {
               >
                 {post.author.name}
               </Card.Link>
-              <Card.Text>Updated: {formattedDate}</Card.Text>
+              <Card.Text>
+                Last edit: {moment(post.updated).format("DDMMM YY")}
+              </Card.Text>
               <Card.Text>{post._count.comments} Comments</Card.Text>
               <Card.Text>{post._count.reactions} Reactions </Card.Text>
               <a href={`/dashboard/posts/${post.id}`}>
                 <BsFillArrowRightCircleFill className="postList__card--arrow" />
               </a>
-              {/* <Link
-                to={`/dashboard/posts/${post.id}`}
-                className="button postList__card--btn"
-              >
-                Go to
-              </Link> */}
             </Card.Body>
           </Card>
         );

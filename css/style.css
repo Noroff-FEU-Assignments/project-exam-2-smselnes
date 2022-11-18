@@ -36,7 +36,7 @@ a {
 }
 
 .button {
-  padding: 5px;
+  padding: 10px;
   -webkit-box-shadow: 1px 1px 2px 0px #494031;
           box-shadow: 1px 1px 2px 0px #494031;
   background-color: #494031;
@@ -147,7 +147,29 @@ footer a {
 }
 
 .loginForm {
-  width: 90%;
+  width: 250px;
+  margin: auto;
+}
+
+.loginForm__heading {
+  text-align: center;
+}
+
+.loginForm__button {
+  width: 100px;
+  margin-left: 60%;
+}
+
+@media (min-width: 575px) {
+  .loginForm__button {
+    margin-left: 75%;
+  }
+}
+
+@media (min-width: 575px) {
+  .loginForm {
+    width: 400px;
+  }
 }
 
 .form__error {
@@ -456,6 +478,26 @@ footer a {
   color: #eff0ea;
 }
 
+.profiles {
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+}
+
+@media (min-width: 575px) {
+  .profiles {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .profiles {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
 .profiles__card {
   width: 230px;
   -webkit-box-align: center;
@@ -464,30 +506,14 @@ footer a {
   background-color: #eff0ea;
 }
 
-.profiles__card--avatar {
-  width: 150px;
-}
-
-.profiles__card--link {
-  padding: 5px;
-  margin-bottom: 5px;
-  -webkit-box-shadow: 1px 1px 2px 0px #494031;
-          box-shadow: 1px 1px 2px 0px #494031;
-  background-color: #c06900;
-  color: #eff0ea;
-}
-
-.profiles__card--link:hover {
-  background-color: #494031;
-  color: #eff0ea;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-
 @media (min-width: 768px) {
   .profiles__card {
-    width: 300px;
+    width: 70%;
   }
+}
+
+.profiles__card--avatar {
+  width: 100%;
 }
 
 .profiles__search--message {
