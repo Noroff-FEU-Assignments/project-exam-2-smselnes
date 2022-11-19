@@ -154,6 +154,8 @@ footer a {
 .registerUserForm {
   width: 250px;
   margin: auto;
+  padding: 1rem;
+  background-color: #eff0ea;
 }
 
 .registerUserForm__button {
@@ -200,7 +202,9 @@ footer a {
 }
 
 .form__error {
-  color: red;
+  color: #d80707;
+  margin: 10px;
+  background-color: #ffc0cb;
 }
 
 .loadingText {
@@ -286,8 +290,19 @@ footer a {
   }
 }
 
+.postDetails {
+  text-align: center;
+}
+
 .postDetails img {
   margin: 1rem;
+  width: 80%;
+}
+
+@media (min-width: 768px) {
+  .postDetails img {
+    width: 620px;
+  }
 }
 
 .postDetails__bodytext {
@@ -297,12 +312,40 @@ footer a {
 }
 
 .postComments {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .postComments div:nth-child(odd) {
-  background-color: lightgray;
+  background-color: #eff0ea;
+}
+
+.postComments__item {
+  margin: 1rem;
+  padding: 10px;
+  border-bottom: 4px double black;
+  width: 260px;
+}
+
+@media (min-width: 575px) {
+  .postComments__item {
+    width: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  .postComments__item {
+    width: 500px;
+  }
+}
+
+.postComments a {
+  width: 150px;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 .postReactions {
@@ -311,6 +354,7 @@ footer a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: auto;
 }
 
 .reactOnPostForm,
@@ -319,9 +363,15 @@ footer a {
   display: grid;
 }
 
-.reactOnPostForm__submit,
-.commentOnPostsForm__submit {
-  width: 150px;
+.reactOnPostForm fieldset,
+.reactOnPostForm select,
+.commentOnPostsForm fieldset,
+.commentOnPostsForm select {
+  width: 260px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -webkit-box-shadow: 1px 1px 2px 0px #494031;
+          box-shadow: 1px 1px 2px 0px #494031;
 }
 
 .dashboardNavigation {
@@ -394,6 +444,32 @@ footer a {
   color: #eff0ea;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+}
+
+.ownProfile {
+  display: -ms-grid;
+  display: grid;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .ownProfile {
+    width: 500px;
+  }
+}
+
+.ownProfile__title {
+  background-color: black;
+  color: white;
+}
+
+.ownProfile__avatar {
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.ownProfile__buttons {
+  font-size: 0.8rem;
 }
 
 .changeBanner__button {

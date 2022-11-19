@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { Spinner, Button } from "react-bootstrap";
 import CommentOnPost from "./CommentOnPost";
 import ReactOnPost from "./ReactOnPost";
+import moment from "moment";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
@@ -60,52 +61,53 @@ export default function PostDetails() {
   return (
     <>
       <div className="postDetails">
-        <h1 className="postDetails__title">{postDetails.title}</h1>
-        <span>
-          Author:
+        <h1 className="postDetails__title mt-3">{postDetails.title}</h1>
+        <p>
+          Posted by:
           <a href={`/dashboard/profiles/${postDetails.author.name}`}>
             {postDetails.author.name}
           </a>
-        </span>
+        </p>
         <img
           className="postDetails__image"
           src={postDetails.media}
-          width="200px"
           alt="the media selected for the specified post"
         />
-        <p className="postDetails__bodytext">Description: {postDetails.body}</p>
+        <p className="postDetails__bodytext">Content: {postDetails.body}</p>
 
-        <hr />
         <div>
           <CommentOnPost />
         </div>
         <div>
           <ReactOnPost />
         </div>
-        <p>Number of comments: {postDetails._count.comments}</p>
-        <div className="postComments mt-3">
+        <p>Comments: {postDetails._count.comments}</p>
+        <div className="postComments">
           {postDetails.comments.map((comment, index) => {
+            console.log(comment);
             return (
               <div key={index} className="postComments__item">
-                <p>By:{comment.owner}</p> <p>{comment.body}</p>
+                <p className="m-0">by: {comment.owner}</p>
+                <p>{moment(comment.created).format("DD MMM YY, hh:mm a")}</p>
+                <p>{comment.body}</p>
               </div>
             );
           })}
-        </div>
-
-        <div className="postReactions">
-          <p>Reactions:</p>
-          {postDetails.reactions.map((reaction, index) => {
-            return (
-              <div key={index} className="postReactions__item">
-                <span>{reaction.symbol}</span>
-              </div>
-            );
-          })}
+          <p>Reactions: {postDetails._count.reactions}</p>
+          <div className="postReactions d-flex">
+            {postDetails.reactions.map((reaction, index) => {
+              return (
+                <div key={index} className="postReactions__item mb-3">
+                  <span>{reaction.symbol}</span>
+                </div>
+              );
+            })}
+          </div>
+          <a href="/dashboard/posts" className="button mb-3">
+            back to posts
+          </a>
         </div>
       </div>
-
-      <Button href="/dashboard/posts">back to posts</Button>
     </>
   );
 }

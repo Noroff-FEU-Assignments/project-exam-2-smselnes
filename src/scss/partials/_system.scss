@@ -1,5 +1,7 @@
 .form__error {
-  color: red;
+  color: $colour-error;
+  margin: 10px;
+  background-color: $colour-error-bg;
 }
 
 .loadingText {

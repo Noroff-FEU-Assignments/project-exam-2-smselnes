@@ -57,8 +57,15 @@
 }
 
 .postDetails {
+  text-align: center;
+
   & img {
     margin: 1rem;
+    width: 80%;
+
+    @media (min-width: $mediumScreen) {
+      width: 620px;
+    }
   }
   &__bodytext {
     background-color: $colour-dark;
@@ -68,26 +75,49 @@
 }
 
 .postComments {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  display: grid;
+  justify-content: center;
 
   & div {
     &:nth-child(odd) {
-      background-color: lightgray;
+      background-color: $colour-light;
     }
+  }
+
+  &__item {
+    margin: 1rem;
+    padding: 10px;
+    border-bottom: 4px double black;
+    width: 260px;
+
+    @media (min-width: $smallScreen) {
+      width: 350px;
+    }
+    @media (min-width: $mediumScreen) {
+      width: 500px;
+    }
+  }
+
+  & a {
+    width: 150px;
+    justify-self: center;
   }
 }
 
 .postReactions {
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
 }
 
 .reactOnPostForm,
 .commentOnPostsForm {
   display: grid;
 
-  &__submit {
-    width: 150px;
+  & fieldset,
+  select {
+    width: 260px;
+    justify-self: center;
+    box-shadow: $button-shadow;
   }
 }

@@ -56,9 +56,12 @@ export default function ReactOnPost() {
         <option>&#128558;</option>
       </Form.Select>
       {errors.symbol && <ErrorMessage>{errors.symbol.message}</ErrorMessage>}
-      <Button type="submit" className="reactOnPostForm__submit mx-auto my-3">
-        Send
-      </Button>
+      <button
+        type="submit"
+        className="reactOnPostForm__submit button mx-auto my-3"
+      >
+        Place emoji
+      </button>
     </Form>
   );
 }

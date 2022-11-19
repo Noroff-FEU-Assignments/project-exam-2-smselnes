@@ -62,16 +62,15 @@ export default function CommentOnPost() {
     return (
       <div className="errorMessage">
         <p>Error: There was an unexpected error.</p>
-        <p>Advanced: {error}</p>
       </div>
     );
   }
-  //need to decide whether to use textarea or input:text in comments section.
+
   return (
     <Form onSubmit={handleSubmit(submitComment)} className="commentOnPostsForm">
       {error && <ErrorMessage>{errors}</ErrorMessage>}
       <fieldset disabled={submitting}>
-        <Form.Label htmlFor="comment">Place a comment</Form.Label>
+        <Form.Label htmlFor="comment">Write a comment</Form.Label>
         <Form.Control
           as="textarea"
           name=""
@@ -84,9 +83,12 @@ export default function CommentOnPost() {
           <ErrorMessage>{errors.comment.message}</ErrorMessage>
         )}
       </fieldset>
-      <Button type="submit" className="commentOnPostsForm__submit mx-auto my-3">
-        Place comment
-      </Button>
+      <button
+        type="submit"
+        className="commentOnPostsForm__submit button mx-auto my-3"
+      >
+        Send
+      </button>
     </Form>
   );
 }

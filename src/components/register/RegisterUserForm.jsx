@@ -81,7 +81,7 @@ export default function RegisterUserForm() {
 
       <Form
         onSubmit={handleSubmit(registerFormSubmit)}
-        className="registerUserForm"
+        className="registerUserForm mb-3"
       >
         <fieldset disabled={submitting}>
           {registerFormError && (

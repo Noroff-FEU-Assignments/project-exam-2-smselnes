@@ -58,23 +58,35 @@ export default function OwnProfilePage() {
 
   return (
     <>
-      <div className="d-grid text-center">
-        <p>{ownProfile.name}</p>
-        <img src={ownProfile.banner} width="100%" />
+      <div className="ownProfile text-center">
+        <img
+          className="ownProfile__banner"
+          src={ownProfile.banner}
+          width="100%"
+        />
+        <div>
+          <p className="ownProfile__title">{ownProfile.name}</p>
+          <LogoutButton />
+        </div>
+
+        <img
+          className="ownProfile__avatar"
+          src={ownProfile.avatar}
+          width="100px"
+        />
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="ownProfile__buttons d-flex justify-content-center">
         <UpdateProfileBanner />
         <UpdateProfileAvatar />
-        <LogoutButton />
       </div>
 
-      <div className="d-grid justify-content-center">
-        <img src={ownProfile.avatar} width="150" />
-      </div>
+      {/* <div className="d-grid justify-content-center">
+        
+      </div> */}
 
-      <div className="d-flex justify-content-evenly bg-warning">
-        <p>Followers: {ownProfile._count.followers}</p>
-        <p>Following: {ownProfile._count.following}</p>
+      <div className="d-grid text-center">
+        <p>{ownProfile._count.followers} Followers</p>
+        <p>{ownProfile._count.following} Following</p>
       </div>
 
       <div className="ownPostsContainer text-center mb-3">

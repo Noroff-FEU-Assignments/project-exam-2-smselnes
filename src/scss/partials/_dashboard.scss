@@ -43,6 +43,31 @@
 }
 //own profile page styling
 
+.ownProfile {
+  display: grid;
+  margin: auto;
+
+  @media (min-width: $mediumScreen) {
+    width: 500px;
+  }
+
+  &__title {
+    background-color: black;
+    color: white;
+  }
+
+  &__avatar {
+    justify-self: center;
+  }
+
+  &__buttons {
+    font-size: 0.8rem;
+  }
+
+  &__stats {
+  }
+}
+
 .changeBanner {
   &__button {
     font-size: 0.8rem;
