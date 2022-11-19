@@ -1,10 +1,11 @@
 import React from "react";
-import banner from "../../assets/homepage-image.png";
-import { Button } from "react-bootstrap";
+import banner from "../../assets/banner.jpg";
+
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import Heading from "../layout/Heading";
 import { PageTitle } from "../common/PageTitle";
+import { Container } from "react-bootstrap";
 
 export default function Home() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -17,24 +18,30 @@ export default function Home() {
           Medi@holic is a trending social media platform where you post,
           interact and share with likeminded!
         </p>
+        <div className="home__introduction--inner mt-3 p-3">
+          {auth ? (
+            <>
+              <h5>Welcome back {auth.name}!</h5>
+              <a href="/dashboard" className="button">
+                My pages
+              </a>
+            </>
+          ) : (
+            <a href="/login" className="button">
+              Login
+            </a>
+          )}
 
-        {auth ? (
-          <>
-            <h5>Welcome back {auth.name}!</h5>
-            <Button href="/dashboard">My pages</Button>
-          </>
-        ) : (
-          <Button href="/login">Login</Button>
-        )}
+          <a href="/register" className="button m-3">
+            New user? <br /> Register here
+          </a>
+        </div>
 
-        <Button href="/register" className="m-3">
-          New user? <br /> Register here
-        </Button>
-        <img
-          src={banner}
-          alt="big smiley with hearty eyes looking to left"
-          className="home__introduction--image mb-3"
-        />
+        {/* <img
+            src={banner}
+            alt="big smiley with hearty eyes looking to left"
+            className="home__introduction--image mb-3"
+          /> */}
       </div>
     </>
   );
