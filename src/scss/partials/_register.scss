@@ -1,3 +1,17 @@
-.registerUser__form {
-  width: 90%;
+.registerUserForm {
+  width: 250px;
+  margin: auto;
+
+  &__button {
+    width: 100px;
+    margin-left: 60%;
+
+    @media (min-width: $smallScreen) {
+      margin-left: 75%;
+    }
+  }
+
+  @media (min-width: $smallScreen) {
+    width: 400px;
+  }
 }

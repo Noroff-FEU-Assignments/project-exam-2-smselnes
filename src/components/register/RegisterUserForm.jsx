@@ -79,7 +79,10 @@ export default function RegisterUserForm() {
     <>
       <h1 className="text-center m-3">Register user</h1>
 
-      <Form onSubmit={handleSubmit(registerFormSubmit)}>
+      <Form
+        onSubmit={handleSubmit(registerFormSubmit)}
+        className="registerUserForm"
+      >
         <fieldset disabled={submitting}>
           {registerFormError && (
             <ErrorMessage>{registerFormError}</ErrorMessage>
@@ -139,7 +142,7 @@ export default function RegisterUserForm() {
             )}
           </Form.Group>
         </fieldset>
-        <button type="submit" className="button">
+        <button type="submit" className="registerUserForm__button mb-3">
           {submitting ? "Registering" : "Register"}
         </button>
       </Form>
