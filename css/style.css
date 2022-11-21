@@ -207,6 +207,12 @@ footer a {
   background-color: #ffc0cb;
 }
 
+.form__success {
+  background-color: #494031;
+  color: #eff0ea;
+  padding: 10px;
+}
+
 .loadingText {
   background-color: black;
   color: white;
@@ -308,7 +314,25 @@ footer a {
 .postDetails__bodytext {
   background-color: #494031;
   color: #eff0ea;
-  padding: 1rem;
+  padding: 1.5rem;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .postDetails__bodytext {
+    width: 60%;
+    font-size: 1.2rem;
+  }
+}
+
+.postDetails__tags {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.postDetails__tags--item {
+  background-color: #eff0ea;
 }
 
 .postComments {
@@ -498,8 +522,18 @@ footer a {
   position: absolute;
 }
 
-.ownPost__delete--confirm {
-  background-color: red;
+.ownPost__delete--alert button {
+  background-color: #eff0ea;
+  color: #494031;
+}
+
+.ownPost__delete--confirm:hover {
+  background-color: #d80707;
+}
+
+.ownPost__delete--cancel:hover {
+  background-color: #494031;
+  color: #eff0ea;
 }
 
 .dashboard__menu--link a {

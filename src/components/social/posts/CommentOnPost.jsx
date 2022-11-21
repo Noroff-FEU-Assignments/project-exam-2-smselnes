@@ -37,10 +37,8 @@ export default function CommentOnPost() {
     setError(null);
     console.log(data);
 
-    const body = data.body;
-
     const formData = {
-      body: body,
+      body: data.body,
     };
 
     try {

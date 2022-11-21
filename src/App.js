@@ -9,7 +9,6 @@ import DashboardPage from "./components/dashboard/DashboardPage";
 import ViewPosts from "./components/social/posts/ViewPosts";
 import { AuthProvider } from "./context/AuthContext";
 import PostDetails from "./components/social/posts/PostDetails";
-import CreateNewPost from "./components/dashboard/CreateNewPost";
 import ProfileDetails from "./components/social/profiles/ProfileDetails";
 import ProfilesPage from "./components/social/profiles/ProfilesPage";
 import OwnProfilePage from "./components/dashboard/OwnProfilePage";
@@ -20,7 +19,6 @@ function App() {
       <div className="wrapper">
         <Router>
           <Navigation />
-          {/* <div className="App"> */}
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/register" element={<RegisterPage />}></Route>
@@ -40,12 +38,7 @@ function App() {
               path="/dashboard/profiles/:name"
               element={<ProfileDetails />}
             ></Route>
-            <Route
-              path="/dashboard/createpost"
-              element={<CreateNewPost />}
-            ></Route>
           </Routes>
-          {/* </div> */}
         </Router>
       </div>
       <Footer />

@@ -4,6 +4,12 @@
   background-color: $colour-error-bg;
 }
 
+.form__success {
+  background-color: $colour-dark;
+  color: $colour-light;
+  padding: 10px;
+}
+
 .loadingText {
   background-color: black;
   color: white;

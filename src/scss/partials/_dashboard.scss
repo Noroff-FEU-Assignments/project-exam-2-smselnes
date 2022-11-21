@@ -63,9 +63,6 @@
   &__buttons {
     font-size: 0.8rem;
   }
-
-  &__stats {
-  }
 }
 
 .changeBanner {
@@ -92,10 +89,20 @@
     color: $colour-light;
     width: 100%;
     position: absolute;
+
+    & button {
+      background-color: $colour-light;
+      color: $colour-dark;
+    }
   }
 
-  &__delete--confirm {
-    background-color: red;
+  &__delete--confirm:hover {
+    background-color: $colour-error;
+  }
+
+  &__delete--cancel:hover {
+    background-color: $colour-dark;
+    color: $colour-light;
   }
 }
 

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { social_url } from "../../../utils/Api";
 import AuthContext from "../../../context/AuthContext";
 import { useState, useEffect, useContext } from "react";
-import { Spinner, Button } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import CommentOnPost from "./CommentOnPost";
 import ReactOnPost from "./ReactOnPost";
 import moment from "moment";
@@ -11,7 +11,7 @@ export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth /* setAuth */] = useContext(AuthContext);
 
   let { id } = useParams();
   const postDetailUrl =
@@ -74,6 +74,18 @@ export default function PostDetails() {
           alt="the media selected for the specified post"
         />
         <p className="postDetails__bodytext">Content: {postDetails.body}</p>
+        <div className="postDetails__tags">
+          Tags:
+          {postDetails.tags.map((tag, index) => {
+            if (tag !== "") {
+              return (
+                <p key={index} className="postDetails__tags--item mx-1">
+                  {tag}
+                </p>
+              );
+            }
+          })}
+        </div>
 
         <div>
           <CommentOnPost />
@@ -106,6 +118,9 @@ export default function PostDetails() {
           <a href="/dashboard/posts" className="button mb-3">
             back to posts
           </a>
+          {/* <a href={`/dashboard/${auth.name}`} className="button mb-3">
+            back to profile
+          </a> */}
         </div>
       </div>
     </>

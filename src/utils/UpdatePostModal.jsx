@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import SuccessMessage from "../components/common/SuccessMessage";
 import ErrorMessage from "../components/common/ErrorMessage";
 import refreshAfterSubmit from "../components/common/RefreshAfterSubmit";
 
@@ -16,6 +17,7 @@ export default function UpdatePostModal({ id, title, body }) {
   const [show, setShow] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [registerFormError, setRegisterFormError] = useState(null);
+  const [updatedPost, setUpdatedPost] = useState(false);
 
   const http = useAxios();
 
@@ -31,16 +33,17 @@ export default function UpdatePostModal({ id, title, body }) {
   });
 
   async function updateOwnPost(data) {
+    setUpdatedPost(true);
     setSubmitting(true);
     setRegisterFormError(null);
 
     try {
       const response = await http.put(`posts/${id}`, data);
       console.log(response.data);
-      console.log(response);
-      refreshAfterSubmit();
     } catch (error) {
+      setRegisterFormError(error.toString());
       console.log(error);
+    } finally {
     }
   }
 
@@ -56,6 +59,11 @@ export default function UpdatePostModal({ id, title, body }) {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(updateOwnPost)}>
+            {updatedPost && (
+              <SuccessMessage>
+                <p>The post was updated.</p>
+              </SuccessMessage>
+            )}
             {registerFormError && (
               <ErrorMessage>{registerFormError}</ErrorMessage>
             )}

@@ -70,7 +70,21 @@
   &__bodytext {
     background-color: $colour-dark;
     color: $colour-light;
-    padding: 1rem;
+    padding: 1.5rem;
+    margin: auto;
+
+    @media (min-width: $mediumScreen) {
+      width: 60%;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__tags {
+    display: inline-flex;
+
+    &--item {
+      background-color: $colour-light;
+    }
   }
 }
 

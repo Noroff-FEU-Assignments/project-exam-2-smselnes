@@ -18,9 +18,6 @@ export default function ProfileDetails() {
         const response = await http.get(
           `profiles/${name}?_followers=true&_following=true&_posts=true`
         );
-        console.log(response.data);
-        console.log(response.data._count.posts);
-        console.log(response.data.posts);
         setUserProfile(response.data);
       } catch (error) {
         console.log(error);

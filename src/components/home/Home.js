@@ -1,11 +1,7 @@
-import React from "react";
-import banner from "../../assets/banner.jpg";
-
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import Heading from "../layout/Heading";
 import { PageTitle } from "../common/PageTitle";
-import { Container } from "react-bootstrap";
 
 export default function Home() {
   const [auth, setAuth] = useContext(AuthContext);

@@ -81,7 +81,7 @@ export default function ListOfPosts() {
                 {post.author.name}
               </Card.Link>
               <Card.Text>
-                Last edit: {moment(post.updated).format("DDMMM YY")}
+                Last edit: {moment(post.updated).format("DD MMM YY")}
               </Card.Text>
               <Card.Text>{post._count.comments} Comments</Card.Text>
               <Card.Text>{post._count.reactions} Reactions </Card.Text>

@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/useAxios";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import ErrorMessage from "../../common/ErrorMessage";
 
 const schema = yup.object().shape({
