@@ -23,12 +23,19 @@
     display: grid;
     justify-content: center;
     box-shadow: 1px 1px 2px 0px $colour-dark;
+    width: 90%;
+    background-color: $colour-bright;
+    border: 4px double $colour-dark;
 
     & img {
       max-width: 150px;
     }
     &:hover {
       box-shadow: 1px 1px 4px 0px $colour-dark;
+    }
+
+    @media (min-width: $mediumScreen) {
+      width: 60%;
     }
   }
 

@@ -60,7 +60,7 @@ export default function PostDetails() {
 
   return (
     <>
-      <div className="postDetails">
+      <div className="postDetails mb-3">
         <h1 className="postDetails__title mt-3">{postDetails.title}</h1>
         <p>
           Posted by:
@@ -106,22 +106,22 @@ export default function PostDetails() {
             );
           })}
           <p>Reactions: {postDetails._count.reactions}</p>
-          <div className="postReactions d-flex">
-            {postDetails.reactions.map((reaction, index) => {
-              return (
-                <div key={index} className="postReactions__item mb-3">
-                  <span>{reaction.symbol}</span>
-                </div>
-              );
-            })}
-          </div>
-          <a href="/dashboard/posts" className="button mb-3">
-            back to posts
-          </a>
-          {/* <a href={`/dashboard/${auth.name}`} className="button mb-3">
+        </div>
+        <div className="postReactions mb-3">
+          {postDetails.reactions.map((reaction, index) => {
+            return (
+              <div key={index} className="postReactions__item mb-3">
+                {reaction.symbol}
+              </div>
+            );
+          })}
+        </div>
+        <a href="/dashboard/posts" className="button">
+          back to posts
+        </a>
+        {/* <a href={`/dashboard/${auth.name}`} className="button mb-3">
             back to profile
           </a> */}
-        </div>
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Spinner, Tabs, Tab, Col } from "react-bootstrap";
 import FollowUser from "./FollowUser";
 import useAxios from "../../../hooks/useAxios";
+import moment from "moment";
 
 export default function ProfileDetails() {
   const [error, setError] = useState(null);
@@ -55,6 +56,15 @@ export default function ProfileDetails() {
           alt="the user's profile banner"
         />
         <h3 className="m-3">{userProfile.name}</h3>
+        <FollowUser />
+        <Col className="m-3">
+          <a
+            href="/dashboard/profiles"
+            className="button profileDetails__navigateBack--btn"
+          >
+            back to profile list
+          </a>
+        </Col>
         <Tabs
           defaultActiveKey="profile"
           id="uncontrolled-tab-example"
@@ -78,7 +88,9 @@ export default function ProfileDetails() {
               return (
                 <div key={index} className="m-3 profileDetails__posts">
                   {/* <img src={userPosts.media} /> */}
-                  <p>{userPosts.updated}</p>
+                  <p>
+                    {moment(userPosts.updated).format("DD MMM YY, hh:mm a")}
+                  </p>
                   <Link to={`/dashboard/posts/${userPosts.id}`}>
                     {userPosts.title}
                   </Link>
@@ -87,15 +99,6 @@ export default function ProfileDetails() {
             })}
           </Tab>
         </Tabs>
-        <FollowUser />
-        <Col className="m-3">
-          <a
-            href="/dashboard/profiles"
-            className="button profileDetails__navigateBack--btn"
-          >
-            back to profile list
-          </a>
-        </Col>
       </div>
     </>
   );

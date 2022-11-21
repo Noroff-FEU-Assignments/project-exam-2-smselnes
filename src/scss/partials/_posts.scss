@@ -121,17 +121,27 @@
 .postReactions {
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
+  justify-content: center;
+
+  &__item {
+    transform: scale(1.5);
+    margin: 10px;
+
+    @media (min-width: $smallScreen) {
+      transform: scale(2.2);
+    }
+  }
 }
 
 .reactOnPostForm,
 .commentOnPostsForm {
   display: grid;
+  justify-content: center;
 
-  & fieldset,
-  select {
+  & select,
+  textarea {
     width: 260px;
-    justify-self: center;
+
     box-shadow: $button-shadow;
   }
 }

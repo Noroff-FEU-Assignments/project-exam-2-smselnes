@@ -378,22 +378,38 @@ footer a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.postReactions__item {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  margin: 10px;
+}
+
+@media (min-width: 575px) {
+  .postReactions__item {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+  }
 }
 
 .reactOnPostForm,
 .commentOnPostsForm {
   display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.reactOnPostForm fieldset,
 .reactOnPostForm select,
-.commentOnPostsForm fieldset,
-.commentOnPostsForm select {
+.reactOnPostForm textarea,
+.commentOnPostsForm select,
+.commentOnPostsForm textarea {
   width: 260px;
-  -ms-grid-column-align: center;
-      justify-self: center;
   -webkit-box-shadow: 1px 1px 2px 0px #494031;
           box-shadow: 1px 1px 2px 0px #494031;
 }
@@ -596,6 +612,9 @@ footer a {
           justify-content: center;
   -webkit-box-shadow: 1px 1px 2px 0px #494031;
           box-shadow: 1px 1px 2px 0px #494031;
+  width: 90%;
+  background-color: #eaef5e;
+  border: 4px double #494031;
 }
 
 .profileDetails__posts img {
@@ -605,6 +624,12 @@ footer a {
 .profileDetails__posts:hover {
   -webkit-box-shadow: 1px 1px 4px 0px #494031;
           box-shadow: 1px 1px 4px 0px #494031;
+}
+
+@media (min-width: 768px) {
+  .profileDetails__posts {
+    width: 60%;
+  }
 }
 
 .profileDetails__navigateBack--btn {
