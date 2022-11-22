@@ -6,7 +6,7 @@ import logo from "../../assets/logo.png";
 import { useContext } from "react";
 
 function Navigation() {
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
 
   return (
     <>

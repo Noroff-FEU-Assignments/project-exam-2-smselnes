@@ -12,6 +12,7 @@ export default function PostDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [auth /* setAuth */] = useContext(AuthContext);
+  document.title = "Medi@holic | Post Details";
 
   let { id } = useParams();
   const postDetailUrl =
@@ -77,13 +78,11 @@ export default function PostDetails() {
         <div className="postDetails__tags">
           Tags:
           {postDetails.tags.map((tag, index) => {
-            if (tag !== "") {
-              return (
-                <p key={index} className="postDetails__tags--item mx-1">
-                  {tag}
-                </p>
-              );
-            }
+            return (
+              <p key={index} className="postDetails__tags--item mx-1">
+                {tag}
+              </p>
+            );
           })}
         </div>
 

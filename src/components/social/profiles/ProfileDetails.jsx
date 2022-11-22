@@ -11,6 +11,7 @@ export default function ProfileDetails() {
   const [userProfile, setUserProfile] = useState([]);
 
   let { name } = useParams();
+  document.title = `Medi@holic | ${name} `;
   const http = useAxios();
 
   useEffect(() => {

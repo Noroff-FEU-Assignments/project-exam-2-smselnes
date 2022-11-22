@@ -6,18 +6,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import SuccessMessage from "../components/common/SuccessMessage";
 import ErrorMessage from "../components/common/ErrorMessage";
-import refreshAfterSubmit from "../components/common/RefreshAfterSubmit";
 
 const schema = yup.object().shape({
   title: yup.string().required("Required field."),
   body: yup.string().required("Required field."),
+  media: yup.string(),
+  tags: yup.array().ensure(),
 });
 
-export default function UpdatePostModal({ id, title, body }) {
+export default function UpdatePostModal({ id, title, body, media, tags }) {
   const [show, setShow] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [registerFormError, setRegisterFormError] = useState(null);
+  const [updateFormError, setUpdateFormError] = useState(null);
   const [updatedPost, setUpdatedPost] = useState(false);
+  //
+  const [formatTags, setFormatTags] = useState(null);
 
   const http = useAxios();
 
@@ -33,17 +36,23 @@ export default function UpdatePostModal({ id, title, body }) {
   });
 
   async function updateOwnPost(data) {
-    setUpdatedPost(true);
     setSubmitting(true);
-    setRegisterFormError(null);
+    setUpdateFormError(null);
 
     try {
       const response = await http.put(`posts/${id}`, data);
       console.log(response.data);
+
+      if (response.status === 200) {
+        setUpdatedPost(true);
+        setFormatTags(response.data.tags);
+        console.log(formatTags);
+      }
     } catch (error) {
-      setRegisterFormError(error.toString());
+      setUpdateFormError(error.toString());
       console.log(error);
     } finally {
+      setSubmitting(false);
     }
   }
 
@@ -52,7 +61,6 @@ export default function UpdatePostModal({ id, title, body }) {
       <button className="button" onClick={handleShow}>
         Edit
       </button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit</Modal.Title>
@@ -64,9 +72,7 @@ export default function UpdatePostModal({ id, title, body }) {
                 <p>The post was updated.</p>
               </SuccessMessage>
             )}
-            {registerFormError && (
-              <ErrorMessage>{registerFormError}</ErrorMessage>
-            )}
+            {updateFormError && <ErrorMessage>{updateFormError}</ErrorMessage>}
             <fieldset disabled={submitting}>
               <div>
                 <label htmlFor="title">New title</label>
@@ -92,12 +98,29 @@ export default function UpdatePostModal({ id, title, body }) {
                   <ErrorMessage>{errors.body.message}</ErrorMessage>
                 )}
               </div>
+
+              <div>
+                <label htmlFor="media">Image url</label>
+                <input type="text" id="media" {...register("media")} />
+                {errors.media && (
+                  <ErrorMessage>{errors.media.message}</ErrorMessage>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="tags">Tags</label>
+                <input
+                  type="text"
+                  id="tags"
+                  {...register("tags")}
+                  defaultValue={[formatTags]}
+                />
+                {errors.tags && (
+                  <ErrorMessage>{errors.tags.message}</ErrorMessage>
+                )}
+              </div>
             </fieldset>
-            <button
-              className="btn btn-success m-3"
-              type="submit"
-              onClick={refreshAfterSubmit}
-            >
+            <button className="btn btn-success m-3" type="submit">
               {submitting ? "Updating..." : "Update"}
             </button>
           </form>

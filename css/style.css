@@ -178,6 +178,8 @@ footer a {
 .loginForm {
   width: 250px;
   margin: auto;
+  padding: 1rem;
+  background-color: #eff0ea;
 }
 
 .loginForm__heading {
@@ -211,6 +213,7 @@ footer a {
   background-color: #494031;
   color: #eff0ea;
   padding: 10px;
+  text-align: center;
 }
 
 .loadingText {

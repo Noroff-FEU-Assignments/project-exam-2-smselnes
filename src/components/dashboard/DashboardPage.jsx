@@ -8,7 +8,8 @@ import Heading from "../layout/Heading";
 import SubHeading from "../layout/SubHeading";
 
 export default function DashboardPage() {
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
+  document.title = "Medi@holic | Register";
 
   return (
     <>
@@ -23,13 +24,21 @@ export default function DashboardPage() {
           <Link to="/dashboard/posts" className="dashboardNavigation--link">
             View posts
           </Link>
-          <img src={postsImage} className="dashboardNavigation--image" />
+          <img
+            src={postsImage}
+            className="dashboardNavigation--image"
+            alt="several creative people gathered around a workboard filled with creative ideas."
+          />
         </div>
         <div className="dashboardNavigation__profiles mb-3">
           <Link to="/dashboard/profiles" className="dashboardNavigation--link">
             View community
           </Link>
-          <img src={profilesImage} className="dashboardNavigation--image" />
+          <img
+            src={profilesImage}
+            className="dashboardNavigation--image"
+            alt="a dressed up man holding a keyboard and having big eyes through his glasses."
+          />
         </div>
         <div className="dashboardNavigation__profile mb-3">
           <Link
@@ -38,7 +47,11 @@ export default function DashboardPage() {
           >
             My Profile
           </Link>
-          <img src={settingsImage} className="dashboardNavigation--image" />
+          <img
+            src={settingsImage}
+            className="dashboardNavigation--image"
+            alt="cogwheels put on top of keyboard."
+          />
         </div>
       </div>
     </>

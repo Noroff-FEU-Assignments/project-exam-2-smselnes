@@ -16,6 +16,7 @@ export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [ownProfile, setOwnProfile] = useState([]);
+  document.title = "Medi@holic | My profile";
   /* const [auth, setAuth] = useContext(AuthContext); */
 
   let { name } = useParams();
@@ -63,6 +64,7 @@ export default function OwnProfilePage() {
           className="ownProfile__banner"
           src={ownProfile.banner}
           width="100%"
+          alt={`${ownProfile.name}'s profile banner`}
         />
         <div>
           <p className="ownProfile__title">{ownProfile.name}</p>
@@ -73,6 +75,7 @@ export default function OwnProfilePage() {
           className="ownProfile__avatar"
           src={ownProfile.avatar}
           width="100px"
+          alt={`${ownProfile.name}'s profile avatar`}
         />
       </div>
       <div className="ownProfile__buttons d-flex justify-content-center">

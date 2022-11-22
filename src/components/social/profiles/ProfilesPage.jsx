@@ -4,6 +4,7 @@ import SearchProfiles from "./SearchProfiles";
 import ViewProfiles from "./ViewProfiles";
 
 export default function ProfilesPage() {
+  document.title = "Medi@holic | Profiles";
   return (
     <>
       <SearchProfiles />

@@ -1,6 +1,10 @@
-import React from "react";
 import RegisterUserForm from "./RegisterUserForm";
 
 export default function RegisterPage() {
-  return <RegisterUserForm />;
+  document.title = "Medi@holic | Register";
+  return (
+    <>
+      <RegisterUserForm />
+    </>
+  );
 }

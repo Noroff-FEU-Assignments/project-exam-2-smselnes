@@ -12,7 +12,8 @@ export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
+  document.title = "Medi@holic | Posts";
 
   useEffect(() => {
     async function getPosts() {
