@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import SuccessMessage from "../components/common/SuccessMessage";
 import ErrorMessage from "../components/common/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   title: yup.string().required("Required field."),
@@ -19,11 +20,8 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
   const [submitting, setSubmitting] = useState(false);
   const [updateFormError, setUpdateFormError] = useState(null);
   const [updatedPost, setUpdatedPost] = useState(false);
-  //
-  const [formatTags, setFormatTags] = useState(null);
-
   const http = useAxios();
-
+  const navigate = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -45,11 +43,11 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
 
       if (response.status === 200) {
         setUpdatedPost(true);
-        setFormatTags(response.data.tags);
-        console.log(formatTags);
+        navigate(`/dashboard/posts/${id}`);
       }
     } catch (error) {
       setUpdateFormError(error.toString());
+
       console.log(error);
     } finally {
       setSubmitting(false);
@@ -113,7 +111,7 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
                   type="text"
                   id="tags"
                   {...register("tags")}
-                  defaultValue={[formatTags]}
+                  defaultValue={tags}
                 />
                 {errors.tags && (
                   <ErrorMessage>{errors.tags.message}</ErrorMessage>

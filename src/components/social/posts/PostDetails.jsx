@@ -5,7 +5,6 @@ import { useState, useEffect, useContext } from "react";
 import { Spinner } from "react-bootstrap";
 import CommentOnPost from "./CommentOnPost";
 import ReactOnPost from "./ReactOnPost";
-import moment from "moment";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
@@ -87,23 +86,14 @@ export default function PostDetails() {
         </div>
 
         <div>
+          <p>Comments: {postDetails._count.comments}</p>
           <CommentOnPost />
         </div>
         <div>
           <ReactOnPost />
         </div>
-        <p>Comments: {postDetails._count.comments}</p>
+
         <div className="postComments">
-          {postDetails.comments.map((comment, index) => {
-            console.log(comment);
-            return (
-              <div key={index} className="postComments__item">
-                <p className="m-0">by: {comment.owner}</p>
-                <p>{moment(comment.created).format("DD MMM YY, hh:mm a")}</p>
-                <p>{comment.body}</p>
-              </div>
-            );
-          })}
           <p>Reactions: {postDetails._count.reactions}</p>
         </div>
         <div className="postReactions mb-3">
@@ -115,12 +105,12 @@ export default function PostDetails() {
             );
           })}
         </div>
-        <a href="/dashboard/posts" className="button">
+        {/* <a href="/dashboard/posts" className="button">
           back to posts
+        </a> */}
+        <a href={`/dashboard/${auth.name}`} className="button mb-3">
+          back to profile
         </a>
-        {/* <a href={`/dashboard/${auth.name}`} className="button mb-3">
-            back to profile
-          </a> */}
       </div>
     </>
   );

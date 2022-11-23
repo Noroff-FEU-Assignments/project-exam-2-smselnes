@@ -33,7 +33,7 @@ export default function CreateNewPost() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  async function submitNewPost(data) {
+  async function submitNewPost(data, e) {
     const postTags = data.tags;
     const formattedTags = postTags.split(" ");
     setSubmitting(true);
@@ -50,6 +50,7 @@ export default function CreateNewPost() {
       const response = await http.post(`posts`, JSON.stringify(formData));
       console.log(response.data);
       setCreatePost(true);
+      e.target.reset();
       refreshAfterSubmit();
     } catch (error) {
       console.log(error);
