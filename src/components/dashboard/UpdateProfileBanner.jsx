@@ -7,6 +7,8 @@ import { useState } from "react";
 import { Form, Modal } from "react-bootstrap";
 import ErrorMessage from "../common/ErrorMessage";
 import refreshAfterSubmit from "../common/RefreshAfterSubmit";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
   banner: yup.string().required("Required field."),
@@ -16,6 +18,7 @@ export default function UpdateProfileBanner() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [show, setShow] = useState(false);
+  const [auth] = useContext(AuthContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -65,7 +68,12 @@ export default function UpdateProfileBanner() {
             {submitError && <ErrorMessage>{submitError}</ErrorMessage>}
             <fieldset disabled={submitting}>
               <Form.Label htmlFor="banner">New banner url</Form.Label>
-              <Form.Control type="url" id="banner" {...register("banner")} />
+              <Form.Control
+                type="url"
+                id="banner"
+                {...register("banner")}
+                defaultValue={auth.banner}
+              />
               {errors.banner && (
                 <ErrorMessage>{errors.banner.message}</ErrorMessage>
               )}

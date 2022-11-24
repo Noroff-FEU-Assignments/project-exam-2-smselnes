@@ -26,10 +26,8 @@ const schema = yup.object().shape({
 export default function Login() {
   const [login, setLogin] = useState(false);
   const [loginError, setLoginError] = useState(null);
-
+  const [auth, setAuth] = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const [, /* auth */ setAuth] = useContext(AuthContext);
 
   const {
     register,
@@ -56,8 +54,15 @@ export default function Login() {
     try {
       const response = await fetch(loginUrl, options);
       const json = await response.json();
-      setAuth(json);
-      navigate("/dashboard");
+      console.log(response);
+      if (response.ok) {
+        setAuth(json);
+        navigate("/dashboard");
+      } else {
+        setLoginError(
+          "There was a problem when logging in. Are you sure you have the correct password?"
+        );
+      }
     } catch (error) {
       console.log("Error:", error);
       setLoginError(error.toString());

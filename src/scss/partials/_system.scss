@@ -14,4 +14,47 @@
 .loadingText {
   background-color: black;
   color: white;
+  padding: 5px;
+}
+
+.loader {
+  display: flex;
+
+  & div {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    margin: 0.8rem;
+    animation: bouncing 1.5s 0.5s linear infinite;
+    background-color: black;
+  }
+}
+
+.loader--ballOne {
+  animation-delay: 0.1s;
+}
+.loader--ballTwo {
+  animation-delay: 0.3s;
+}
+.loader--ballThree {
+  animation-delay: 0.5s;
+}
+.loader--ballFour {
+  animation-delay: 0.7s;
+}
+
+@keyframes bouncing {
+  0%,
+  100% {
+    transform: scale(0.6);
+  }
+  25% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  75% {
+    transform: scale(1);
+  }
 }

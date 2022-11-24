@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { Modal, Form } from "react-bootstrap";
 import ErrorMessage from "../common/ErrorMessage";
 import refreshAfterSubmit from "../common/RefreshAfterSubmit";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
   avatar: yup.string().required("Required field"),
@@ -16,6 +18,7 @@ export default function UpdateProfileAvatar() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [show, setShow] = useState(false);
+  const [auth] = useContext(AuthContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -65,7 +68,12 @@ export default function UpdateProfileAvatar() {
             {submitError && <ErrorMessage>{submitError}</ErrorMessage>}
             <fieldset disabled={submitting}>
               <Form.Label htmlFor="avatar">New avatar url</Form.Label>
-              <Form.Control type="url" id="avatar" {...register("avatar")} />
+              <Form.Control
+                type="url"
+                id="avatar"
+                {...register("avatar")}
+                defaultValue={auth.avatar}
+              />
               {errors.avatar && (
                 <ErrorMessage>{errors.avatar.message}</ErrorMessage>
               )}
