@@ -90,24 +90,9 @@ export default function PostDetails() {
           <CommentOnPost />
         </div>
         <div>
+          <p>Reactions: {postDetails._count.reactions}</p>
           <ReactOnPost />
         </div>
-
-        <div className="postComments">
-          <p>Reactions: {postDetails._count.reactions}</p>
-        </div>
-        <div className="postReactions mb-3">
-          {postDetails.reactions.map((reaction, index) => {
-            return (
-              <div key={index} className="postReactions__item mb-3">
-                {reaction.symbol}
-              </div>
-            );
-          })}
-        </div>
-        {/* <a href="/dashboard/posts" className="button">
-          back to posts
-        </a> */}
         <a href={`/dashboard/${auth.name}`} className="button mb-3">
           back to profile
         </a>

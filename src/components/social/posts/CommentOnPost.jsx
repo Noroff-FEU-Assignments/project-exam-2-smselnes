@@ -56,6 +56,7 @@ export default function CommentOnPost() {
       }
     }
     FetchComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function submitComment(data) {

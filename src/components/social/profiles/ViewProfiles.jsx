@@ -7,16 +7,17 @@ import { Link } from "react-router-dom";
 const defaultAvatarImage =
   "https://via.placeholder.com/150/eff0ea/494031/?text=no image";
 
-const profileUrl = social_url + "profiles?sortOrder=asc&offset=150&limit=100";
+const profileUrl = social_url + "profiles?sortOrder=asc&offset=250&limit=100";
 
 export default function ViewProfiles() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [profiles, setProfiles] = useState([]);
   const [auth /* setAuth */] = useContext(AuthContext);
 
   useEffect(() => {
     async function getProfiles() {
+      setLoading(true);
       const options = {
         method: "GET",
         headers: {
