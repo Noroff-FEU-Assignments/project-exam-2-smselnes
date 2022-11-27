@@ -14,7 +14,8 @@ export default function HomepageIntroduction() {
       <div className="home__introduction--inner mt-3 p-3">
         {auth ? (
           <>
-            <h5>Welcome back {auth.name}!</h5>
+            <h5>Welcome back</h5>
+            <h5>{auth.name}!</h5>
             <a href="/dashboard" className="button">
               My pages
             </a>

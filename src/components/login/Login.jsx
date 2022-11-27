@@ -1,11 +1,11 @@
 import { login_path, base_url } from "../../utils/Api";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorMessage from "../common/ErrorMessage";
-import { useContext } from "react";
+import SuccessMessage from "../common/SuccessMessage";
 import AuthContext from "../../context/AuthContext";
 import { Form } from "react-bootstrap";
 
@@ -24,7 +24,8 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
-  const [login, setLogin] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState(null);
   const [auth, setAuth] = useContext(AuthContext);
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export default function Login() {
   const loginUrl = base_url + login_path;
 
   async function loginSubmit(data) {
-    setLogin(true);
+    setSubmitting(true);
     setLoginError(null);
 
     const loginData = JSON.stringify(data);
@@ -56,8 +57,11 @@ export default function Login() {
       const json = await response.json();
       console.log(response);
       if (response.ok) {
+        setLoggedIn(true);
         setAuth(json);
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       } else {
         setLoginError(
           "There was a problem when logging in. Are you sure you have the correct password?"
@@ -67,7 +71,7 @@ export default function Login() {
       console.log("Error:", error);
       setLoginError(error.toString());
     } finally {
-      setLogin(false);
+      setSubmitting(false);
     }
   }
 
@@ -76,8 +80,13 @@ export default function Login() {
       <h1 className="loginForm__heading m-3">Log in to the community</h1>
 
       <Form onSubmit={handleSubmit(loginSubmit)} className="loginForm">
+        {loggedIn && (
+          <SuccessMessage>
+            <p>Successfully logged in!</p>
+          </SuccessMessage>
+        )}
         {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
-        <fieldset disabled={login}>
+        <fieldset disabled={submitting}>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -107,8 +116,13 @@ export default function Login() {
           type="submit"
           className="button loginForm__button"
         >
-          {login ? "Logging in..." : "Login"}
+          {submitting ? "Logging in..." : "Login"}
         </button>
+        <hr />
+        <p className="loginForm__description">
+          only accounts with a <span>stud.noroff.no</span> or{" "}
+          <span>noroff.no</span> email can log in to the community
+        </p>
       </Form>
     </>
   );

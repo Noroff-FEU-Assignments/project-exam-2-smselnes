@@ -6,12 +6,12 @@ import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
 import Footer from "./components/layout/Footer";
 import DashboardPage from "./components/dashboard/DashboardPage";
-import ViewPosts from "./components/social/posts/ViewPosts";
 import { AuthProvider } from "./context/AuthContext";
 import PostDetails from "./components/social/posts/PostDetails";
 import ProfileDetails from "./components/social/profiles/ProfileDetails";
-import ProfilesPage from "./components/social/profiles/ProfilesPage";
+import ProfilesPage from "./components/social/profiles/Profiles";
 import OwnProfilePage from "./components/dashboard/OwnProfilePage";
+import Posts from "./components/social/posts/Posts";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/dashboard/" element={<DashboardPage />}></Route>
             <Route path="/dashboard/:name" element={<OwnProfilePage />}></Route>
-            <Route path="/dashboard/posts" element={<ViewPosts />}></Route>
+            <Route path="/dashboard/posts" element={<Posts />}></Route>
             <Route
               path="/dashboard/posts/:id"
               element={<PostDetails />}

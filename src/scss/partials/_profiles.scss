@@ -56,16 +56,15 @@
   }
 
   @media (min-width: $mediumScreen) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: $largescreen) {
+    grid-template-columns: repeat(4, 1fr);
   }
   &__card {
-    width: 230px;
+    width: 90%;
     align-items: center;
     background-color: $colour-light;
-
-    @media (min-width: $mediumScreen) {
-      width: 70%;
-    }
 
     &--avatar {
       width: 100%;

@@ -1,38 +1,39 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { social_url } from "../../../utils/Api";
 import AuthContext from "../../../context/AuthContext";
 import { useState, useEffect, useContext } from "react";
-import { Spinner } from "react-bootstrap";
 import CommentOnPost from "./CommentOnPost";
 import ReactOnPost from "./ReactOnPost";
+import useAxios from "../../../hooks/useAxios";
+import ErrorMessage from "../../common/ErrorMessage";
+import Loader from "../../../utils/Loader";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [auth /* setAuth */] = useContext(AuthContext);
+  const navigate = useNavigate();
   document.title = "Medi@holic | Post Details";
 
   let { id } = useParams();
-  const postDetailUrl =
+
+  const http = useAxios();
+  const url =
     social_url + `posts/${id}?_author=true&_comments=true&_reactions=true`;
 
   useEffect(() => {
     async function getPostsDetails() {
-      const options = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${auth.accessToken}`,
-        },
-      };
-
+      if (!id) {
+        navigate("/dashboard/posts");
+      }
       try {
-        const response = await fetch(postDetailUrl, options);
-        const json = await response.json();
-        console.log(json);
-        setPostDetails(json);
+        const response = await http.get(url);
+        if (response.status === 200) {
+          setPostDetails(response.data);
+        }
+        console.log(response);
       } catch (error) {
-        console.log(error);
         setError(error.toString());
       } finally {
         setLoading(false);
@@ -40,21 +41,17 @@ export default function PostDetails() {
     }
     getPostsDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postDetailUrl]);
+  }, []);
 
   if (loading) {
-    return (
-      <Spinner className="text-center" role="status" size="lg">
-        <span className="loadingText">Loading...</span>
-      </Spinner>
-    );
+    return <Loader />;
   }
 
   if (error) {
     return (
-      <div className="errorMessage">
-        <p>Error: There was an unexpected error.</p>
-      </div>
+      <ErrorMessage>
+        <p>Something went wrong. Please reload the page or try again later.</p>
+      </ErrorMessage>
     );
   }
 

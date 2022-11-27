@@ -8,7 +8,7 @@ export default function FollowUser() {
   const http = useAxios();
 
   //test code below
-  const [followed, setFollowed] = useState(null);
+  const [followed, setFollowed] = useState();
   console.log(followed);
 
   //test code above

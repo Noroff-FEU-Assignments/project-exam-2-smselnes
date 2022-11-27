@@ -1,0 +1,57 @@
+.postComments {
+  display: grid;
+  justify-content: center;
+
+  & div {
+    &:nth-child(odd) {
+      background-color: $colour-light;
+    }
+  }
+
+  &__item {
+    padding: 10px;
+    border-bottom: 4px double black;
+    width: 260px;
+
+    @media (min-width: $smallScreen) {
+      width: 350px;
+    }
+    @media (min-width: $mediumScreen) {
+      width: 500px;
+    }
+  }
+
+  & a {
+    width: 150px;
+    justify-self: center;
+  }
+}
+
+.postReactions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__item {
+    transform: scale(1.5);
+    margin: 10px;
+
+    @media (min-width: $smallScreen) {
+      transform: scale(2.2);
+      margin: 25px;
+    }
+  }
+}
+
+.reactOnPostForm,
+.commentOnPostsForm {
+  display: grid;
+  justify-content: center;
+
+  & select,
+  textarea {
+    width: 260px;
+
+    box-shadow: $button-shadow;
+  }
+}

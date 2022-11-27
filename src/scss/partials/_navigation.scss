@@ -16,6 +16,11 @@
   &__logo {
     width: 150px;
   }
+
+  &__logout {
+    color: $colour-light;
+    align-self: center;
+  }
 }
 
 .breadcrumb {
@@ -37,6 +42,10 @@ footer {
   a {
     color: $colour-light;
     margin: 0 1rem;
+    &:hover {
+      color: $colour-light;
+      text-decoration: underline;
+    }
   }
 
   @media (min-width: $mediumScreen) {

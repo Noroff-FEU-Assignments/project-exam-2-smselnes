@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { base_url, register_path } from "../../utils/Api";
 import ErrorMessage from "../common/ErrorMessage";
+import SuccessMessage from "../common/SuccessMessage";
 import { Form } from "react-bootstrap";
 
 const usernameRegex = /^[a-zA-Z0-9_]+$/;
@@ -33,6 +34,7 @@ const schema = yup.object().shape({
 export default function RegisterUserForm() {
   const [submitting, setSubmitting] = useState(false);
   const [registerFormError, setRegisterFormError] = useState(null);
+  const [registered, setRegistered] = useState(false);
 
   const navigate = useNavigate();
 
@@ -63,7 +65,10 @@ export default function RegisterUserForm() {
       const json = await response.json();
       console.log(json);
       if (response.ok) {
-        navigate("/login");
+        setRegistered(true);
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
       } else {
         setRegisterFormError("Invalid credentials / account already exists?");
       }
@@ -84,6 +89,11 @@ export default function RegisterUserForm() {
         className="registerUserForm mb-3"
       >
         <fieldset disabled={submitting}>
+          {registered && (
+            <SuccessMessage>
+              <p>New user created</p>
+            </SuccessMessage>
+          )}
           {registerFormError && (
             <ErrorMessage>{registerFormError}</ErrorMessage>
           )}
@@ -145,6 +155,12 @@ export default function RegisterUserForm() {
         <button type="submit" className="registerUserForm__button mb-3">
           {submitting ? "Registering" : "Register"}
         </button>
+        <hr />
+        <p className="registerUserForm__description">* = required fields</p>
+        <p className="registerUserForm__description">
+          avatar and banner images are optional and can be added or changed
+          later in your profile settings.
+        </p>
       </Form>
     </>
   );

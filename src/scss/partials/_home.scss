@@ -9,21 +9,31 @@
   }
 
   & p {
-    transform: rotate(3deg);
+    padding: 10px;
+    transform: rotate(2deg);
     border: 4px double $colour-dark;
     background-color: $colour-bright;
     margin: 10px;
-    width: 260px;
+    width: 220px;
+
+    @media (min-width: $mediumScreen) {
+      padding: 1rem;
+      width: 300px;
+    }
   }
 
   &--inner {
     display: grid;
-    background-color: $colour-light;
     width: 100%;
     justify-items: center;
 
-    & button {
+    & a {
       width: 150px;
+
+      @media (min-width: $mediumScreen) {
+        padding: 1rem;
+        width: 300px;
+      }
     }
   }
 }

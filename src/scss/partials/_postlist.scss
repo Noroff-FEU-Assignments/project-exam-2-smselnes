@@ -1,0 +1,46 @@
+.postList {
+  display: grid;
+  justify-items: center;
+
+  @media (min-width: $smallScreen) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: $largescreen) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__card {
+    width: 80%;
+    position: relative;
+    background-color: $colour-light;
+
+    @media (min-width: $smallScreen) {
+      width: 90%;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &--author {
+      color: $colour-dark;
+      font-size: 1.1rem;
+    }
+
+    &--body {
+      display: grid;
+      align-content: end;
+    }
+
+    &--arrow {
+      color: $colour-dark;
+      font-size: 2rem;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+
+      &:hover {
+        fill: $colour-gray;
+        transition: $button-hover-effect;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

@@ -6,14 +6,25 @@
 
   &__button {
     width: 100px;
-    margin-left: 60%;
+    margin-left: 50%;
 
     @media (min-width: $smallScreen) {
-      margin-left: 75%;
+      margin-left: 60%;
+      width: 150px;
+    }
+  }
+
+  &__description {
+    font-style: italic;
+    font-size: 0.8rem;
+
+    @media (min-width: $mediumScreen) {
+      font-size: 1rem;
     }
   }
 
   @media (min-width: $smallScreen) {
     width: 400px;
+    font-size: 1.2rem;
   }
 }

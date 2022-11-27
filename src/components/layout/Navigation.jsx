@@ -4,9 +4,17 @@ import Navbar from "react-bootstrap/Navbar";
 import AuthContext from "../../context/AuthContext";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
-  const [auth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  function logoutUser() {
+    setAuth(null);
+    navigate("/");
+  }
 
   return (
     <>
@@ -25,6 +33,55 @@ function Navigation() {
           />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
+              {auth ? (
+                <>
+                  <Nav.Link href="/" className="navbar__link">
+                    Home
+                  </Nav.Link>
+
+                  <Nav.Link href="/dashboard" className="navbar__link">
+                    Dashboard
+                  </Nav.Link>
+
+                  <Nav.Link
+                    href={`/dashboard/${auth.name}`}
+                    className="navbar__link"
+                  >
+                    My profile
+                  </Nav.Link>
+
+                  <Nav.Link onClick={logoutUser} className="navbar__logout">
+                    Logout
+                    <RiLogoutCircleRLine />
+                  </Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link href="/" className="navbar__link">
+                    Home
+                  </Nav.Link>
+
+                  <Nav.Link href="/register" className="navbar__link">
+                    Register
+                  </Nav.Link>
+
+                  <Nav.Link href="/login" className="navbar__link">
+                    Login
+                  </Nav.Link>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
+  );
+}
+
+export default Navigation;
+
+{
+  /* <Nav className="mx-auto">
               <Nav.Link href="/" className="navbar__link">
                 Homepage
               </Nav.Link>
@@ -55,12 +112,5 @@ function Navigation() {
                   Login
                 </Nav.Link>
               )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
-  );
+            </Nav> */
 }
-
-export default Navigation;

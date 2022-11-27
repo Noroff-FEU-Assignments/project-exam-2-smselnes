@@ -1,0 +1,31 @@
+.postDetails {
+  text-align: center;
+
+  & img {
+    margin: 1rem;
+    width: 80%;
+
+    @media (min-width: $mediumScreen) {
+      width: 620px;
+    }
+  }
+  &__bodytext {
+    background-color: $colour-dark;
+    color: $colour-light;
+    padding: 1.5rem;
+    margin: auto;
+
+    @media (min-width: $mediumScreen) {
+      width: 60%;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__tags {
+    display: inline-flex;
+
+    &--item {
+      background-color: $colour-light;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import { social_url } from "../../../utils/Api";
 import AuthContext from "../../../context/AuthContext";
-import { Spinner, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import ErrorMessage from "../../common/ErrorMessage";
+import Loader from "../../../utils/Loader";
+import ProfileItem from "./ProfileItem";
 
-const defaultAvatarImage =
-  "https://via.placeholder.com/150/eff0ea/494031/?text=no image";
-
-const profileUrl = social_url + "profiles?sortOrder=asc&offset=250&limit=100";
+const profileUrl =
+  social_url +
+  "profiles?sortOrder=asc&offset=100&_followers=true&_following=true&_posts=true";
 
 export default function ViewProfiles() {
   const [loading, setLoading] = useState(false);
@@ -42,41 +42,30 @@ export default function ViewProfiles() {
   }, []);
 
   if (loading) {
-    return (
-      <Spinner className="text-center" role="status" size="lg">
-        <span className="loadingText">Loading...</span>
-      </Spinner>
-    );
+    return <Loader />;
   }
 
   if (error) {
     return (
-      <div className="errorMessage">
-        <p>Error: There was an unexpected error.</p>
-        <p>Advanced: {error}</p>
-      </div>
+      <ErrorMessage>
+        <p>There was an unexpected error.</p>{" "}
+        <p> Please reload the page or try again later.</p>
+      </ErrorMessage>
     );
   }
 
   return (
     <>
       <div className="profiles">
-        {profiles.map((profile, index) => {
+        {profiles.map((profile) => {
+          const { name, avatar, _count } = profile;
           return (
-            <Card key={index} className="profiles__card m-3">
-              <Card.Img
-                src={profile.avatar ? profile.avatar : defaultAvatarImage}
-                className="profiles__card--avatar"
-              />
-              <Card.Title className="mt-2">{profile.name}</Card.Title>
-              <Card.Text>Posts:{profile._count.posts}</Card.Text>
-              <Link
-                to={`/dashboard/profiles/${profile.name}`}
-                className="button profiles__card--link mt-auto mb-3"
-              >
-                Visit profile
-              </Link>
-            </Card>
+            <ProfileItem
+              key={name}
+              name={name}
+              avatar={avatar}
+              count={_count}
+            />
           );
         })}
       </div>
