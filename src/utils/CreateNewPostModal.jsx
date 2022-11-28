@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import ErrorMessage from "../components/common/ErrorMessage";
 import SuccessMessage from "../components/common/SuccessMessage";
 import refreshAfterSubmit from "../components/common/RefreshAfterSubmit";
@@ -62,9 +62,9 @@ export default function CreateNewPost() {
 
   return (
     <>
-      <Button className="button m-3" onClick={handleShow}>
+      <button className="button m-3" onClick={handleShow}>
         Create new post
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

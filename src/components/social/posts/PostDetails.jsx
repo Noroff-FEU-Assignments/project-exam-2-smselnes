@@ -95,12 +95,12 @@ export default function PostDetails() {
           <p>Reactions: {postDetails._count.reactions}</p>
           <ReactOnPost />
         </div>
-        <a href="/dashboard/posts" className="button mb-3">
-          back to posts
+        <a href="/dashboard/posts" className="button m-3">
+          all posts
         </a>
-        {/* <a href={`/dashboard/${auth.name}`} className="button mb-3">
+        <a href={`/dashboard/${auth.name}`} className="button m-3">
           my profile
-        </a> */}
+        </a>
       </div>
     </>
   );

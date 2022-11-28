@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import moment from "moment";
 
-function PostItems({
+export default function PostItems({
   id,
   title,
   body,
@@ -60,5 +60,3 @@ PostItems.propTypes = {
   created: PropTypes.string,
   updated: PropTypes.string,
 };
-
-export default PostItems;

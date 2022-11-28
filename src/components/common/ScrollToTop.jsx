@@ -3,15 +3,13 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
 export default function ScrollToTop() {
   return (
-    <div className="text-center">
-      <button
-        className="button mb-3"
+    <div className="text-center scrollToTop">
+      <BsFillArrowUpCircleFill
+        className="icon m-3"
         onClick={() => {
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
-      >
-        <BsFillArrowUpCircleFill /> Top
-      </button>
+      />
     </div>
   );
 }

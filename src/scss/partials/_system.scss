@@ -19,8 +19,13 @@
   text-align: center;
 }
 
-.loadingText {
-  background-color: $colour-dark;
-  color: $colour-light;
-  padding: 5px;
+.loader {
+  position: absolute;
+  top: 50%;
+  &__text {
+    background-color: $colour-dark;
+    color: $colour-light;
+    padding: 5px;
+    margin: auto;
+  }
 }

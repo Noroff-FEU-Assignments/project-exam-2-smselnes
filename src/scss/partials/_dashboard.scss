@@ -42,70 +42,6 @@
     }
   }
 }
-//own profile page styling
-
-.ownProfile {
-  display: grid;
-  margin: auto;
-
-  @media (min-width: $mediumScreen) {
-    width: 500px;
-  }
-
-  &__title {
-    background-color: black;
-    color: white;
-  }
-
-  &__avatar {
-    justify-self: center;
-  }
-
-  &__buttons {
-    font-size: 0.8rem;
-  }
-}
-
-.changeBanner {
-  &__button {
-    font-size: 0.8rem;
-    justify-self: right;
-  }
-}
-
-.ownPost {
-  background-color: $colour-light;
-  padding-top: 1rem;
-  margin: 10px;
-
-  &__arrow {
-    color: $colour-dark;
-    font-size: 2rem;
-    position: absolute;
-    right: 20px;
-  }
-
-  &__delete--alert {
-    background-color: $colour-dark;
-    color: $colour-light;
-    width: 100%;
-    position: absolute;
-
-    & button {
-      background-color: $colour-light;
-      color: $colour-dark;
-    }
-  }
-
-  &__delete--confirm:hover {
-    background-color: $colour-error;
-  }
-
-  &__delete--cancel:hover {
-    background-color: $colour-dark;
-    color: $colour-light;
-  }
-}
 
 .dashboard__menu--link {
   & a {
@@ -115,24 +51,3 @@
     border-radius: 5px;
   }
 }
-
-/* .gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & :nth-child(even) {
-    background-color: lightgray;
-  }
-
-  &__item {
-    width: fit-content;
-    margin: 5px;
-    display: grid;
-    border-bottom: 2px solid black;
-
-    & img {
-      width: 100px;
-    }
-  }
-} */

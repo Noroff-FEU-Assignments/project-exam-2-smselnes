@@ -25,15 +25,6 @@
   }
 }
 
-.breadcrumb {
-  background-color: black;
-  padding: 10px;
-
-  & a {
-    color: white;
-  }
-}
-
 footer {
   background-color: $colour-header;
   padding: 1rem;
@@ -55,6 +46,10 @@ footer {
     justify-items: center;
     font-size: 1.3rem;
   }
+}
+
+.scrollToTop .icon {
+  font-size: 2rem;
 }
 
 ::-webkit-scrollbar {

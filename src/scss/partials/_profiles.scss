@@ -10,20 +10,12 @@
       max-width: 500px;
     }
   }
-
-  &Page__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 }
 
 .profileDetails {
   &__posts {
-    display: grid;
-    justify-content: center;
-    box-shadow: 1px 1px 2px 0px $colour-dark;
-    width: 90%;
+    box-shadow: $button-shadow;
+    max-width: 500px;
     background-color: $colour-bright;
     border: 4px double $colour-dark;
 
@@ -31,11 +23,7 @@
       max-width: 150px;
     }
     &:hover {
-      box-shadow: 1px 1px 4px 0px $colour-dark;
-    }
-
-    @media (min-width: $mediumScreen) {
-      width: 60%;
+      box-shadow: $button-hover-effect;
     }
   }
 
@@ -50,28 +38,40 @@
 .profiles {
   display: grid;
   justify-items: center;
+  background-image: url("../../assets/background-image03.jpg");
 
   @media (min-width: $smallScreen) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: $mediumScreen) {
+  @media (min-width: $largescreen) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (min-width: $largescreen) {
-    grid-template-columns: repeat(4, 1fr);
-  }
   &__card {
-    width: 90%;
+    width: 240px;
     align-items: center;
     background-color: $colour-light;
+
+    &--body {
+      display: grid;
+      align-content: end;
+      justify-items: center;
+    }
 
     &--avatar {
       width: 100%;
     }
+
+    &--name {
+      border-top: 1px solid $colour-dark;
+    }
+
+    &--link {
+      width: fit-content;
+    }
   }
 
-  &__search--message {
+  &__searchForm--message {
     font-size: 0.8rem;
     font-style: italic;
   }

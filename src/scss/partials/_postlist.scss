@@ -1,21 +1,20 @@
 .postList {
   display: grid;
   justify-items: center;
+  background-image: url("../../assets/background-image03.jpg");
 
   @media (min-width: $smallScreen) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   @media (min-width: $largescreen) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   &__card {
-    width: 80%;
-    position: relative;
+    width: 70%;
     background-color: $colour-light;
 
     @media (min-width: $smallScreen) {
-      width: 90%;
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -27,6 +26,10 @@
     &--body {
       display: grid;
       align-content: end;
+    }
+
+    &--header {
+      border-top: 1px solid $colour-dark;
     }
 
     &--arrow {

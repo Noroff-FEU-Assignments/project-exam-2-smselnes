@@ -64,7 +64,7 @@ h6 {
 }
 
 .navbar {
-  background-color: #c06900;
+  background-color: #c03d00;
   font-size: 1rem;
 }
 
@@ -92,17 +92,8 @@ h6 {
   border-radius: 5px;
 }
 
-.breadcrumb {
-  background-color: black;
-  padding: 10px;
-}
-
-.breadcrumb a {
-  color: white;
-}
-
 footer {
-  background-color: #c06900;
+  background-color: #c03d00;
   padding: 1rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -132,6 +123,10 @@ footer a:hover {
   }
 }
 
+.scrollToTop .icon {
+  font-size: 2rem;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -146,7 +141,7 @@ footer a:hover {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c06900;
+  background: #c03d00;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
@@ -306,10 +301,16 @@ footer a:hover {
   text-align: center;
 }
 
-.loadingText {
+.loader {
+  position: absolute;
+  top: 50%;
+}
+
+.loader__text {
   background-color: #494031;
   color: #eff0ea;
   padding: 5px;
+  margin: auto;
 }
 
 .postComments {
@@ -395,31 +396,30 @@ footer a:hover {
   display: -ms-grid;
   display: grid;
   justify-items: center;
+  background-image: url("../../assets/background-image03.jpg");
 }
 
 @media (min-width: 575px) {
+  .postList {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 991px) {
   .postList {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 991px) {
-  .postList {
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .postList__card {
-  width: 80%;
-  position: relative;
+  width: 70%;
   background-color: #eff0ea;
 }
 
 @media (min-width: 575px) {
   .postList__card {
-    width: 90%;
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
@@ -435,6 +435,10 @@ footer a:hover {
   display: grid;
   -ms-flex-line-pack: end;
       align-content: end;
+}
+
+.postList__card--header {
+  border-top: 1px solid #494031;
 }
 
 .postList__card--arrow {
@@ -563,6 +567,13 @@ footer a:hover {
   transition: 0.5s ease;
 }
 
+.dashboard__menu--link a {
+  background-color: white;
+  padding: 1rem;
+  width: 150px;
+  border-radius: 5px;
+}
+
 .ownProfile {
   display: -ms-grid;
   display: grid;
@@ -585,34 +596,63 @@ footer a:hover {
       justify-self: center;
 }
 
-.ownProfile__buttons {
-  font-size: 0.8rem;
+.ownProfile__buttons button {
+  padding: 5px;
+  max-width: 150px;
 }
 
-.changeBanner__button {
-  font-size: 0.8rem;
-  -ms-grid-column-align: right;
-      justify-self: right;
+@media (min-width: 768px) {
+  .ownProfile__buttons button {
+    font-size: 1.2rem;
+  }
+}
+
+.ownProfile__follow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ownProfile__follow button {
+  background-color: #494031;
+}
+
+.ownProfile--dropdown {
+  background-color: #494031;
 }
 
 .ownPost {
   background-color: #eff0ea;
   padding-top: 1rem;
-  margin: 10px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 500px;
+  border: 4px double #494031;
+  background-color: #eaef5e;
 }
 
 .ownPost__arrow {
   color: #494031;
   font-size: 2rem;
-  position: absolute;
-  right: 20px;
 }
 
 .ownPost__delete--alert {
   background-color: #494031;
   color: #eff0ea;
-  width: 100%;
+  width: 250px;
   position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .ownPost__delete--alert {
+    width: 350px;
+  }
 }
 
 .ownPost__delete--alert button {
@@ -629,33 +669,6 @@ footer a:hover {
   color: #eff0ea;
 }
 
-.dashboard__menu--link a {
-  background-color: white;
-  padding: 1rem;
-  width: 150px;
-  border-radius: 5px;
-}
-
-/* .gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & :nth-child(even) {
-    background-color: lightgray;
-  }
-
-  &__item {
-    width: fit-content;
-    margin: 5px;
-    display: grid;
-    border-bottom: 2px solid black;
-
-    & img {
-      width: 100px;
-    }
-  }
-} */
 .profile__avatar {
   width: 100px;
 }
@@ -670,26 +683,10 @@ footer a:hover {
   }
 }
 
-.profilePage__wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 .profileDetails__posts {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-shadow: 1px 1px 2px 0px #494031;
           box-shadow: 1px 1px 2px 0px #494031;
-  width: 90%;
+  max-width: 500px;
   background-color: #eaef5e;
   border: 4px double #494031;
 }
@@ -699,14 +696,8 @@ footer a:hover {
 }
 
 .profileDetails__posts:hover {
-  -webkit-box-shadow: 1px 1px 4px 0px #494031;
-          box-shadow: 1px 1px 4px 0px #494031;
-}
-
-@media (min-width: 768px) {
-  .profileDetails__posts {
-    width: 60%;
-  }
+  -webkit-box-shadow: 0.5s ease;
+          box-shadow: 0.5s ease;
 }
 
 .profileDetails__navigateBack--btn {
@@ -721,6 +712,7 @@ footer a:hover {
   display: -ms-grid;
   display: grid;
   justify-items: center;
+  background-image: url("../../assets/background-image03.jpg");
 }
 
 @media (min-width: 575px) {
@@ -730,33 +722,44 @@ footer a:hover {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
   .profiles {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 991px) {
-  .profiles {
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .profiles__card {
-  width: 90%;
+  width: 240px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background-color: #eff0ea;
 }
 
+.profiles__card--body {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  justify-items: center;
+}
+
 .profiles__card--avatar {
   width: 100%;
 }
 
-.profiles__search--message {
+.profiles__card--name {
+  border-top: 1px solid #494031;
+}
+
+.profiles__card--link {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.profiles__searchForm--message {
   font-size: 0.8rem;
   font-style: italic;
 }

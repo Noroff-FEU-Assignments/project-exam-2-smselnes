@@ -1,0 +1,82 @@
+.ownProfile {
+  display: grid;
+  margin: auto;
+
+  @media (min-width: $mediumScreen) {
+    width: 500px;
+  }
+
+  &__title {
+    background-color: black;
+    color: white;
+  }
+
+  &__avatar {
+    justify-self: center;
+  }
+
+  &__buttons button {
+    padding: 5px;
+    max-width: 150px;
+
+    @media (min-width: $mediumScreen) {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__follow {
+    display: flex;
+    justify-content: center;
+
+    & button {
+      background-color: $colour-dark;
+    }
+  }
+
+  &--dropdown {
+    background-color: $colour-dark;
+  }
+}
+
+.ownPost {
+  background-color: $colour-light;
+  padding-top: 1rem;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 500px;
+  border: 4px double $colour-dark;
+  background-color: $colour-bright;
+
+  &__arrow {
+    color: $colour-dark;
+    font-size: 2rem;
+  }
+
+  &__delete--alert {
+    background-color: $colour-dark;
+    color: $colour-light;
+    width: 250px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    @media (min-width: $mediumScreen) {
+      width: 350px;
+    }
+
+    & button {
+      background-color: $colour-light;
+      color: $colour-dark;
+    }
+  }
+
+  &__delete--confirm:hover {
+    background-color: $colour-error;
+  }
+
+  &__delete--cancel:hover {
+    background-color: $colour-dark;
+    color: $colour-light;
+  }
+}

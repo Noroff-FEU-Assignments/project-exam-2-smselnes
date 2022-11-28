@@ -84,11 +84,14 @@ export default function ProfileDetails() {
             <p> {userProfile._count.followers} Followers</p>
             <p> {userProfile._count.following} Following</p>
           </Tab>
-          <Tab eventKey="posts" title="Posts" className="">
+          <Tab
+            eventKey="posts"
+            title="Posts"
+            className="text-center d-inline-block"
+          >
             {userProfile.posts.map((userPosts, index) => {
               return (
                 <div key={index} className="m-3 profileDetails__posts">
-                  {/* <img src={userPosts.media} /> */}
                   <p>
                     {moment(userPosts.updated).format("DD MMM YY, hh:mm a")}
                   </p>

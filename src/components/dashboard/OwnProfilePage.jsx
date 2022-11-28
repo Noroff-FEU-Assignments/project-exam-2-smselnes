@@ -1,12 +1,12 @@
 import useAxios from "../../hooks/useAxios";
-import { useState, useEffect /* useContext */ } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Dropdown } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
 import UpdateFormModal from "../../utils/UpdatePostModal";
 import DeletePost from "./DeletePost";
-//import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import CreateNewPost from "../../utils/CreateNewPostModal";
 import LogoutButton from "../common/LogoutButton";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
@@ -16,8 +16,10 @@ export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [ownProfile, setOwnProfile] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
   document.title = "Medi@holic | My profile";
-  /* const [auth, setAuth] = useContext(AuthContext); */
+  const [auth, setAuth] = useContext(AuthContext);
 
   let { name } = useParams();
   const http = useAxios();
@@ -28,7 +30,12 @@ export default function OwnProfilePage() {
         const response = await http.get(
           `profiles/${name}?_posts=true&_following=true&_followers=true`
         );
-        setOwnProfile(response.data);
+        const ownProfileData = response.data;
+        setOwnProfile(ownProfileData);
+        setFollowers(ownProfileData.followers);
+        setFollowing(ownProfileData.following);
+        console.log(response.data);
+        console.log(response.data.followers);
         console.log(response.data.posts);
       } catch (error) {
         console.log(error);
@@ -83,13 +90,44 @@ export default function OwnProfilePage() {
         <UpdateProfileAvatar />
       </div>
 
-      {/* <div className="d-grid justify-content-center">
-        
-      </div> */}
+      <div className="ownProfile__follow">
+        <Dropdown className="m-3">
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            {followers.length} Followers
+          </Dropdown.Toggle>
 
-      <div className="d-grid text-center">
-        <p>{ownProfile._count.followers} Followers</p>
-        <p>{ownProfile._count.following} Following</p>
+          <Dropdown.Menu>
+            {followers.map((followers) => {
+              return (
+                <Dropdown.Item
+                  key={followers.name}
+                  href={`/dashboard/profiles/${followers.name}`}
+                >
+                  {followers.name}
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown className="m-3">
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            {following.length} Following
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            {following.map((following) => {
+              return (
+                <Dropdown.Item
+                  key={following.name}
+                  href={`/dashboard/profiles/${following.name}`}
+                >
+                  {following.name}
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
 
       <div className="ownPostsContainer text-center mb-3">
@@ -100,9 +138,6 @@ export default function OwnProfilePage() {
             <div key={index} className="ownPost">
               <h3>{ownPost.title}</h3>
               <p>Last edit: {moment(ownPost.updated).format("DD MMM YY")}</p>
-              <a href={`/dashboard/posts/${ownPost.id}`}>
-                <BsFillArrowRightCircleFill className="ownPost__arrow" />
-              </a>
 
               <UpdateFormModal
                 id={ownPost.id}
@@ -110,6 +145,9 @@ export default function OwnProfilePage() {
                 body={ownPost.body}
               />
               <DeletePost id={ownPost.id} />
+              <a href={`/dashboard/posts/${ownPost.id}`}>
+                <BsFillArrowRightCircleFill className="ownPost__arrow" />
+              </a>
             </div>
           );
         })}
