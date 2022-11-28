@@ -20,6 +20,8 @@
   &__logout {
     color: $colour-light;
     align-self: center;
+    background: black;
+    border-radius: 5px;
   }
 }
 
@@ -53,4 +55,22 @@ footer {
     justify-items: center;
     font-size: 1.3rem;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $colour-light;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $colour-dark;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $colour-header;
+  transition: 0.7s;
 }

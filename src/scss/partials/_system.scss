@@ -3,8 +3,12 @@
   margin: 10px;
   background-color: $colour-error-bg;
   font-size: 0.9rem;
+
   @media (min-width: $mediumScreen) {
     font-size: 1rem;
+  }
+  @media (min-width: $largescreen) {
+    font-size: 1.3rem;
   }
 }
 

@@ -50,7 +50,12 @@ export default function PostDetails() {
   if (error) {
     return (
       <ErrorMessage>
-        <p>Something went wrong. Please reload the page or try again later.</p>
+        <p className="">
+          Something went wrong. Please reload the page or try again later.
+        </p>
+        <a href="/dashboard/posts" className="button">
+          Go back to posts.
+        </a>
       </ErrorMessage>
     );
   }
@@ -90,9 +95,12 @@ export default function PostDetails() {
           <p>Reactions: {postDetails._count.reactions}</p>
           <ReactOnPost />
         </div>
-        <a href={`/dashboard/${auth.name}`} className="button mb-3">
-          back to profile
+        <a href="/dashboard/posts" className="button mb-3">
+          back to posts
         </a>
+        {/* <a href={`/dashboard/${auth.name}`} className="button mb-3">
+          my profile
+        </a> */}
       </div>
     </>
   );

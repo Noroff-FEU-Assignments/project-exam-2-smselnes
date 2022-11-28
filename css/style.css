@@ -88,6 +88,8 @@ h6 {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  background: black;
+  border-radius: 5px;
 }
 
 .breadcrumb {
@@ -128,6 +130,25 @@ footer a:hover {
     justify-items: center;
     font-size: 1.3rem;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eff0ea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #494031;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c06900;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 .home__introduction {
@@ -269,6 +290,12 @@ footer a:hover {
 @media (min-width: 768px) {
   .form__error {
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 991px) {
+  .form__error {
+    font-size: 1.3rem;
   }
 }
 

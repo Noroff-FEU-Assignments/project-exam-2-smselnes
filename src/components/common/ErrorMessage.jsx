@@ -1,3 +1,3 @@
 export default function ErrorMessage({ children }) {
-  return <div className="form__error">{children}</div>;
+  return <div className="form__error text-center">{children}</div>;
 }

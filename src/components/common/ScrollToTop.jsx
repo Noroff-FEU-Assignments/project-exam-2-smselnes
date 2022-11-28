@@ -1,4 +1,5 @@
 import React from "react";
+import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
 export default function ScrollToTop() {
   return (
@@ -9,7 +10,7 @@ export default function ScrollToTop() {
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
       >
-        Scroll to top
+        <BsFillArrowUpCircleFill /> Top
       </button>
     </div>
   );
