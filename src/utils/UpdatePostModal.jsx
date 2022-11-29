@@ -7,10 +7,11 @@ import { useState } from "react";
 import SuccessMessage from "../components/common/SuccessMessage";
 import ErrorMessage from "../components/common/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const schema = yup.object().shape({
-  title: yup.string().required("Required field."),
-  body: yup.string().required("Required field."),
+  title: yup.string().required("Post must have a title."),
+  body: yup.string().required("Post must contain something."),
   media: yup.string(),
   tags: yup.array().ensure(),
 });
@@ -20,10 +21,12 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
   const [submitting, setSubmitting] = useState(false);
   const [updateFormError, setUpdateFormError] = useState(null);
   const [updatedPost, setUpdatedPost] = useState(false);
+
   const http = useAxios();
   const navigate = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const url = `posts/${id}`;
 
   const {
     register,
@@ -38,16 +41,16 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
     setUpdateFormError(null);
 
     try {
-      const response = await http.put(`posts/${id}`, data);
-      console.log(response.data);
+      const response = await http.put(url, data);
 
       if (response.status === 200) {
         setUpdatedPost(true);
-        navigate(`/dashboard/posts/${id}`);
+        setTimeout(() => {
+          navigate(`/dashboard/posts/${id}`);
+        }, 1500);
       }
     } catch (error) {
       setUpdateFormError(error.toString());
-
       console.log(error);
     } finally {
       setSubmitting(false);
@@ -70,7 +73,11 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
                 <p>The post was updated.</p>
               </SuccessMessage>
             )}
-            {updateFormError && <ErrorMessage>{updateFormError}</ErrorMessage>}
+            {updateFormError && (
+              <ErrorMessage>
+                Something went wrong when trying to update the post.
+              </ErrorMessage>
+            )}
             <fieldset disabled={submitting}>
               <div>
                 <label htmlFor="title">New title</label>
@@ -99,7 +106,12 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
 
               <div>
                 <label htmlFor="media">Image url</label>
-                <input type="text" id="media" {...register("media")} />
+                <input
+                  type="text"
+                  id="media"
+                  {...register("media")}
+                  defaultValue={media}
+                />
                 {errors.media && (
                   <ErrorMessage>{errors.media.message}</ErrorMessage>
                 )}
@@ -127,3 +139,11 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
     </>
   );
 }
+
+UpdatePostModal.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  media: PropTypes.string,
+  tags: PropTypes.array,
+};

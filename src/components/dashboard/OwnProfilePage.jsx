@@ -36,7 +36,7 @@ export default function OwnProfilePage() {
         setFollowing(ownProfileData.following);
         console.log(response.data);
         console.log(response.data.followers);
-        console.log(response.data.posts);
+        console.log(ownProfileData);
       } catch (error) {
         console.log(error);
         setError(error.toString());
@@ -143,6 +143,8 @@ export default function OwnProfilePage() {
                 id={ownPost.id}
                 title={ownPost.title}
                 body={ownPost.body}
+                tags={ownPost.tags}
+                media={ownPost.media}
               />
               <DeletePost id={ownPost.id} />
               <a href={`/dashboard/posts/${ownPost.id}`}>
