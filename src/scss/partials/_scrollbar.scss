@@ -1,0 +1,21 @@
+.scrollToTop .icon {
+  font-size: 2rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $colour-light;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $colour-dark;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $colour-header;
+  transition: 0.7s;
+}

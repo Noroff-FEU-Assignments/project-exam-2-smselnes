@@ -4,7 +4,13 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { defaultAvatarImage } from "../../../utils/DefaultImageUrl";
 
-export default function ProfileItem({ name, avatar, count }) {
+export default function ProfileItem({
+  name,
+  avatar,
+  followers,
+  following,
+  count,
+}) {
   return (
     <>
       <Card className="profiles__card m-3">
@@ -31,4 +37,6 @@ ProfileItem.propTypes = {
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string,
   count: PropTypes.object,
+  following: PropTypes.array,
+  followers: PropTypes.array,
 };

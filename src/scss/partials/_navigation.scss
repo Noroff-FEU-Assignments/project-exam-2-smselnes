@@ -11,6 +11,13 @@
       text-decoration: underline;
       color: $colour-light;
     }
+
+    @media (min-width: $mediumScreen) {
+      font-size: 1.1rem;
+    }
+    @media (min-width: $largescreen) {
+      font-size: 1.3rem;
+    }
   }
 
   &__logo {
@@ -22,50 +29,12 @@
     align-self: center;
     background: black;
     border-radius: 5px;
-  }
-}
+    padding: 0;
+    font-size: 0.8rem;
 
-footer {
-  background-color: $colour-header;
-  padding: 1rem;
-  flex-shrink: 0;
-  display: grid;
-  justify-content: center;
-
-  a {
-    color: $colour-light;
-    margin: 0 1rem;
-    &:hover {
-      color: $colour-light;
-      text-decoration: underline;
+    @media (min-width: $mediumScreen) {
+      position: absolute;
+      right: 1rem;
     }
   }
-
-  @media (min-width: $mediumScreen) {
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    font-size: 1.3rem;
-  }
-}
-
-.scrollToTop .icon {
-  font-size: 2rem;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: $colour-light;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $colour-dark;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: $colour-header;
-  transition: 0.7s;
 }

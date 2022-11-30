@@ -7,6 +7,7 @@ import ReactOnPost from "./ReactOnPost";
 import useAxios from "../../../hooks/useAxios";
 import ErrorMessage from "../../common/ErrorMessage";
 import Loader from "../../../utils/Loader";
+import { defaultAvatarImage } from "../../../utils/DefaultImageUrl";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
@@ -72,7 +73,7 @@ export default function PostDetails() {
         </p>
         <img
           className="postDetails__image"
-          src={postDetails.media}
+          src={postDetails.media ? postDetails.media : defaultAvatarImage}
           alt="the media selected for the specified post"
         />
         <p className="postDetails__bodytext">Content: {postDetails.body}</p>

@@ -5,41 +5,40 @@ import ErrorMessage from "../../common/ErrorMessage";
 import { useParams } from "react-router-dom";
 import SuccessMessage from "../../common/SuccessMessage";
 
-export default function FollowUser() {
-  const [followError, setFollowError] = useState(null);
-  const [followMessage, setfollowMessage] = useState(null);
+export default function UnFollowUser() {
+  const [unfollowError, setUnfollowError] = useState(null);
+  const [unfollowMessage, setUnfollowMessage] = useState(null);
 
   const { name } = useParams();
   const http = useAxios();
-  const url = social_url + `profiles/${name}/follow`;
+  const url = social_url + `profiles/${name}/unfollow`;
 
-  async function follow() {
+  async function unfollow() {
     try {
       const response = await http.put(url);
       console.log(response);
-      setfollowMessage(true);
+      setUnfollowMessage(true);
       if (response.status === 200) {
         setTimeout(() => {
           window.location.reload();
         }, 2500);
       }
     } catch (error) {
-      console.log(error.response);
-      setFollowError(error.response);
+      setUnfollowError(error.response);
     }
   }
 
   return (
     <div>
-      <button onClick={follow} className="button follow__button">
-        Follow
+      <button onClick={unfollow} className="button follow__button">
+        Unfollow
       </button>
-      {followMessage && (
+      {unfollowMessage && (
         <SuccessMessage>
-          <p>You are now following {name} </p>
+          <p>You are no longer following {name}</p>
         </SuccessMessage>
       )}
-      {followError && (
+      {unfollowError && (
         <ErrorMessage>
           <p>Something went wrong when updating...</p>{" "}
           <p>Please try again later.</p>

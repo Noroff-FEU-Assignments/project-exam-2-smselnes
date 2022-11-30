@@ -1,4 +1,5 @@
 import Modal from "react-bootstrap/Modal";
+import { Form } from "react-bootstrap";
 import useAxios from "../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -67,7 +68,7 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
           <Modal.Title>Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(updateOwnPost)}>
+          <Form onSubmit={handleSubmit(updateOwnPost)}>
             {updatedPost && (
               <SuccessMessage>
                 <p>The post was updated.</p>
@@ -79,61 +80,59 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
               </ErrorMessage>
             )}
             <fieldset disabled={submitting}>
-              <div>
-                <label htmlFor="title">New title</label>
-                <input
-                  type="text"
-                  id="title"
-                  {...register("title")}
-                  defaultValue={title}
-                />
-                {errors.title && (
-                  <ErrorMessage>{errors.title.message}</ErrorMessage>
-                )}
-              </div>
-              <div>
-                <label htmlFor="body">Post content</label>
-                <input
-                  type="text"
-                  id="body"
-                  {...register("body")}
-                  defaultValue={body}
-                />
-                {errors.body && (
-                  <ErrorMessage>{errors.body.message}</ErrorMessage>
-                )}
-              </div>
+              <Form.Label htmlFor="title">New Title</Form.Label>
+              <Form.Control
+                className=" editPostForm__title"
+                type="text"
+                id="title"
+                {...register("title")}
+                defaultValue={title}
+              ></Form.Control>
+              {errors.title && (
+                <ErrorMessage>{errors.title.message}</ErrorMessage>
+              )}
 
-              <div>
-                <label htmlFor="media">Image url</label>
-                <input
-                  type="text"
-                  id="media"
-                  {...register("media")}
-                  defaultValue={media}
-                />
-                {errors.media && (
-                  <ErrorMessage>{errors.media.message}</ErrorMessage>
-                )}
-              </div>
+              <Form.Label htmlFor="body">Content</Form.Label>
+              <Form.Control
+                className="editPostForm__body"
+                type="text"
+                id="body"
+                {...register("body")}
+                defaultValue={body}
+              ></Form.Control>
+              {errors.body && (
+                <ErrorMessage>{errors.body.message}</ErrorMessage>
+              )}
 
-              <div>
-                <label htmlFor="tags">Tags</label>
-                <input
-                  type="text"
-                  id="tags"
-                  {...register("tags")}
-                  defaultValue={tags}
-                />
-                {errors.tags && (
-                  <ErrorMessage>{errors.tags.message}</ErrorMessage>
-                )}
-              </div>
+              <Form.Label htmlFor="media">Image url</Form.Label>
+              <Form.Control
+                className="editPostForm__media"
+                id="media"
+                {...register("image")}
+                defaultValue={media}
+              ></Form.Control>
+              {errors.media && (
+                <ErrorMessage>{errors.media.message}</ErrorMessage>
+              )}
+
+              <Form.Label htmlFor="tags">
+                Tags (separate tags with space)
+              </Form.Label>
+              <Form.Control
+                className="editPostForm__tags--info"
+                type="text"
+                id="tags"
+                {...register("tags")}
+                defaultValue={tags}
+              ></Form.Control>
+              {errors.tags && (
+                <ErrorMessage>{errors.tags.message}</ErrorMessage>
+              )}
             </fieldset>
             <button className="btn btn-success m-3" type="submit">
               {submitting ? "Updating..." : "Update"}
             </button>
-          </form>
+          </Form>
         </Modal.Body>
       </Modal>
     </>

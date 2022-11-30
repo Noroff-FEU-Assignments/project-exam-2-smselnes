@@ -34,9 +34,6 @@ export default function OwnProfilePage() {
         setOwnProfile(ownProfileData);
         setFollowers(ownProfileData.followers);
         setFollowing(ownProfileData.following);
-        console.log(response.data);
-        console.log(response.data.followers);
-        console.log(ownProfileData);
       } catch (error) {
         console.log(error);
         setError(error.toString());
@@ -74,7 +71,7 @@ export default function OwnProfilePage() {
           alt={`${ownProfile.name}'s profile banner`}
         />
         <div>
-          <p className="ownProfile__title">{ownProfile.name}</p>
+          <h2 className="ownProfile__title">{ownProfile.name}</h2>
           <LogoutButton />
         </div>
 

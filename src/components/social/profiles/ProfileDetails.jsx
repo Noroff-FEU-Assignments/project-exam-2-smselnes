@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Spinner, Tabs, Tab, Col } from "react-bootstrap";
-import FollowUser from "./FollowUser";
 import useAxios from "../../../hooks/useAxios";
 import moment from "moment";
+import FollowUser from "./FollowUser";
+import UnFollowUser from "./UnFollowUser";
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
+import FollowOrUnfollow from "./FollowOrUnfollow";
 
 export default function ProfileDetails() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState([]);
+  const [followed, setFollowed] = useState([]);
+  const [auth] = useContext(AuthContext);
 
   let { name } = useParams();
+  const navigate = useNavigate();
   document.title = `Medi@holic | ${name} `;
+
+  /* if(!name) {
+    navigate("/dashboard/profiles");
+  } */
+
   const http = useAxios();
 
   useEffect(() => {
@@ -31,6 +43,23 @@ export default function ProfileDetails() {
     getUsersProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  //test code below
+  const followingUrl = `profiles/${auth.name}?_following=true`;
+
+  useEffect(() => {
+    async function checkIfFollowing() {
+      try {
+        const response = await http.get(followingUrl);
+        setFollowed(response.data.following);
+      } catch (error) {
+        setError(error.toString);
+      }
+    }
+    checkIfFollowing();
+  }, [followingUrl]);
+
+  //test code above
 
   if (loading) {
     return (
@@ -57,7 +86,10 @@ export default function ProfileDetails() {
           alt="the user's profile banner"
         />
         <h3 className="m-3">{userProfile.name}</h3>
-        <FollowUser />
+        {/* test code below */}
+        <FollowOrUnfollow followed={followed} user={userProfile.name} />
+        {/* test code above */}
+        {/*  <FollowUser /> */}
         <Col className="m-3">
           <a
             href="/dashboard/profiles"
