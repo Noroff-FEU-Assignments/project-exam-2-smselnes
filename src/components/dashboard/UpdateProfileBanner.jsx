@@ -78,7 +78,7 @@ export default function UpdateProfileBanner() {
                 <ErrorMessage>{errors.banner.message}</ErrorMessage>
               )}
             </fieldset>
-            <button type="submit" className="button m-3">
+            <button type="submit" className="button m-3 changeBanner__submit">
               {submitting ? "Updating" : "Update"}
             </button>
           </form>

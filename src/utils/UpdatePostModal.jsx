@@ -129,7 +129,7 @@ export default function UpdatePostModal({ id, title, body, media, tags }) {
                 <ErrorMessage>{errors.tags.message}</ErrorMessage>
               )}
             </fieldset>
-            <button className="btn btn-success m-3" type="submit">
+            <button className="button editPostForm__submit m-3" type="submit">
               {submitting ? "Updating..." : "Update"}
             </button>
           </Form>

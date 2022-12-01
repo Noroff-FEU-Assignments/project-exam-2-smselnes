@@ -78,7 +78,7 @@ export default function UpdateProfileAvatar() {
                 <ErrorMessage>{errors.avatar.message}</ErrorMessage>
               )}
             </fieldset>
-            <button type="submit" className="button m-3">
+            <button type="submit" className="button m-3 changeAvatar__submit">
               {submitting ? "Updating" : "Update"}
             </button>
           </form>

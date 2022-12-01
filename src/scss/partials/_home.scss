@@ -21,6 +21,11 @@
       padding: 1rem;
       width: 300px;
     }
+
+    @media (min-width: $largescreen) {
+      width: 500px;
+      font-size: 1.2rem;
+    }
   }
 
   &--inner {

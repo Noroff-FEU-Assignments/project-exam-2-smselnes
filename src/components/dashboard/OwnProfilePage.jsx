@@ -11,6 +11,7 @@ import CreateNewPost from "../../utils/CreateNewPostModal";
 import LogoutButton from "../common/LogoutButton";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import moment from "moment/moment";
+import Loader from "../../utils/Loader";
 
 export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -46,11 +47,7 @@ export default function OwnProfilePage() {
   }, []);
 
   if (loading) {
-    return (
-      <Spinner className="text-center" role="status" size="lg">
-        <span className="loadingText">Loading...</span>
-      </Spinner>
-    );
+    return <Loader />;
   }
 
   if (error) {

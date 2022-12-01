@@ -3,11 +3,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Spinner, Tabs, Tab, Col } from "react-bootstrap";
 import useAxios from "../../../hooks/useAxios";
 import moment from "moment";
-import FollowUser from "./FollowUser";
-import UnFollowUser from "./UnFollowUser";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 import FollowOrUnfollow from "./FollowOrUnfollow";
+import Loader from "../../../utils/Loader";
 
 export default function ProfileDetails() {
   const [error, setError] = useState(null);
@@ -20,9 +19,9 @@ export default function ProfileDetails() {
   const navigate = useNavigate();
   document.title = `Medi@holic | ${name} `;
 
-  /* if(!name) {
-    navigate("/dashboard/profiles");
-  } */
+  if (!name) {
+    navigate("/dashboard");
+  }
 
   const http = useAxios();
 
@@ -44,7 +43,6 @@ export default function ProfileDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //test code below
   const followingUrl = `profiles/${auth.name}?_following=true`;
 
   useEffect(() => {
@@ -59,14 +57,8 @@ export default function ProfileDetails() {
     checkIfFollowing();
   }, [followingUrl]);
 
-  //test code above
-
   if (loading) {
-    return (
-      <Spinner className="text-center" role="status" size="lg">
-        <span className="loadingText">Loading...</span>
-      </Spinner>
-    );
+    return <Loader />;
   }
 
   if (error) {
@@ -86,10 +78,7 @@ export default function ProfileDetails() {
           alt="the user's profile banner"
         />
         <h3 className="m-3">{userProfile.name}</h3>
-        {/* test code below */}
         <FollowOrUnfollow followed={followed} user={userProfile.name} />
-        {/* test code above */}
-        {/*  <FollowUser /> */}
         <Col className="m-3">
           <a
             href="/dashboard/profiles"
