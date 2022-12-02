@@ -7,7 +7,7 @@ import ErrorMessage from "../../common/ErrorMessage";
 import useAxios from "../../../hooks/useAxios";
 import { Form } from "react-bootstrap";
 import AuthContext from "../../../context/AuthContext";
-import { social_url } from "../../../utils/Api";
+import { SOCIAL_URL } from "../../../constants/Api";
 import moment from "moment";
 
 const schema = yup.object().shape({
@@ -19,7 +19,7 @@ const schema = yup.object().shape({
 
 export default function CommentOnPost() {
   const { id } = useParams();
-  const commentingUrl = social_url + `posts/${id}/comment`;
+  const commentingUrl = SOCIAL_URL + `posts/${id}/comment`;
   const http = useAxios();
   const [auth] = useContext(AuthContext);
   const [comments, setComments] = useState([]);
@@ -42,7 +42,7 @@ export default function CommentOnPost() {
 
   useEffect(() => {
     async function FetchComments() {
-      const commentsUrl = social_url + `posts/${id}?_comments=true`;
+      const commentsUrl = SOCIAL_URL + `posts/${id}?_comments=true`;
       try {
         const response = await http.get(commentsUrl, options);
         console.log(response);

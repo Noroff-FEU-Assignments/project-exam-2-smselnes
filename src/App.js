@@ -10,7 +10,7 @@ import { AuthProvider } from "./context/AuthContext";
 import PostDetails from "./components/social/posts/PostDetails";
 import ProfileDetails from "./components/social/profiles/ProfileDetails";
 import ProfilesPage from "./components/social/profiles/Profiles";
-import OwnProfilePage from "./components/dashboard/OwnProfilePage";
+import OwnProfilePage from "./components/dashboard/admin/OwnProfilePage";
 import Posts from "./components/social/posts/Posts";
 
 function App() {

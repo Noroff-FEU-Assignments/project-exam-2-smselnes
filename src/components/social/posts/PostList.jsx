@@ -1,12 +1,12 @@
-import { social_url } from "../../../utils/Api";
+import { SOCIAL_URL } from "../../../constants/Api";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 import PostItems from "./PostItems";
-import Loader from "../../../utils/Loader";
+import Loader from "../../common/Loader";
 import ErrorMessage from "../../common/ErrorMessage";
 
 const postsUrl =
-  social_url + "posts?_author=true&_comments=true&_reactions=true&limit=12";
+  SOCIAL_URL + "posts?_author=true&_comments=true&_reactions=true&limit=12";
 
 export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);

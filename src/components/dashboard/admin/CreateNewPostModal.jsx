@@ -1,12 +1,12 @@
-import useAxios from "../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
-import ErrorMessage from "../components/common/ErrorMessage";
-import SuccessMessage from "../components/common/SuccessMessage";
-import refreshAfterSubmit from "../components/common/RefreshAfterSubmit";
+import ErrorMessage from "../../common/ErrorMessage";
+import SuccessMessage from "../../common/SuccessMessage";
+import refreshAfterSubmit from "../../common/RefreshAfterSubmit";
 
 const schema = yup.object().shape({
   title: yup.string().required("Must have a title"),

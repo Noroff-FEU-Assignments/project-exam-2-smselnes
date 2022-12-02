@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { base_url, register_path } from "../../utils/Api";
+import { BASE_URL, REGISTER_URL } from "../../constants/Api";
 import ErrorMessage from "../common/ErrorMessage";
 import SuccessMessage from "../common/SuccessMessage";
 import { Form } from "react-bootstrap";
@@ -46,7 +46,7 @@ export default function RegisterUserForm() {
     resolver: yupResolver(schema),
   });
 
-  const registerUrl = base_url + register_path;
+  const registerUrl = BASE_URL + REGISTER_URL;
 
   async function registerFormSubmit(data) {
     setSubmitting(true);

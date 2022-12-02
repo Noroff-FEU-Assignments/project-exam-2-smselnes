@@ -1,17 +1,17 @@
-import useAxios from "../../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner, Dropdown } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
-import UpdateFormModal from "../../utils/UpdatePostModal";
+import UpdateFormModal from "./UpdatePostModal";
 import DeletePost from "./DeletePost";
-import AuthContext from "../../context/AuthContext";
-import CreateNewPost from "../../utils/CreateNewPostModal";
-import LogoutButton from "../common/LogoutButton";
+import AuthContext from "../../../context/AuthContext";
+import CreateNewPost from "./CreateNewPostModal";
+import LogoutButton from "../../common/LogoutButton";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import moment from "moment/moment";
-import Loader from "../../utils/Loader";
+import Loader from "../../common/Loader";
 
 export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);

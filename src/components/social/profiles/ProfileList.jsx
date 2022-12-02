@@ -1,12 +1,12 @@
 import { useState, useContext, useEffect } from "react";
-import { social_url } from "../../../utils/Api";
+import { SOCIAL_URL } from "../../../constants/Api";
 import AuthContext from "../../../context/AuthContext";
 import ErrorMessage from "../../common/ErrorMessage";
-import Loader from "../../../utils/Loader";
+import Loader from "../../common/Loader";
 import ProfileItem from "./ProfileItem";
 
 const profileUrl =
-  social_url +
+  SOCIAL_URL +
   "profiles?sortOrder=asc&_followers=true&_following=true&_posts=true&limit=18";
 
 export default function ViewProfiles() {

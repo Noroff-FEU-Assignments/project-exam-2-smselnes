@@ -1,6 +1,6 @@
 import useAxios from "../../../hooks/useAxios";
 import { useState } from "react";
-import { social_url } from "../../../utils/Api";
+import { SOCIAL_URL } from "../../../constants/Api";
 import ErrorMessage from "../../common/ErrorMessage";
 import { useParams } from "react-router-dom";
 import SuccessMessage from "../../common/SuccessMessage";
@@ -11,7 +11,7 @@ export default function UnFollowUser() {
 
   const { name } = useParams();
   const http = useAxios();
-  const url = social_url + `profiles/${name}/unfollow`;
+  const url = SOCIAL_URL + `profiles/${name}/unfollow`;
 
   async function unfollow() {
     try {

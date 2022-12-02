@@ -31,8 +31,8 @@ function Navigation() {
             aria-controls="basic-navbar-nav"
             className="navbar-dark"
           />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
+          <Navbar.Collapse id="basic-navbar-nav justify-content-end">
+            <Nav className="">
               {auth ? (
                 <>
                   <Nav.Link href="/" className="navbar__link">
@@ -79,38 +79,3 @@ function Navigation() {
 }
 
 export default Navigation;
-
-{
-  /* <Nav className="mx-auto">
-              <Nav.Link href="/" className="navbar__link">
-                Homepage
-              </Nav.Link>
-
-              {auth ? (
-                <>
-                  <Nav.Link
-                    href={`/dashboard/${auth.name}`}
-                    className="navbar__link"
-                  >
-                    Profile
-                  </Nav.Link>
-                </>
-              ) : (
-                <Nav.Link href="/register" className="navbar__link">
-                  Register
-                </Nav.Link>
-              )}
-
-              {auth ? (
-                <>
-                  <Nav.Link href="/dashboard" className="navbar__link">
-                    Dashboard
-                  </Nav.Link>
-                </>
-              ) : (
-                <Nav.Link href="/login" className="navbar__link">
-                  Login
-                </Nav.Link>
-              )}
-            </Nav> */
-}

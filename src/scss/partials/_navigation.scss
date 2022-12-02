@@ -2,6 +2,10 @@
   background-color: $colour-header;
   font-size: 1rem;
 
+  &-collapse {
+    justify-content: flex-end;
+  }
+
   &__link {
     color: $colour-light;
     margin: 0 20px;
@@ -32,9 +36,9 @@
     padding: 0;
     font-size: 0.8rem;
 
-    @media (min-width: $mediumScreen) {
+    /* @media (min-width: $mediumScreen) {
       position: absolute;
       right: 1rem;
-    }
+    } */
   }
 }

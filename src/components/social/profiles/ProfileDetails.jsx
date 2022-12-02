@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Spinner, Tabs, Tab, Col } from "react-bootstrap";
+import { Tabs, Tab, Col } from "react-bootstrap";
 import useAxios from "../../../hooks/useAxios";
 import moment from "moment";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 import FollowOrUnfollow from "./FollowOrUnfollow";
-import Loader from "../../../utils/Loader";
+import defaultAvatar from "../../../assets/default-avatar.jpg";
+import Loader from "../../common/Loader";
 
 export default function ProfileDetails() {
   const [error, setError] = useState(null);
@@ -94,9 +95,9 @@ export default function ProfileDetails() {
         >
           <Tab eventKey="profile" title="Profile" className="text-center">
             <img
-              src={userProfile.avatar}
+              src={userProfile.avatar ? userProfile.avatar : defaultAvatar}
               className="profile__avatar"
-              alt="profile avatar"
+              alt={`${userProfile.name}'s profile avatar`}
             />
             <p>{userProfile.email}</p>
           </Tab>

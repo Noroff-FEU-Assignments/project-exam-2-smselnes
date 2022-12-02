@@ -1,20 +1,20 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import useAxios from "../../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { Form, Modal } from "react-bootstrap";
-import ErrorMessage from "../common/ErrorMessage";
-import refreshAfterSubmit from "../common/RefreshAfterSubmit";
+import { Modal, Form } from "react-bootstrap";
+import ErrorMessage from "../../common/ErrorMessage";
+import refreshAfterSubmit from "../../common/RefreshAfterSubmit";
 import { useContext } from "react";
-import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 
 const schema = yup.object().shape({
-  banner: yup.string().required("Required field."),
+  avatar: yup.string().required("Required field"),
 });
 
-export default function UpdateProfileBanner() {
+export default function UpdateProfileAvatar() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [show, setShow] = useState(false);
@@ -34,7 +34,7 @@ export default function UpdateProfileBanner() {
   const http = useAxios();
   let { name } = useParams();
 
-  async function changeBanner(data) {
+  async function changeAvatar(data) {
     setSubmitting(true);
     setSubmitError(null);
 
@@ -52,9 +52,9 @@ export default function UpdateProfileBanner() {
     <>
       <button
         onClick={handleShow}
-        className="button changeBanner__button m-3 w-25"
+        className="button changeAvatar__button m-3 w-25"
       >
-        Change banner
+        Change avatar
       </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -62,23 +62,23 @@ export default function UpdateProfileBanner() {
         </Modal.Header>
         <Modal.Body>
           <form
-            onSubmit={handleSubmit(changeBanner)}
-            className="changeBanner__form"
+            onSubmit={handleSubmit(changeAvatar)}
+            className="changeAvatar__form"
           >
             {submitError && <ErrorMessage>{submitError}</ErrorMessage>}
             <fieldset disabled={submitting}>
-              <Form.Label htmlFor="banner">New banner url</Form.Label>
+              <Form.Label htmlFor="avatar">New avatar url</Form.Label>
               <Form.Control
                 type="url"
-                id="banner"
-                {...register("banner")}
-                defaultValue={auth.banner}
+                id="avatar"
+                {...register("avatar")}
+                defaultValue={auth.avatar}
               />
-              {errors.banner && (
-                <ErrorMessage>{errors.banner.message}</ErrorMessage>
+              {errors.avatar && (
+                <ErrorMessage>{errors.avatar.message}</ErrorMessage>
               )}
             </fieldset>
-            <button type="submit" className="button m-3 changeBanner__submit">
+            <button type="submit" className="button m-3 changeAvatar__submit">
               {submitting ? "Updating" : "Update"}
             </button>
           </form>

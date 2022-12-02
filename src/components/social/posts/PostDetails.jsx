@@ -1,13 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { social_url } from "../../../utils/Api";
+import { SOCIAL_URL } from "../../../constants/Api";
 import AuthContext from "../../../context/AuthContext";
 import { useState, useEffect, useContext } from "react";
 import CommentOnPost from "./CommentOnPost";
 import ReactOnPost from "./ReactOnPost";
 import useAxios from "../../../hooks/useAxios";
 import ErrorMessage from "../../common/ErrorMessage";
-import Loader from "../../../utils/Loader";
-import { defaultAvatarImage } from "../../../utils/DefaultImageUrl";
+import Loader from "../../common/Loader";
+import { defaultAvatarImage } from "../../common/DefaultImageUrl";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
@@ -21,7 +21,7 @@ export default function PostDetails() {
 
   const http = useAxios();
   const url =
-    social_url + `posts/${id}?_author=true&_comments=true&_reactions=true`;
+    SOCIAL_URL + `posts/${id}?_author=true&_comments=true&_reactions=true`;
 
   useEffect(() => {
     async function getPostsDetails() {

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { defaultAvatarImage } from "../../../utils/DefaultImageUrl";
+import defaultAvatar from "../../../assets/default-avatar.jpg";
 
 export default function ProfileItem({
   name,
@@ -15,7 +15,7 @@ export default function ProfileItem({
     <>
       <Card className="profiles__card m-3">
         <Card.Img
-          src={avatar ? avatar : defaultAvatarImage}
+          src={avatar ? avatar : defaultAvatar}
           className="profiles__card--avatar"
         />
         <Card.Body className="profiles__card--body">

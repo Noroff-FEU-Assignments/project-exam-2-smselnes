@@ -1,12 +1,12 @@
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
-import useAxios from "../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import SuccessMessage from "../components/common/SuccessMessage";
-import ErrorMessage from "../components/common/ErrorMessage";
+import SuccessMessage from "../../common/SuccessMessage";
+import ErrorMessage from "../../common/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 

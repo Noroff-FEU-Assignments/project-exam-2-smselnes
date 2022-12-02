@@ -7,7 +7,7 @@ import useAxios from "../../../hooks/useAxios";
 import { Form } from "react-bootstrap";
 import ErrorMessage from "../../common/ErrorMessage";
 import { useEffect } from "react";
-import { social_url } from "../../../utils/Api";
+import { SOCIAL_URL } from "../../../constants/Api";
 import SuccessMessage from "../../common/SuccessMessage";
 
 const schema = yup.object().shape({
@@ -33,7 +33,7 @@ export default function ReactOnPost() {
 
   useEffect(() => {
     async function FetchReactions() {
-      const reactsUrl = social_url + `posts/${id}?_reactions=true`;
+      const reactsUrl = SOCIAL_URL + `posts/${id}?_reactions=true`;
 
       try {
         const response = await http.get(reactsUrl);
@@ -53,7 +53,7 @@ export default function ReactOnPost() {
     let symbol = emoji;
     setSubmitting(true);
 
-    const reactionUrl = social_url + `posts/${id}/react/${symbol}`;
+    const reactionUrl = SOCIAL_URL + `posts/${id}/react/${symbol}`;
 
     try {
       const response = await http.put(reactionUrl);

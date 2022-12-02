@@ -1,4 +1,4 @@
-import { login_path, base_url } from "../../utils/Api";
+import { LOGIN_URL, BASE_URL } from "../../constants/Api";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
@@ -38,7 +38,7 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const loginUrl = base_url + login_path;
+  const loginUrl = BASE_URL + LOGIN_URL;
 
   async function loginSubmit(data) {
     setSubmitting(true);

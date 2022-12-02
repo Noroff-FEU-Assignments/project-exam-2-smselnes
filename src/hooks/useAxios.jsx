@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
-import { social_url } from "../utils/Api";
+import { SOCIAL_URL } from "../constants/Api";
 
 export default function useAxios() {
   const [auth] = useContext(AuthContext);
   const apiClient = axios.create({
-    baseURL: social_url,
+    baseURL: SOCIAL_URL,
     headers: {
       "Content-Type": "application/json",
     },
