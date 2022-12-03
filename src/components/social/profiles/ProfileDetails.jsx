@@ -91,7 +91,7 @@ export default function ProfileDetails() {
         <Tabs
           defaultActiveKey="profile"
           id="uncontrolled-tab-example"
-          className="mb-3 justify-content-center"
+          className="mb-3 justify-content-center profileDetails__tabs"
         >
           <Tab eventKey="profile" title="Profile" className="text-center">
             <img

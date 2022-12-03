@@ -13,6 +13,9 @@
 }
 
 .profileDetails {
+  &__tabs {
+    border: none;
+  }
   &__posts {
     box-shadow: $button-shadow;
     max-width: 500px;
@@ -76,3 +79,8 @@
     font-style: italic;
   }
 }
+
+/* .nav-tabs {
+  border: none;
+}
+ */

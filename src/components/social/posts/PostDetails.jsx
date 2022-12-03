@@ -8,6 +8,7 @@ import useAxios from "../../../hooks/useAxios";
 import ErrorMessage from "../../common/ErrorMessage";
 import Loader from "../../common/Loader";
 import { defaultAvatarImage } from "../../common/DefaultImageUrl";
+import moment from "moment";
 
 export default function PostDetails() {
   const [postDetails, setPostDetails] = useState(null);
@@ -71,6 +72,7 @@ export default function PostDetails() {
             {postDetails.author.name}
           </a>
         </p>
+        <p> {moment(postDetails.updated).format("DD MMM YY, h:mm:ss a")}</p>
         <img
           className="postDetails__image"
           src={postDetails.media ? postDetails.media : defaultAvatarImage}
@@ -89,11 +91,15 @@ export default function PostDetails() {
         </div>
 
         <div>
-          <p>Comments: {postDetails._count.comments}</p>
+          <p className="postDetails__comments">
+            Comments: {postDetails._count.comments}
+          </p>
           <CommentOnPost />
         </div>
         <div>
-          <p>Reactions: {postDetails._count.reactions}</p>
+          <p className="postDetails__reactions">
+            Reactions: {postDetails._count.reactions}
+          </p>
           <ReactOnPost />
         </div>
         <a href="/dashboard/posts" className="button m-3">

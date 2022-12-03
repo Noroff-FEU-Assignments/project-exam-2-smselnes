@@ -9,6 +9,7 @@
   &__title {
     background-color: black;
     color: white;
+    margin-top: 10px;
   }
 
   &__avatar {
@@ -35,12 +36,21 @@
     }
 
     & button {
-      background-color: $colour-dark;
-    }
-  }
+      background-color: $colour-light;
+      color: $colour-dark;
 
-  &--dropdown {
-    background-color: $colour-dark;
+      &:hover {
+        background-color: $colour-dark;
+        color: $colour-light;
+      }
+    }
+
+    & a {
+      border-bottom: 2px solid $colour-dark;
+      padding: 10px;
+      background-color: $colour-dark;
+      color: $colour-light;
+    }
   }
 }
 

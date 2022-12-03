@@ -10,8 +10,8 @@
     }
   }
   &__bodytext {
-    background-color: $colour-dark;
-    color: $colour-light;
+    background-color: $colour-bright;
+    color: $colour-dark;
     padding: 1.5rem;
     margin: auto;
 
@@ -22,10 +22,21 @@
   }
 
   &__tags {
-    display: inline-flex;
+    background-color: $colour-bright;
+    display: grid;
+    width: fit-content;
+    margin: 10px auto;
 
     &--item {
       background-color: $colour-light;
     }
+  }
+
+  &__comments,
+  &__reactions {
+    background-color: $colour-bright;
+    margin: 1rem auto;
+    width: fit-content;
+    padding: 0.5rem;
   }
 }

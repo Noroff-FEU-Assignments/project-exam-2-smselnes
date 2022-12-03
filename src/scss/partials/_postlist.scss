@@ -39,6 +39,10 @@
       right: 10px;
       bottom: 10px;
 
+      @media (min-width: $smallScreen) {
+        font-size: 3rem;
+      }
+
       &:hover {
         fill: $colour-gray;
         transition: $button-hover-effect;

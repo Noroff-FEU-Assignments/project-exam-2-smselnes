@@ -1,7 +1,7 @@
 import useAxios from "../../../hooks/useAxios";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Spinner, Dropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
 import UpdateFormModal from "./UpdatePostModal";
@@ -20,7 +20,7 @@ export default function OwnProfilePage() {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
   document.title = "Medi@holic | My profile";
-  const [auth, setAuth] = useContext(AuthContext);
+  //const [auth, setAuth] = useContext(AuthContext);
 
   let { name } = useParams();
   const http = useAxios();
@@ -85,7 +85,7 @@ export default function OwnProfilePage() {
       </div>
 
       <div className="ownProfile__follow">
-        <Dropdown className="m-3">
+        <Dropdown className="m-3 ownProfile__follow--dropdown">
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             {followers.length} Followers
           </Dropdown.Toggle>
@@ -104,7 +104,7 @@ export default function OwnProfilePage() {
           </Dropdown.Menu>
         </Dropdown>
 
-        <Dropdown className="m-3">
+        <Dropdown className="m-3 ownProfile__follow--dropdown">
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             {following.length} Following
           </Dropdown.Toggle>
