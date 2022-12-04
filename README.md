@@ -1,6 +1,6 @@
 Medi@holic - Social Media Platform developed by Ståle Marius Selnes
 
-The website can be visited [here] (https://smselnes-mediaholic.netlify.app/)
+The website can be visited [here](https://smselnes-mediaholic.netlify.app/)
 
 Its built on [Noroff API](https://noroff-api-docs.netlify.app/) + [These Endpoints](https://nf-api.onrender.com/docs/static/index.html).
 
