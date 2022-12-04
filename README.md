@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+Medi@holic - Social Media Platform developed by Ståle Marius Selnes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The website can be visited [here] (https://smselnes-mediaholic.netlify.app/)
 
-## Available Scripts
+Its built on [Noroff API](https://noroff-api-docs.netlify.app/) + [These Endpoints](https://nf-api.onrender.com/docs/static/index.html).
 
-In the project directory, you can run:
+# Description
 
-### `npm start`
+Medi@holic is created for creative minds that wants to share, socialize, interact and inspire/be inspired.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Registered members can create posts with media, content and tags and posts can be commented and reacted on with emojis.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+It is also possible to follow and unfollow other members.
 
-### `npm test`
+Future implementations will come as the API expands further.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+- React 18.2.0
+- React-bootstrap
+- Sass
+- Yup
+- Moment
+- Axios
+- React-icons
+- Google fonts
+- GitHub
+- Postman
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Design application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Adobe XD (prototype + styleguide)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Planning
 
-### `npm run eject`
+- Trello
+- Notion (gantt chart)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Hosting
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Netlify
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Setup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This repository can be cloned or downloaded.
+Navigate to the correct folder in the terminal.
+Run "npm install"
+Run "npm run start".
+The application will open on port 3000, or you will be asked to open on another port if not available.
 
-## Learn More
+## Access
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Login: username with a valid **stud.noroff.no** or **noroff.no** email
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Register: Register a new user with a valid **stud.noroff.no** / **noroff.no** email.
+the username cannot use any punctuation except underscore. Password must be minimum 8 characters.
 
-### Code Splitting
+## Summary
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+My final exam at Noroff is **Medi@holic**. It has been challenging, yet very interesting to work with. Its been quite a journey over the past 7 weeks. It started off with analyzing the brief well and get into the planning process. I've used Trello actively throughout the weeks to sort tasks and make priorities to my kanban board.
 
-### Analyzing the Bundle Size
+Most of the project has gone well. I've had a few stops where I needed to destructure the code or do some serious debugging to get past the blockers. But I've learnt a lot more in those fields through this project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+As always, the design part is difficult. I did not know the API from before, and I felt a need to get to know it before start developing, so after registering a new user in Postman, I played around to do some fetching just to understand the JSON returned. Then I could go back to the prototype to easier understand the flow of the application. This also gave me a good start on the developing process.
 
-### Making a Progressive Web App
+I've done "in-house" user testing with people not connected to the community, and I've done external user-testing with fellow students. As often before, these tests give both expected and unexpected feedback which is valuable.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All in all I'm happy with the result. There's room for improvements here and there, but all the requirements asked for are completed.
