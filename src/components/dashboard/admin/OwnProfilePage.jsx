@@ -12,6 +12,8 @@ import LogoutButton from "../../common/LogoutButton";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import moment from "moment/moment";
 import Loader from "../../common/Loader";
+import defaultAvatar from "../../../assets/default-avatar.jpg";
+import defaultBanner from "../../../assets/default-banner.jpg";
 
 export default function OwnProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +22,7 @@ export default function OwnProfilePage() {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
   document.title = "Medi@holic | My profile";
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
 
   let { name } = useParams();
   const http = useAxios();
@@ -68,7 +70,7 @@ export default function OwnProfilePage() {
       <div className="ownProfile text-center">
         <img
           className="ownProfile__banner"
-          src={ownProfile.banner}
+          src={ownProfile.banner ? ownProfile.banner : defaultBanner}
           width="100%"
           alt={`${ownProfile.name}'s profile banner`}
         />
@@ -79,7 +81,7 @@ export default function OwnProfilePage() {
 
         <img
           className="ownProfile__avatar"
-          src={ownProfile.avatar}
+          src={ownProfile.avatar ? ownProfile.avatar : defaultAvatar}
           width="100px"
           alt={`${ownProfile.name}'s profile avatar`}
         />

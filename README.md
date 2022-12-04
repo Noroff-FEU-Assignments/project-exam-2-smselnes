@@ -73,3 +73,7 @@ As always, the design part is difficult. I did not know the API from before, and
 I've done "in-house" user testing with people not connected to the community, and I've done external user-testing with fellow students. As often before, these tests give both expected and unexpected feedback which is valuable.
 
 All in all I'm happy with the result. There's room for improvements here and there, but all the requirements asked for are completed.
+
+### inspiration / helpful
+
+- [PedroTech youtube](https://www.youtube.com/@PedroTechnologies)

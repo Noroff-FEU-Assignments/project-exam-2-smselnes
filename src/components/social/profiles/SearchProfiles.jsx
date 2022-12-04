@@ -5,12 +5,7 @@ export default function SearchProfiles() {
   return (
     <div className="profiles__search text-center">
       <Form className="profiles__searchForm d-flex w-50 mx-auto m-3">
-        <Form.Control
-          /* onKeyUp={} */
-          type="search"
-          aria-label="Search"
-          disabled={true}
-        />
+        <Form.Control type="search" aria-label="Search" disabled={true} />
         <Button
           variant="outline-success"
           className="profiles__searchForm--btn"

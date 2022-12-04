@@ -12,7 +12,7 @@ function Navigation() {
   const navigate = useNavigate();
   const locate = useLocation();
 
-  const [path, setPath] = useState(locate.pathname);
+  const [path] = useState(locate.pathname);
 
   function logoutUser() {
     setAuth(null);
