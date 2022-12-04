@@ -7,6 +7,7 @@ import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 import FollowOrUnfollow from "./FollowOrUnfollow";
 import defaultAvatar from "../../../assets/default-avatar.jpg";
+import defaultBanner from "../../../assets/default-banner.jpg";
 import Loader from "../../common/Loader";
 
 export default function ProfileDetails() {
@@ -73,12 +74,15 @@ export default function ProfileDetails() {
   return (
     <>
       <div className="text-center">
-        <img
-          src={userProfile.banner}
-          className="profile__banner mt-3"
-          alt="the user's profile banner"
-        />
-        <h3 className="m-3">{userProfile.name}</h3>
+        <div className="profile__bannerContainer">
+          <img
+            src={userProfile.banner ? userProfile.banner : defaultBanner}
+            className="profile__banner mt-3"
+            alt={`${userProfile.name}'s profile banner`}
+          />
+        </div>
+
+        <h3 className="profile__name m-3">{userProfile.name}</h3>
         <FollowOrUnfollow followed={followed} user={userProfile.name} />
         <Col className="m-3">
           <a

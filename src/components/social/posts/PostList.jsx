@@ -4,6 +4,7 @@ import AuthContext from "../../../context/AuthContext";
 import PostItems from "./PostItems";
 import Loader from "../../common/Loader";
 import ErrorMessage from "../../common/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 const postsUrl =
   SOCIAL_URL + "posts?_author=true&_comments=true&_reactions=true&limit=12";
@@ -15,7 +16,13 @@ export default function ListOfPosts() {
   const [auth] = useContext(AuthContext);
   const [postIndex, setPostIndex] = useState(12);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (auth === null) {
+      navigate(`/login`);
+    }
+
     async function getPosts() {
       const options = {
         method: "GET",

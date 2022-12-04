@@ -76,7 +76,7 @@ export default function PostDetails() {
         <img
           className="postDetails__image"
           src={postDetails.media ? postDetails.media : defaultAvatarImage}
-          alt="the media selected for the specified post"
+          alt={`${postDetails.author.name}'s post image.`}
         />
         <p className="postDetails__bodytext">Content: {postDetails.body}</p>
         <div className="postDetails__tags">

@@ -1,3 +1,9 @@
+## Brief
+
+An existing Social Media company has approached you to create a brand new front end for their application. While they have a list of required features, the design and user experience has not been specified. Working with the official API documentation, plan, design and build a modern front end social media application.
+
+---
+
 Medi@holic - Social Media Platform developed by Ståle Marius Selnes
 
 The website can be visited [here](https://smselnes-mediaholic.netlify.app/)
@@ -35,6 +41,7 @@ Future implementations will come as the API expands further.
 
 - Trello
 - Notion (gantt chart)
+- OneNote (for personal notes and logging)
 
 ## Hosting
 
@@ -42,11 +49,11 @@ Future implementations will come as the API expands further.
 
 ## Setup
 
-This repository can be cloned or downloaded.
-Navigate to the correct folder in the terminal.
-Run "npm install"
-Run "npm run start".
-The application will open on port 3000, or you will be asked to open on another port if not available.
+- This repository can be cloned or downloaded.
+- Navigate to the correct folder in the terminal.
+- Run "npm install"
+- Run "npm run start".
+- The application will open on port 3000, or you will be asked to open on another port if not available.
 
 ## Access
 

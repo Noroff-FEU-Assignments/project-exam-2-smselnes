@@ -4,10 +4,11 @@
   }
 
   &__banner {
-    width: 50%;
+    width: 100%;
+    overflow: hidden;
 
-    @media (min-width: $largescreen) {
-      max-width: 500px;
+    @media (min-width: $mediumScreen) {
+      max-width: 700px;
     }
   }
 }

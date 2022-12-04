@@ -3,13 +3,16 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import AuthContext from "../../context/AuthContext";
 import logo from "../../assets/logo.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
   const navigate = useNavigate();
+  const locate = useLocation();
+
+  const [path, setPath] = useState(locate.pathname);
 
   function logoutUser() {
     setAuth(null);
@@ -31,8 +34,8 @@ function Navigation() {
             aria-controls="basic-navbar-nav"
             className="navbar-dark"
           />
-          <Navbar.Collapse id="basic-navbar-nav justify-content-end">
-            <Nav className="">
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="" activeKey={path}>
               {auth ? (
                 <>
                   <Nav.Link href="/" className="navbar__link">

@@ -115,10 +115,11 @@ input:hover {
   border-radius: 5px;
   padding: 0;
   font-size: 0.8rem;
-  /* @media (min-width: $mediumScreen) {
-      position: absolute;
-      right: 1rem;
-    } */
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+  color: white;
 }
 
 footer {
@@ -302,12 +303,6 @@ footer a:hover {
   }
 }
 
-@media (min-width: 991px) {
-  .form__error {
-    font-size: 1.3rem;
-  }
-}
-
 .form__success {
   background-color: #494031;
   color: #eff0ea;
@@ -317,11 +312,6 @@ footer a:hover {
   width: -moz-fit-content;
   width: fit-content;
   margin: auto;
-}
-
-.loader {
-  /* position: absolute;
-  top: 50%; */
 }
 
 .loader__text {
@@ -761,12 +751,13 @@ footer a:hover {
 }
 
 .profile__banner {
-  width: 50%;
+  width: 100%;
+  overflow: hidden;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 768px) {
   .profile__banner {
-    max-width: 500px;
+    max-width: 700px;
   }
 }
 

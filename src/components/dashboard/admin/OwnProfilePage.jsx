@@ -1,6 +1,6 @@
 import useAxios from "../../../hooks/useAxios";
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import UpdateProfileBanner from "./UpdateProfileBanner";
 import UpdateProfileAvatar from "./UpdateProfileAvatar";
@@ -20,12 +20,17 @@ export default function OwnProfilePage() {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
   document.title = "Medi@holic | My profile";
-  //const [auth, setAuth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
 
   let { name } = useParams();
   const http = useAxios();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (auth === null) {
+      navigate(`/login`);
+    }
+
     async function getOwnUserProfile() {
       try {
         const response = await http.get(

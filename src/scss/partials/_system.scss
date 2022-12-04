@@ -7,9 +7,6 @@
   @media (min-width: $mediumScreen) {
     font-size: 1rem;
   }
-  @media (min-width: $largescreen) {
-    font-size: 1.3rem;
-  }
 }
 
 .form__success {
@@ -22,9 +19,6 @@
 }
 
 .loader {
-  /* position: absolute;
-  top: 50%; */
-
   &__text {
     background-color: $colour-dark;
     color: $colour-light;
