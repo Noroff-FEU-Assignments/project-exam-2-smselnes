@@ -1,16 +1,12 @@
-## Brief
+# Description
 
-An existing Social Media company has approached you to create a brand new front end for their application. While they have a list of required features, the design and user experience has not been specified. Working with the official API documentation, plan, design and build a modern front end social media application.
-
----
-
-Medi@holic - Social Media Platform developed by Ståle Marius Selnes
+Medi@holic - Social Media Platform developed by Ståle Marius Selnes (project exam).
 
 The website can be visited [here](https://smselnes-mediaholic.netlify.app/)
 
 Its built on [Noroff API](https://noroff-api-docs.netlify.app/) + [These Endpoints](https://nf-api.onrender.com/docs/static/index.html).
 
-# Description
+## Goal
 
 Medi@holic is created for creative minds that wants to share, socialize, interact and inspire/be inspired.
 
@@ -19,6 +15,10 @@ Registered members can create posts with media, content and tags and posts can b
 It is also possible to follow and unfollow other members.
 
 Future implementations will come as the API expands further.
+
+## Brief
+
+An existing Social Media company has approached you to create a brand new front end for their application. While they have a list of required features, the design and user experience has not been specified. Working with the official API documentation, plan, design and build a modern front end social media application.
 
 ## Technologies
 
@@ -62,6 +62,43 @@ Login: username with a valid **stud.noroff.no** or **noroff.no** email
 Register: Register a new user with a valid **stud.noroff.no** / **noroff.no** email.
 the username cannot use any punctuation except underscore. Password must be minimum 8 characters.
 
+### Test flow
+
+_known issues - there has been a problem with a status code: 429 - too many requests during development. If that happens, take a step or two back and try again._
+
+    - Register a new user or log in if you have one.
+    	- Users must end with a stud.noroff.no or noroff.no email.
+    - When logged in, you will be redirected to the dashboard page.
+    	- go to posts. Scroll down and test "more posts" button.
+    - Find a post to explore.
+      - Find the comment section and leave a comment.
+      - Try to post a reaction.
+      - Click on the author of the post, below the heading on the page. This will redirect you to the author's profile page.
+    - Try to follow the user.
+    - Try to unfollow the user.
+    - Try to follow again.
+    - Click through the tabs on this profile page and find the "posts" tab.
+      - Try to open one of the posts. This redirects you to a post details page.
+        - From here, click on Dashboard in the navigation.
+    - Go to profiles.
+      - Scroll down and find "more profiles" and click it.
+      - Scroll further down and find the up arrow. Click it. This redirects you to the top of the page.
+      - Find a profile to explore.
+        - From here, click My Profile in the navigation.
+    - Scroll down to "create new post" and create one.
+      - This post should now be available for editing.
+      - Try edit the post.
+      - After editing, try to delete the post.
+      - Try to change banner.
+      - Try to change the avatar.
+      - Find the following / followers section.
+        - Open the dropdown and click on one of the following / followers profiles.
+          - From this profile page, click on the logo in navigation, which will take you back to the landingpage.
+            - Click logout in the navigation.
+            - Are you back to where you started?
+
+Thanks for testing. Feedback and suggestions is highly appreciated.
+
 ## Summary
 
 My final exam at Noroff is **Medi@holic**. It has been challenging, yet very interesting to work with. Its been quite a journey over the past 7 weeks. It started off with analyzing the brief well and get into the planning process. I've used Trello actively throughout the weeks to sort tasks and make priorities to my kanban board.
@@ -74,6 +111,10 @@ I've done "in-house" user testing with people not connected to the community, an
 
 All in all I'm happy with the result. There's room for improvements here and there, but all the requirements asked for are completed.
 
-### inspiration / helpful
+### inspiration / helpful / acknowledgements
 
-- [PedroTech youtube](https://www.youtube.com/@PedroTechnologies)
+- Helpful React lessons: [PedroTech youtube](https://www.youtube.com/@PedroTechnologies)
+- Helpful fellow students. I have discussed and shared solutions with three great people during this project. All three of them have been great classmates throughout my entire Front-End studies.
+  - maikenlindstad
+  - Jimbozz
+  - KThomiss
