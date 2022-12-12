@@ -1,6 +1,7 @@
 # Description
 
 Medi@holic - Social Media Platform developed by Ståle Marius Selnes (project exam).
+![mockup image of project](https://smselnes-home.netlify.app/images/mediaholic_mockup01.jpg)
 
 The website can be visited [here](https://smselnes-mediaholic.netlify.app/)
 
